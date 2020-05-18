@@ -61,3 +61,10 @@ A web platform where laborers can find contracts from contractors and vice versa
 * Phone number
 * Aadhar card availability
 
+# **Contact**
+* Ajay Nair ajaynair59@gmail.com
+* Masters student at the Carnegie Mellon University
+* WhatsApp +14126268877
+
+# **Low Fid Mockup**
+https://drive.google.com/file/d/1N6NvTCLfQGkEt8WyHvPnOidsA42gSUzD/view?usp=sharing
