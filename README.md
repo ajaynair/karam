@@ -66,5 +66,8 @@ A web platform where laborers can find contracts from contractors and vice versa
 * Masters student at the Carnegie Mellon University
 * WhatsApp +14126268877
 
+# **Slack workspace**
+https://join.slack.com/t/karam2/shared_invite/zt-e94kznp3-3axF0oG2ZRp6BrCTxtUNeQ
+
 # **Low Fid Mockup**
 https://drive.google.com/file/d/1N6NvTCLfQGkEt8WyHvPnOidsA42gSUzD/view?usp=sharing
