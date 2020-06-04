@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Karam</string>
+    <string-array name="locations">
+        <item>Pune</item>
+        <item>Mumbai</item>
+        <item>Chennai</item>
+        <item>Delhi</item>
+        <item>Gudgaon</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+</resources>
