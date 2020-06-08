@@ -1,4 +1,4 @@
-package com.example.karam;
+package com.karam.view;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.karam", appContext.getPackageName());
+        assertEquals("com.karam.karam", appContext.getPackageName());
     }
 }

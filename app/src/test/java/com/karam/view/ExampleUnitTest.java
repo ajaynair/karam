@@ -1,4 +1,4 @@
-package com.example.karam;
+package com.karam.view;
 
 import org.junit.Test;
 

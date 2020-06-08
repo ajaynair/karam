@@ -1,22 +1,20 @@
-package com.example.karam;
+package com.karam.view;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.SearchView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 /**
- * Page for a user to register themselves as a laborer for a job request
+ *  Contractor's landing page once they login
+ *  The contractor can search for laborers from this page
  */
-public class WorkRequestSelf extends AppCompatActivity {
+public class ContractorPostLogin extends AppCompatActivity {
 
     /**
      * Handle what happens when the activity is created
@@ -25,13 +23,10 @@ public class WorkRequestSelf extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.work_request_self);
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.locations, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        setContentView(R.layout.contractor_post_login);
         assignListenerToViews();
+
+        // Attach action bar to the activity
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
     }
@@ -40,11 +35,11 @@ public class WorkRequestSelf extends AppCompatActivity {
      * Assign all listener to different views of the activity
      */
     private void assignListenerToViews() {
-        Button laborerReg = (Button) findViewById(R.id.register);
-        laborerReg.setOnClickListener(new View.OnClickListener() {
+        SearchView laborerSearch = (SearchView) findViewById(R.id.search);
+        laborerSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(WorkRequestSelf.this, LaborerStatusPage.class));
+                startActivity(new Intent(ContractorPostLogin.this, ContractorPostLoginSearch.class));
             }
         });
     }
@@ -60,6 +55,8 @@ public class WorkRequestSelf extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu, menu);
+        menu.removeItem(R.id.user_settings);
+        menu.removeItem(R.id.check_status);
         return true;
     }
 
@@ -74,17 +71,19 @@ public class WorkRequestSelf extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case (R.id.logout):
-                startActivity(new Intent(WorkRequestSelf.this, LoginPage.class));
-                break;
-            case (R.id.user_settings):
-                Toast.makeText(WorkRequestSelf.this, "Support not added", Toast.LENGTH_SHORT).show();
-                break;
-            case (R.id.check_status):
-                startActivity(new Intent(WorkRequestSelf.this, LaborerStatusPage.class));
-                break;
+                startActivity(new Intent(ContractorPostLogin.this, LoginPage.class));
+                return true;
             default:
-                Toast.makeText(WorkRequestSelf.this, "Oops! Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Oops! Error. You shouldn't be seeing this message",
+                        Toast.LENGTH_SHORT).show();
+                // Add code to report bug
+                return false;
         }
-        return true;
+    }
+
+    // TODO: The back button does not work for this page. Fix the issue.
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(), "back pressed", Toast.LENGTH_SHORT).show();
     }
 }

@@ -1,20 +1,20 @@
-package com.example.karam;
+package com.karam.view;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.SearchView;
+import android.widget.Button;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 /**
- *  Contractor's landing page once they login
- *  The contractor can search for laborers from this page
+ * Main page for a user to register for a job request
  */
-public class ContractorPostLogin extends AppCompatActivity {
+public class WorkRequestPage extends AppCompatActivity {
 
     /**
      * Handle what happens when the activity is created
@@ -23,10 +23,8 @@ public class ContractorPostLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.contractor_post_login);
+        setContentView(R.layout.work_request_page);
         assignListenerToViews();
-
-        // Attach action bar to the activity
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
     }
@@ -35,11 +33,18 @@ public class ContractorPostLogin extends AppCompatActivity {
      * Assign all listener to different views of the activity
      */
     private void assignListenerToViews() {
-        SearchView laborerSearch = (SearchView) findViewById(R.id.search);
-        laborerSearch.setOnClickListener(new View.OnClickListener() {
+        Button selfReg = (Button) findViewById(R.id.RegisterForSelf);
+        selfReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ContractorPostLogin.this, ContractorPostLoginSearch.class));
+                startActivity(new Intent(WorkRequestPage.this, WorkRequestSelf.class));
+            }
+        });
+        Button friendReg = (Button) findViewById(R.id.RegisterForFriend);
+        friendReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(WorkRequestPage.this, WorkRequestFriend.class));
             }
         });
     }
@@ -55,8 +60,6 @@ public class ContractorPostLogin extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu, menu);
-        menu.removeItem(R.id.user_settings);
-        menu.removeItem(R.id.check_status);
         return true;
     }
 
@@ -71,19 +74,17 @@ public class ContractorPostLogin extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case (R.id.logout):
-                startActivity(new Intent(ContractorPostLogin.this, LoginPage.class));
-                return true;
+                startActivity(new Intent(WorkRequestPage.this, LoginPage.class));
+                break;
+            case (R.id.user_settings):
+                Toast.makeText(WorkRequestPage.this, "Support not added", Toast.LENGTH_SHORT).show();
+                break;
+            case (R.id.check_status):
+                startActivity(new Intent(WorkRequestPage.this, LaborerStatusPage.class));
+                break;
             default:
-                Toast.makeText(getApplicationContext(), "Oops! Error. You shouldn't be seeing this message",
-                        Toast.LENGTH_SHORT).show();
-                // Add code to report bug
-                return false;
+                Toast.makeText(WorkRequestPage.this, "Oops! Error", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    // TODO: The back button does not work for this page. Fix the issue.
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(getApplicationContext(), "back pressed", Toast.LENGTH_SHORT).show();
+        return true;
     }
 }

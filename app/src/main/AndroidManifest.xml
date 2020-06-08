@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    package="com.example.karam">
+    package="com.karam.view">
 
     <application
         android:allowBackup="true"
@@ -12,26 +12,26 @@
         android:configChanges="locale"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".WorkRequestFriend" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity android:name=".WorkRequestSelf" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name="com.karam.view.WorkRequestFriend" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name="com.karam.view.WorkRequestSelf" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
-        <activity android:name=".WorkRequestPage" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <activity android:name=".LaborerStatusPage" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name="com.karam.view.WorkRequestPage" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name="com.karam.view.LaborerStatusPage" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
-        <activity android:name=".LoginPage" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name="com.karam.view.LoginPage" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
-        <activity android:name=".ContractorPostLoginSearch" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name="com.karam.view.ContractorPostLoginSearch" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
-        <activity android:name=".ContractorPostLogin" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name="com.karam.view.ContractorPostLogin" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
-        <activity android:name=".ContractorRegistration" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <activity android:name=".LaborerRegistration" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name="com.karam.view.ContractorRegistration" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name="com.karam.view.LaborerRegistration" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
-        <activity android:name=".LandingPage" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name="com.karam.view.LandingPage" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

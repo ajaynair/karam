@@ -1,4 +1,4 @@
-package com.example.karam;
+package com.karam.view;
 
 import android.os.Bundle;
 import android.view.Menu;

@@ -1,4 +1,4 @@
-package com.example.karam;
+package com.karam.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,9 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 /**
- * Main page for a user to register for a job request
+ * Page for a user to register their friend as a laborer for a job request
  */
-public class WorkRequestPage extends AppCompatActivity {
+public class WorkRequestFriend extends AppCompatActivity {
 
     /**
      * Handle what happens when the activity is created
@@ -23,7 +23,7 @@ public class WorkRequestPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.work_request_page);
+        setContentView(R.layout.work_request_friend);
         assignListenerToViews();
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -33,18 +33,11 @@ public class WorkRequestPage extends AppCompatActivity {
      * Assign all listener to different views of the activity
      */
     private void assignListenerToViews() {
-        Button selfReg = (Button) findViewById(R.id.RegisterForSelf);
-        selfReg.setOnClickListener(new View.OnClickListener() {
+        Button laborerReg = (Button) findViewById(R.id.register);
+        laborerReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(WorkRequestPage.this, WorkRequestSelf.class));
-            }
-        });
-        Button friendReg = (Button) findViewById(R.id.RegisterForFriend);
-        friendReg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(WorkRequestPage.this, WorkRequestFriend.class));
+                startActivity(new Intent(WorkRequestFriend.this, LaborerStatusPage.class));
             }
         });
     }
@@ -74,16 +67,16 @@ public class WorkRequestPage extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case (R.id.logout):
-                startActivity(new Intent(WorkRequestPage.this, LoginPage.class));
+                startActivity(new Intent(WorkRequestFriend.this, LoginPage.class));
                 break;
             case (R.id.user_settings):
-                Toast.makeText(WorkRequestPage.this, "Support not added", Toast.LENGTH_SHORT).show();
+                Toast.makeText(WorkRequestFriend.this, "Support not added", Toast.LENGTH_SHORT).show();
                 break;
             case (R.id.check_status):
-                startActivity(new Intent(WorkRequestPage.this, LaborerStatusPage.class));
+                startActivity(new Intent(WorkRequestFriend.this, LaborerStatusPage.class));
                 break;
             default:
-                Toast.makeText(WorkRequestPage.this, "Oops! Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(WorkRequestFriend.this, "Oops! Error", Toast.LENGTH_SHORT).show();
         }
         return true;
     }

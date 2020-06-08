@@ -1,20 +1,22 @@
-package com.example.karam;
+package com.karam.view;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 /**
- * Page for a user to register their friend as a laborer for a job request
+ * Page for a user to register themselves as a laborer for a job request
  */
-public class WorkRequestFriend extends AppCompatActivity {
+public class WorkRequestSelf extends AppCompatActivity {
 
     /**
      * Handle what happens when the activity is created
@@ -23,7 +25,12 @@ public class WorkRequestFriend extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.work_request_friend);
+        setContentView(R.layout.work_request_self);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.locations, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
         assignListenerToViews();
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -37,7 +44,7 @@ public class WorkRequestFriend extends AppCompatActivity {
         laborerReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(WorkRequestFriend.this, LaborerStatusPage.class));
+                startActivity(new Intent(WorkRequestSelf.this, LaborerStatusPage.class));
             }
         });
     }
@@ -67,16 +74,16 @@ public class WorkRequestFriend extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case (R.id.logout):
-                startActivity(new Intent(WorkRequestFriend.this, LoginPage.class));
+                startActivity(new Intent(WorkRequestSelf.this, LoginPage.class));
                 break;
             case (R.id.user_settings):
-                Toast.makeText(WorkRequestFriend.this, "Support not added", Toast.LENGTH_SHORT).show();
+                Toast.makeText(WorkRequestSelf.this, "Support not added", Toast.LENGTH_SHORT).show();
                 break;
             case (R.id.check_status):
-                startActivity(new Intent(WorkRequestFriend.this, LaborerStatusPage.class));
+                startActivity(new Intent(WorkRequestSelf.this, LaborerStatusPage.class));
                 break;
             default:
-                Toast.makeText(WorkRequestFriend.this, "Oops! Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(WorkRequestSelf.this, "Oops! Error", Toast.LENGTH_SHORT).show();
         }
         return true;
     }
