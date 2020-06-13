@@ -1,4 +1,4 @@
-package com.karam.view;
+package com.karam.view.activity;
 
 import android.content.Context;
 
