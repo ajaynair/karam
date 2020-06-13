@@ -8,7 +8,10 @@ The contractors contact laborers who they already know/have already worked with
 Laborers stand near railways and other known locations so that contractors can go there and get access to them
 
 # **Idea**
-A web platform where contractors can find laborers easily using a mobile applicatio .
+A web platform where contractors can find laborers easily using a mobile application.
+
+# **Mockup**
+https://docs.google.com/presentation/d/1oI2-cqtVGvDCyyQhp7ustE7U4FWTkWYEDvSsy-Ri0ag/edit?usp=sharing
 
 # **Required attributes**
 * Cheap
