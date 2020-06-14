@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">करम</string>
+
+    <!-- Landing Page -->
+    <string name="login">लोजीन</string>
+    <string name="register_contractor">कंत्राटदार म्हणून नोंदणी करा</string>
+    <string name="register_laborer">मजूर म्हणून नोंदणी करा</string>
+    <string name="if_acc_exist_text">
+आपल्याकडे आधीपासूनच खाते असल्यास लॉग इन करा</string>
+
+    <!-- Contractor Registration Page -->
+<string name="name">नाव</string>
+</resources>

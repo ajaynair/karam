@@ -7,21 +7,39 @@
     android:layout_height="match_parent"
     tools:context=".LandingPage">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        app:title="@string/app_name"
+        android:background="@drawable/gradient_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
     <ListView
         android:id="@+id/languageList"
         android:layout_width="113dp"
         android:layout_height="0dp"
-        android:background="@android:drawable/editbox_background"
+        android:layout_marginEnd="20dp"
+        android:choiceMode="singleChoice"
+        android:clickable="true"
+        android:listSelector="@drawable/list_selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_toolbar"></ListView>
+        app:layout_constraintTop_toBottomOf="@id/my_toolbar"/>
 
     <Button
         android:id="@+id/RegisterForFriend"
         android:layout_width="0dp"
         android:layout_height="80dp"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:text="Register as a Contractor"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/button_selector"
+        android:text="@string/register_contractor"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/languageList"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RegisterForSelf" />
@@ -30,9 +48,13 @@
         android:id="@+id/RegisterForSelf"
         android:layout_width="0dp"
         android:layout_height="80dp"
-        android:background="@android:drawable/dialog_holo_light_frame"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/button_selector"
         android:clickable="true"
-        android:text="Register as a Laborer"
+        android:text="@string/register_laborer"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/RegisterForFriend"
         app:layout_constraintEnd_toStartOf="@+id/languageList"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,33 +64,28 @@
         android:id="@+id/alreadyHaveAccountText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:gravity="center"
-        android:text="Login if you already have an account"
+        android:text="@string/if_acc_exist_text"
+        android:textColor="#FB785B"
         app:layout_constraintEnd_toStartOf="@+id/languageList"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegisterForFriend" />
+        app:layout_constraintTop_toBottomOf="@id/RegisterForFriend" />
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@android:drawable/dialog_holo_light_frame"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/button_selector"
         android:clickable="true"
-        android:text="Login"
+        android:text="@string/login"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toStartOf="@+id/languageList"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/alreadyHaveAccountText" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/my_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 </androidx.constraintlayout.widget.ConstraintLayout>
