@@ -1,4 +1,4 @@
-package com.karam.view;
+package com.karam.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +17,8 @@ import androidx.appcompat.widget.Toolbar;
 public class WorkRequestPage extends AppCompatActivity {
 
     /**
-     * Handle what happens when the activity is created
+     * Handle what happens when the view.activity is created
+     *
      * @param savedInstanceState: null for now
      */
     @Override
@@ -30,7 +31,7 @@ public class WorkRequestPage extends AppCompatActivity {
     }
 
     /**
-     * Assign all listener to different views of the activity
+     * Assign all listener to different views of the view.activity
      */
     private void assignListenerToViews() {
         Button selfReg = (Button) findViewById(R.id.RegisterForSelf);
@@ -50,10 +51,12 @@ public class WorkRequestPage extends AppCompatActivity {
     }
 
     // TODO: This function can be moved to a separate menu class as its
-    // used by all activity class
+    // used by all view.activity class
+
     /**
      * Set up menu options
-     * @param menu: Menu options (https://pasteboard.co/Jc4U58s.png) to be shown in the activity
+     *
+     * @param menu: Menu options (https://pasteboard.co/Jc4U58s.png) to be shown in the view.activity
      * @return: true on no error
      */
     @Override
@@ -64,9 +67,11 @@ public class WorkRequestPage extends AppCompatActivity {
     }
 
     // TODO: This function can be moved to a separate menu class as its
-    // used by all activity class
+    // used by all view.activity class
+
     /**
-     *  Responds to menu option (https://pasteboard.co/Jc4U58s.png) of this activity
+     * Responds to menu option (https://pasteboard.co/Jc4U58s.png) of this view.activity
+     *
      * @param item: The item in the menu that is selected
      * @return: return false in case of error, true otherwise
      */

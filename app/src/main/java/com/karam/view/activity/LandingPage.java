@@ -1,4 +1,4 @@
-package com.karam.view;
+package com.karam.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +22,8 @@ public class LandingPage extends AppCompatActivity {
             "Marathi"};
 
     /**
-     * Handle what happens when the activity is created
+     * Handle what happens when the view.activity is created
+     *
      * @param savedInstanceState: null for now
      */
     @Override
@@ -30,26 +31,28 @@ public class LandingPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landing_page);
         ArrayAdapter<String> adapter = getAdapterWithLanguages();
-        ListView languageList = (ListView) findViewById(R.id.languageList);
+        ListView languageList = findViewById(R.id.languageList);
         languageList.setAdapter(adapter);
         languageList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(), (String) adapterView.getItemAtPosition(i) + " not available",
+                Toast.makeText(getApplicationContext(), adapterView.getItemAtPosition(i) + " not available",
                         Toast.LENGTH_SHORT).show();
             }
         });
 
         assignListenerToViews();
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
     }
 
     // TODO: This function can be moved to a separate menu class as its
-    // used by all activity class
+    // used by all view.activity class
+
     /**
      * Set up menu options
-     * @param menu: Menu options (https://pasteboard.co/Jc4U58s.png) to be shown in the activity
+     *
+     * @param menu: Menu options (https://pasteboard.co/Jc4U58s.png) to be shown in the view.activity
      * @return: false so that menu option (3 dots) is not shown
      */
     @Override
@@ -58,7 +61,7 @@ public class LandingPage extends AppCompatActivity {
     }
 
     /**
-     * Assign all listener to different views of the activity
+     * Assign all listener to different views of the view.activity
      */
     private void assignListenerToViews() {
         Button laborerReg = (Button) findViewById(R.id.RegisterForSelf);
@@ -88,6 +91,7 @@ public class LandingPage extends AppCompatActivity {
 
     /**
      * Create an adapter for language option for the user
+     *
      * @return: adapter that contains all the languages
      */
     private ArrayAdapter<String> getAdapterWithLanguages() {
