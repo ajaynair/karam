@@ -1,5 +1,20 @@
 <resources>
     <string name="app_name">Karam</string>
+
+    <!-- Common -->
+    <string name="english" translatable="false">English</string>
+    <string name="hindi" translatable="false">हिन्दी</string>
+    <string name="marathi" translatable="false">मराठी</string>
+
+    <!-- Landing Page -->
+    <string name="login">Login</string>
+    <string name="register_contractor">Register as a contractor</string>
+    <string name="register_laborer">Register as a laborer</string>
+    <string name="if_acc_exist_text">Login if you already have an account</string>
+    <string name="name" />
+
+    <!-- Contractor Registration Page -->
+
     <string-array name="locations">
         <item>Pune</item>
         <item>Mumbai</item>
@@ -10,4 +25,5 @@
         <item>Uranus</item>
         <item>Neptune</item>
     </string-array>
+
 </resources>

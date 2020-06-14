@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:configChanges="locale"
-        android:theme="@style/AppTheme">
+        android:theme="@style/KaramTheme">
 
         <activity android:name="com.karam.view.WorkRequestFriend" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity android:name="com.karam.view.WorkRequestSelf" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -28,10 +28,10 @@
         <activity android:name="com.karam.view.ContractorPostLogin" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
-        <activity android:name="com.karam.view.ContractorRegistration" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name="com.karam.view.ContractorRegistration"/>
         <activity android:name="com.karam.view.LaborerRegistration" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
-        <activity android:name="com.karam.view.LandingPage" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name="com.karam.view.LandingPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

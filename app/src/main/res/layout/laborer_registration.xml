@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:ems="10"
-                android:hint="Name"
+                android:hint="@string/name"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -128,6 +128,7 @@
             <Button
                 android:id="@+id/register"
                 android:layout_width="match_parent"
+                android:background="@drawable/button_selector"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:ems="10"
