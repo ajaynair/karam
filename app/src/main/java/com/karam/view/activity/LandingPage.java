@@ -49,6 +49,7 @@ public class LandingPage extends AppCompatActivity {
         languageList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
                 //Toast.makeText(getApplicationContext(), (String) adapterView.getItemAtPosition(i) + " not available",
                 //        Toast.LENGTH_SHORT).show();
                 ((LanguageArrayAdapter)adapter).setLocale(getApplicationContext(), i, LandingPage.this);
@@ -62,11 +63,11 @@ public class LandingPage extends AppCompatActivity {
     }
 
     // TODO: This function can be moved to a separate menu class as its
-    // used by all activity class
 
     /**
      * Set up menu options
-     * @param menu: Menu options (https://pasteboard.co/Jc4U58s.png) to be shown in the activity
+     *
+     * @param menu: Menu options (https://pasteboard.co/Jc4U58s.png) to be shown in the view.activity
      * @return: false so that menu option (3 dots) is not shown
      */
     @Override
