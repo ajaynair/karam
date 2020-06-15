@@ -6,16 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ContractorRegistration">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/my_toolbar"
-        android:layout_width="match_parent"
-        android:background="@drawable/gradient_toolbar"
-        android:layout_height="?attr/actionBarSize"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
+    <include layout="@layout/toolbar" />
     <ScrollView
         android:layout_width="404dp"
         android:layout_height="wrap_content"

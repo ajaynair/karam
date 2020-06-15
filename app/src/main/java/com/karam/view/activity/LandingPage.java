@@ -1,4 +1,4 @@
-package com.karam.view;
+package com.karam.view.activity;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -19,6 +19,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.karam.view.LanguageArrayAdapter;
+
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -32,7 +34,7 @@ public class LandingPage extends AppCompatActivity {
     ArrayAdapter<String> adapter;
 
     /**
-     * Handle what happens when the activity is created
+     * Handle what happens when the view.activity is created
      *
      * @param savedInstanceState: null for now
      */
@@ -41,6 +43,7 @@ public class LandingPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landing_page);
         getAdapterWithLanguages();
+
         ListView languageList = findViewById(R.id.languageList);
         languageList.setAdapter(adapter);
         languageList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -49,6 +52,7 @@ public class LandingPage extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(), (String) adapterView.getItemAtPosition(i) + " not available",
                 //        Toast.LENGTH_SHORT).show();
                 ((LanguageArrayAdapter)adapter).setLocale(getApplicationContext(), i, LandingPage.this);
+
             }
         });
 
@@ -62,7 +66,6 @@ public class LandingPage extends AppCompatActivity {
 
     /**
      * Set up menu options
-     *
      * @param menu: Menu options (https://pasteboard.co/Jc4U58s.png) to be shown in the activity
      * @return: false so that menu option (3 dots) is not shown
      */
@@ -72,7 +75,7 @@ public class LandingPage extends AppCompatActivity {
     }
 
     /**
-     * Assign all listener to different views of the activity
+     * Assign all listener to different views of the view.activity
      */
     private void assignListenerToViews() {
         Button laborerReg = (Button) findViewById(R.id.RegisterForSelf);
