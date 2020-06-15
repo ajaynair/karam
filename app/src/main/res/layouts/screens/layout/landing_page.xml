@@ -7,17 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".LandingPage">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/my_toolbar"
-        app:title="@string/app_name"
-        android:background="@drawable/gradient_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
+    <include layout="@layout/toolbar" />
     <ListView
         android:id="@+id/languageList"
         android:layout_width="113dp"

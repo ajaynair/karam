@@ -19,13 +19,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.karam.view.activity.R;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-class LanguageArrayAdapter<T> extends ArrayAdapter<String> {
+public class LanguageArrayAdapter<T> extends ArrayAdapter<String> {
     Context context;
 
     public LanguageArrayAdapter(Context context, int simple_list_item_1, String [] languages) {
