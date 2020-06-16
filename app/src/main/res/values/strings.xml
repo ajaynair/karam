@@ -15,6 +15,10 @@
 
     <!-- Contractor Registration Page -->
 
+    <!-- Add work request notification -->
+    <string name="create_job_req">Create a job request</string>
+    <string name="create_job_req_text">"Your status is set to closed! YOU may not be able to find a job."</string>
+
     <string-array name="locations">
         <item>Pune</item>
         <item>Mumbai</item>

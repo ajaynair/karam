@@ -9,5 +9,9 @@
 आपल्याकडे आधीपासूनच खाते असल्यास लॉग इन करा</string>
 
     <!-- Contractor Registration Page -->
-<string name="name">नाव</string>
+    <string name="name">नाव</string>
+
+    <!-- Add work request notification -->
+    <string name="create_job_req">नोकरीची विनंती तयार करा</string>
+    <string name="create_job_req_text">आपली स्थिती बंद वर सेट केली आहे! आपणास नोकरी मिळू शकणार नाही</string>
 </resources>

@@ -78,20 +78,6 @@ public class LanguageArrayAdapter<T> extends ArrayAdapter<String> {
                 t.setText(R.string.english);
                 break;
         }
-/*
-        if (position == 1 || position == 2) {
-            // Typeface face = Typeface.createFromAsset(context.getAssets(), "font/devnagri.ttf");
-            // ((TextView) view).setTypeface(face);
-            // Toast.makeText(context.getApplicationContext(), ((TextView) view).getText(),
-                    //Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Typeface face = Typeface.DEFAULT;
-            ((TextView) view).setTypeface(face);
-        }
-        Toast.makeText(context.getApplicationContext(), "Called",
-                Toast.LENGTH_SHORT).show();
-        */
         return view;
     }
 }

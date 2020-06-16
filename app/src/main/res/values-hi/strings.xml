@@ -9,4 +9,8 @@
 
     <!-- Contractor Registration Page -->
     <string name="name">नाम</string>
+
+    <!-- Add work request notification -->
+    <string name="create_job_req">एक नौकरी अनुरोध बनाएँ</string>
+    <string name="create_job_req_text">आपकी स्थिति बंद करने के लिए सेट है! आप नौकरी खोजने में सक्षम नहीं हो सकते हैं</string>
 </resources>

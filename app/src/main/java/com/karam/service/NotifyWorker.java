@@ -10,6 +10,9 @@ import androidx.work.WorkerParameters;
 
 import com.karam.view.notification.AddWorkRequestNotification;
 
+/**
+ * Uses notification view class to send notifications
+ */
 public class NotifyWorker extends Worker {
     AddWorkRequestNotification notification;
 
@@ -21,7 +24,6 @@ public class NotifyWorker extends Worker {
     @Override
     public Result doWork() {
         try {
-            // Method to trigger a notification
             notification.showPeriodNotification();
             return Result.success();
         } catch (final Exception e) {

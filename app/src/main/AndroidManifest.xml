@@ -11,38 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/KaramTheme">
 
-        <activity
-            android:name=".WorkRequestFriend"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity
-            android:name=".WorkRequestSelf"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity
-            android:name=".WorkRequestPage"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".LaborerStatusPage"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-        </activity>
-        <activity
-            android:name=".LoginPage"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-        </activity>
-        <activity
-            android:name=".ContractorPostLoginSearch"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-        </activity>
-        <activity
-            android:name=".ContractorPostLogin"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-        </activity>
-        <activity android:name="com.karam.view.activity.ContractorRegistration"/>
-        <activity android:name="com.karam.view.activity.LaborerRegistration" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-
         <activity android:name="com.karam.view.activity.LandingPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,6 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+        <activity android:name=".LaborerStatusPage"/>
+        <activity android:name=".LoginPage"/>
+        <activity android:name=".ContractorPostLoginSearch"/>
+        <activity android:name=".ContractorPostLogin"/>
+        <activity android:name=".ContractorRegistration"/>
+        <activity android:name=".LaborerRegistration"/>
+        <activity android:name=".WorkRequestPage"/>
+        <activity android:name=".WorkRequestSelf"/>
+        <activity android:name=".WorkRequestFriend"/>
+    </application>
 </manifest>
