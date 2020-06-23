@@ -15,14 +15,6 @@ import androidx.appcompat.widget.Toolbar;
  * Page for the laborer to check their and their friend's job request status
  */
 public class LaborerStatusPage extends AppCompatActivity {
-    private static String[] languages = {"English",
-            "Hindi",
-            "Marathi"};
-
-    private static String[] friends = {"Self",
-            "Mahesh",
-            "Suresh"};
-
     /**
      * Handle what happens when the view.activity is created
      *
@@ -63,7 +55,7 @@ public class LaborerStatusPage extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.menu_laborers, menu);
         return true;
     }
 
@@ -82,12 +74,15 @@ public class LaborerStatusPage extends AppCompatActivity {
             case (R.id.logout):
                 startActivity(new Intent(LaborerStatusPage.this, LoginPage.class));
                 break;
-            case (R.id.user_settings):
-                Toast.makeText(LaborerStatusPage.this, "Support not added", Toast.LENGTH_SHORT).show();
-                break;
             case (R.id.check_status):
                 startActivity(new Intent(LaborerStatusPage.this, LaborerStatusPage.class));
                 break;
+            case (R.id.about_us):
+                startActivity(new Intent(LaborerStatusPage.this, AboutUs.class));
+                break;
+            case (R.id.user_settings):
+                startActivity(new Intent(LaborerStatusPage.this, UserSettings.class));
+                return true;
             default:
                 Toast.makeText(getApplicationContext(), "Oops! Error. You shouldn't be seeing this message",
                         Toast.LENGTH_SHORT).show();

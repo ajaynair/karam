@@ -3,8 +3,10 @@ package com.karam.view.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -27,20 +29,6 @@ public class ContractorRegistration extends AppCompatActivity {
         assignListenerToViews();
     }
 
-    // TODO: This function can be moved to a separate menu class as its
-    // used by all view.activity class
-
-    /**
-     * Set up menu options
-     *
-     * @param menu: Menu options (https://pasteboard.co/Jc4U58s.png) to be shown in the view.activity
-     * @return: true on no error
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return false;
-    }
-
     /**
      * Assign all listener to different views of the view.activity
      */
@@ -52,5 +40,38 @@ public class ContractorRegistration extends AppCompatActivity {
                 startActivity(new Intent(ContractorRegistration.this, ContractorPostLogin.class));
             }
         });
+    }
+
+    /**
+     * Set up menu options
+     *
+     * @param menu: Menu options (https://pasteboard.co/Jc4U58s.png) to be shown in the view.activity
+     * @return: true on no error
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_logged_out, menu);
+        return true;
+    }
+
+    /**
+     * Responds to menu option (https://pasteboard.co/Jc4U58s.png) of this view.activity
+     *
+     * @param item: The item in the menu that is selected
+     * @return: return false in case of error, true otherwise
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case (R.id.about_us):
+                startActivity(new Intent(ContractorRegistration.this, AboutUs.class));
+                return true;
+            default:
+                Toast.makeText(getApplicationContext(), "Oops! Error. You shouldn't be seeing this message",
+                        Toast.LENGTH_SHORT).show();
+                // Add code to report bug
+                return false;
+        }
     }
 }
