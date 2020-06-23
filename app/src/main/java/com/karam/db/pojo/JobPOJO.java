@@ -3,16 +3,21 @@ package com.karam.db.pojo;
 /**
  * POJO class for storing job attributes. This class will be used while interacting with the database.
  * Fill in the licence information.
+ *
  * @author Rishabh Pandita
  */
 public class JobPOJO {
     private long jobId;
+
     private long labId;
+
     private long contractorId;
+
     private boolean activeInd;
-    
+
     /**
      * Returns jobId.
+     *
      * @return Gets the value of jobId and returns jobId
      */
     public long getJobId() {
@@ -28,6 +33,7 @@ public class JobPOJO {
 
     /**
      * Returns labId.
+     *
      * @return Gets the value of labId and returns labId
      */
     public long getLabId() {
@@ -43,6 +49,7 @@ public class JobPOJO {
 
     /**
      * Returns contractorId.
+     *
      * @return Gets the value of contractorId and returns contractorId
      */
     public long getContractorId() {
@@ -58,6 +65,7 @@ public class JobPOJO {
 
     /**
      * Returns activeInd.
+     *
      * @return Gets the value of activeInd and returns activeInd
      */
     public boolean isActiveInd() {
