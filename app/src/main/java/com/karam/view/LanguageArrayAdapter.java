@@ -5,49 +5,65 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.HorizontalScrollView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.karam.view.activity.R;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
+/**
+ * Adapter for languages that users can select for the app
+ *
+ * @param <T>: String which represents the languages
+ */
 public class LanguageArrayAdapter<T> extends ArrayAdapter<String> {
+    /**
+     * TODO: Find a better data structure for languages
+     */
+    private static String[] languages = {"English",
+            "Hindi",
+            "Marathi"};
     Context context;
 
-    public LanguageArrayAdapter(Context context, int simple_list_item_1, String [] languages) {
+    public LanguageArrayAdapter(Context context, int simple_list_item_1) {
         super(context, simple_list_item_1, languages);
         this.context = context;
     }
 
+    /**
+     * Get the language abbrevation as required by android based on the listview element selected by the user
+     *
+     * @param i: id of the element in the listview that is selected by the user click
+     * @return abbrevation of the language as required by android library to set the default language
+     */
+    public String getLanguageAbbr(int i) {
+        switch (languages[i]) {
+            case "English":
+                return "en";
+            case "Hindi":
+                return "hi";
+            case "Marathi":
+                return "mr";
+            default:
+                return "en";
+        }
+    }
+
+    /**
+     * Sets the language configuration of the application
+     *
+     * @param c: context of the current activity
+     * @param i: index of the listview element that is selected
+     * @param a: activity to open after refresh
+     */
     public void setLocale(Context c, int i, Activity a) {
         Locale myLocale;
-        switch (i) {
-            case 1:
-                myLocale = new Locale("mr");
-                break;
-            case 2:
-                myLocale = new Locale("hi");
-                break;
-            default:
-                myLocale = new Locale("en");
-                break;
-        }
+
+        myLocale = new Locale(getLanguageAbbr(i));
 
         Resources res = a.getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
@@ -59,6 +75,9 @@ public class LanguageArrayAdapter<T> extends ArrayAdapter<String> {
         a.startActivity(refresh);
     }
 
+    /**
+     * Returns the view for the language listview
+     */
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         view = super.getView(position, view, parent);
@@ -66,16 +85,15 @@ public class LanguageArrayAdapter<T> extends ArrayAdapter<String> {
         switch (position) {
             case 1:
                 t = (TextView) view;
-                t.setText(R.string.marathi);
-
+                t.setText(R.string.common_hindi);
                 break;
             case 2:
                 t = (TextView) view;
-                t.setText(R.string.hindi);
+                t.setText(R.string.common_marathi);
                 break;
             default:
                 t = (TextView) view;
-                t.setText(R.string.english);
+                t.setText(R.string.common_english);
                 break;
         }
         return view;
