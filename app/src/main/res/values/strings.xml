@@ -2,22 +2,39 @@
     <string name="app_name">Karam</string>
 
     <!-- Common -->
-    <string name="english" translatable="false">English</string>
-    <string name="hindi" translatable="false">हिन्दी</string>
-    <string name="marathi" translatable="false">मराठी</string>
+    <string name="common_english" translatable="false">English</string>
+    <string name="common_hindi" translatable="false">हिन्दी</string>
+    <string name="common_marathi" translatable="false">मराठी</string>
 
     <!-- Landing Page -->
-    <string name="login">Login</string>
-    <string name="register_contractor">Register as a contractor</string>
-    <string name="register_laborer">Register as a laborer</string>
-    <string name="if_acc_exist_text">Login if you already have an account</string>
-    <string name="name" />
+    <string name="landing_login">Login</string>
+    <string name="landing_register_contractor">Register as a contractor</string>
+    <string name="landing_register_laborer">Register as a laborer</string>
+    <string name="landing_if_acc_exist_text">Login if you already have an account</string>
 
     <!-- Contractor Registration Page -->
+    <string name="contract_reg_name">Name</string>
+
+    <!-- About us page -->
+    <string name="about_us_about_us"><b>About Us</b></string>
+    <string name="about_us_about_us_detail">
+        We are a small group of 3 software engineers developing this app to do our part for our society.\n
+        We would love more people to join us!\n
+        We need:\n
+        <ul>
+        <li><b>Software Engineers:</b> To develop the code\n</li>
+        <li><b>Designers:</b> To design the user interface and define the user experience\n</li>
+        <li><b>Privacy experts:</b> To know what kind of data can we collect to better understand user behavour\n</li>
+        <li><b>Marketers:</b> To market this app\n</li>
+        <li><b>Managers:</b> To manage the team\n</li>
+        <li><b>Users:</b> To use and test this app\n</li>
+        </ul>
+        <b>In short, no matter what you are good at, we need your help!</b>\n
+    </string>
 
     <!-- Add work request notification -->
-    <string name="create_job_req">Create a job request</string>
-    <string name="create_job_req_text">"Your status is set to closed! YOU may not be able to find a job."</string>
+    <string name="notif_work_req_create_job_req">Create a job request</string>
+    <string name="notif_work_req_create_job_req_text">"Your status is set to closed! YOU may not be able to find a job."</string>
 
     <string-array name="locations">
         <item>Pune</item>

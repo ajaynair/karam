@@ -1,23 +1,17 @@
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="buttonStyle">@style/BlueButton</item>
-    </style>
-
-    <style name="BlueButton" parent="Widget.AppCompat.Button">
-        <item name="android:background">@drawable/button_selector</item>
-    </style>
-    <style name="EditTextUnderscore" parent="Widget.AppCompat.EditText">
-        <item name="android:background">@drawable/edit_text_selector</item>
-    </style>
+    <!-- Main app theme -->
     <style name="KaramTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/background_green</item>
         <item name="android:fontFamily">sans-serif-condensed-light</item>
     </style>
 
+    <!-- Style for all the buttons -->
+    <style name="BlueButton" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_selector</item>
+    </style>
+
+    <!-- Style for all the underscores -->
+    <style name="EditTextUnderscore" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/edit_text_selector</item>
+    </style>
 </resources>

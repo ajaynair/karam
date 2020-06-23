@@ -2,16 +2,33 @@
     <string name="app_name">करम</string>
 
     <!-- Landing Page -->
-    <string name="login">लोजीन</string>
-    <string name="register_contractor">कंत्राटदार म्हणून नोंदणी करा</string>
-    <string name="register_laborer">मजूर म्हणून नोंदणी करा</string>
-    <string name="if_acc_exist_text">
+    <string name="landing_login">लोजीन</string>
+    <string name="landing_register_contractor">कंत्राटदार म्हणून नोंदणी करा</string>
+    <string name="landing_register_laborer">मजूर म्हणून नोंदणी करा</string>
+    <string name="landing_if_acc_exist_text">
 आपल्याकडे आधीपासूनच खाते असल्यास लॉग इन करा</string>
 
     <!-- Contractor Registration Page -->
-    <string name="name">नाव</string>
+    <string name="contract_reg_name">नाव</string>
 
     <!-- Add work request notification -->
-    <string name="create_job_req">नोकरीची विनंती तयार करा</string>
-    <string name="create_job_req_text">आपली स्थिती बंद वर सेट केली आहे! आपणास नोकरी मिळू शकणार नाही</string>
+    <string name="notif_work_req_create_job_req">नोकरीची विनंती तयार करा</string>
+    <string name="notif_work_req_create_job_req_text">आपली स्थिती बंद वर सेट केली आहे! आपणास नोकरी मिळू शकणार नाही</string>
+
+    <!-- About Us page -->
+    <string name="about_us_about_us"><b>आमच्याबद्दल</b></string>
+    <string name="about_us_about_us_detail">
+        आम्ही आमच्या सॉफ्टवेअरसाठी आमचे कार्य करण्यासाठी हे अॅप विकसित करणार्‍या 3 सॉफ्टवेअर अभियंत्यांचा एक छोटा गट आहोत.. N
+        आम्हाला सामील होण्यासाठी आम्हाला अधिक लोक आवडतील!\n
+        आम्हाला गरज आहे:\n
+        <ul>
+        <li><b>सॉफ्टवेअर अभियंता:</b> कोड विकसित करण्यासाठी</li>
+        <li><b>डिझाइनर:</b> वापरकर्ता इंटरफेस डिझाइन करण्यासाठी आणि वापरकर्त्याचा अनुभव परिभाषित करण्यासाठी</li>
+        <li><b>गोपनीयता तज्ञ:</b> वापरकर्ता वर्तन अधिक चांगल्या प्रकारे समजून घेण्यासाठी आम्ही कोणत्या प्रकारचा डेटा संकलित करू शकतो हे जाणून घेण्यासाठी</li>
+        <li><b>विपणक:</b> हे अ‍ॅप बाजारात आणण्यासाठी</li>
+        <li><b>व्यवस्थापक:</b> कार्यसंघ व्यवस्थापित करण्यासाठी</li>
+            <li><b>वापरकर्ते:</b> हा अ‍ॅप वापरण्यासाठी आणि चाचणी घेण्यासाठी</li>
+        </ul>
+        <b>थोडक्यात, आपण कशासाठी चांगले आहात याची पर्वा नाही, आम्हाला आपल्या मदतीची आवश्यकता आहे!</b>
+    </string>
 </resources>
