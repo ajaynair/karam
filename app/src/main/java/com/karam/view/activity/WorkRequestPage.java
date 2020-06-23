@@ -62,7 +62,7 @@ public class WorkRequestPage extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.menu_laborers, menu);
         return true;
     }
 
@@ -82,10 +82,13 @@ public class WorkRequestPage extends AppCompatActivity {
                 startActivity(new Intent(WorkRequestPage.this, LoginPage.class));
                 break;
             case (R.id.user_settings):
-                Toast.makeText(WorkRequestPage.this, "Support not added", Toast.LENGTH_SHORT).show();
-                break;
+                startActivity(new Intent(WorkRequestPage.this, UserSettings.class));
+                return true;
             case (R.id.check_status):
                 startActivity(new Intent(WorkRequestPage.this, LaborerStatusPage.class));
+                break;
+            case (R.id.about_us):
+                startActivity(new Intent(WorkRequestPage.this, AboutUs.class));
                 break;
             default:
                 Toast.makeText(WorkRequestPage.this, "Oops! Error", Toast.LENGTH_SHORT).show();
