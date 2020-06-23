@@ -1,7 +1,6 @@
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
-        <shape
-            android:shape="rectangle">
+        <shape android:shape="rectangle">
             <!-- Set the border color of your layout here -->
             <solid android:color="#FB785B" />
 
@@ -10,9 +9,8 @@
 
     <!-- This is for border bottom but
     you can change this according to your need -->
-    <item android:left="4dp" >
-        <shape
-            android:shape="rectangle">
+    <item android:left="4dp">
+        <shape android:shape="rectangle">
             <!-- Set the background color of your layout here -->
             <solid android:color="#FFFFFF" />
         </shape>
