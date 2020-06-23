@@ -6,15 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ContractorPostLogin">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/my_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    <include layout="@layout/toolbar" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -22,7 +14,7 @@
         android:layout_marginStart="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/my_toolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -64,12 +56,6 @@
                         android:orientation="horizontal"
                         android:padding="10dp"
                         android:weightSum="2">
-
-                        <ImageView
-                            android:id="@+id/imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/ic_launcher_background" />
 
                         <LinearLayout
                             android:id="@+id/cardviewLayout3"
@@ -119,12 +105,6 @@
                         android:padding="10dp"
                         android:weightSum="2">
 
-                        <ImageView
-                            android:id="@+id/imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/ic_launcher_background" />
-
                         <LinearLayout
                             android:id="@+id/cardviewLayout3"
                             android:layout_width="match_parent"
@@ -173,12 +153,6 @@
                         android:padding="10dp"
                         android:weightSum="2">
 
-                        <ImageView
-                            android:id="@+id/imageView7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/ic_launcher_background" />
-
                         <LinearLayout
                             android:id="@+id/cardviewLayout8"
                             android:layout_width="match_parent"
@@ -226,12 +200,6 @@
                         android:orientation="horizontal"
                         android:padding="10dp"
                         android:weightSum="2">
-
-                        <ImageView
-                            android:id="@+id/imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/ic_launcher_background" />
 
                         <LinearLayout
                             android:id="@+id/cardviewLayout6"

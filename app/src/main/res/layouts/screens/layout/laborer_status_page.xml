@@ -13,7 +13,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:drawable/editbox_background"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/my_toolbar"></ListView>
 
@@ -22,10 +21,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/newWorkRequest">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout2"
@@ -55,12 +54,6 @@
                         android:padding="10dp"
                         android:weightSum="2">
 
-                        <ImageView
-                            android:id="@+id/imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="TODO"
-                            app:srcCompat="@drawable/ic_launcher_background" />
 
                         <LinearLayout
                             android:id="@+id/cardviewLayout3"
@@ -110,11 +103,6 @@
                         android:padding="10dp"
                         android:weightSum="2">
 
-                        <ImageView
-                            android:id="@+id/imageView12"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/ic_launcher_background" />
 
                         <LinearLayout
                             android:id="@+id/cardviewLayout33"
@@ -164,11 +152,6 @@
                         android:padding="10dp"
                         android:weightSum="2">
 
-                        <ImageView
-                            android:id="@+id/imageView7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/ic_launcher_background" />
 
                         <LinearLayout
                             android:id="@+id/cardviewLayout8"
@@ -218,11 +201,6 @@
                         android:padding="10dp"
                         android:weightSum="2">
 
-                        <ImageView
-                            android:id="@+id/imageView21"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/ic_launcher_background" />
 
                         <LinearLayout
                             android:id="@+id/cardviewLayout6"
@@ -272,6 +250,7 @@
         android:id="@+id/newWorkRequest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_selector"
         android:text="Create new work request"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"

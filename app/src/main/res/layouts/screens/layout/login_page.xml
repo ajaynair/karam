@@ -21,6 +21,7 @@
             android:id="@+id/loginUserNameText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FB785B"
             android:hint="Name"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +31,9 @@
             android:id="@+id/loginPasswordText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FB785B"
             android:hint="Password"
+
             android:inputType="textPassword"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:background="@android:drawable/dialog_holo_light_frame"
+            android:background="@drawable/button_selector"
             android:text="Login"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loginPasswordText" />

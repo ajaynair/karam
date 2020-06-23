@@ -4,26 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WorkRequestFriend">
+    tools:context=".LaborerRegistration">
 
     <include layout="@layout/toolbar" />
 
-    <TextView
-        android:id="@+id/registrationHeading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register work for friend"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/my_toolbar" />
-
     <ScrollView
         android:layout_width="404dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registrationHeading">
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout2"
@@ -35,6 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:backgroundTint="#FB785B"
                 android:ems="10"
                 android:hint="Name"
                 android:inputType="textPersonName"
@@ -70,7 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Does your friend have a aadhar card?"
+                android:text="Do you have a aadhar card?"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/inputAddress" />
 
@@ -105,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Select your friend's preferred location"
+                android:text="Select your preferred location"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/radio_group" />
 
@@ -136,9 +128,22 @@
                 android:layout_marginStart="20dp"
                 android:background="@drawable/button_selector"
                 android:ems="10"
-                android:text="Register friend for Work"
+                android:text="Register for Work"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/phone" />
+
+            <TextView
+                android:id="@+id/nowork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:autoLink="none"
+                android:gravity="end"
+                android:text="Do not create work for now"
+                app:layout_constraintEnd_toEndOf="@+id/register"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/register" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
