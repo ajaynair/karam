@@ -31,8 +31,8 @@ public class AddWorkRequestNotification {
     public void showPeriodNotification() {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), channelID)
                 .setSmallIcon(R.drawable.ic_launcher_background)
-                .setContentTitle(context.getResources().getString(R.string.create_job_req))
-                .setContentText(context.getResources().getString(R.string.create_job_req_text))
+                .setContentTitle(context.getResources().getString(R.string.notif_work_req_create_job_req))
+                .setContentText(context.getResources().getString(R.string.notif_work_req_create_job_req_text))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getContext());
