@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.karam.view.activity">
+
+    <!--Internet Permission-->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="com.karam.controller.KaramApplication"
         android:allowBackup="true"
@@ -10,23 +14,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/KaramTheme">
-
-        <activity android:name="com.karam.view.activity.LandingPage">
+        <activity android:name=".UserSettings"></activity>
+        <activity android:name=".AboutUs" />
+        <activity android:name=".LandingPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".LaborerStatusPage"/>
-        <activity android:name=".LoginPage"/>
-        <activity android:name=".ContractorPostLoginSearch"/>
-        <activity android:name=".ContractorPostLogin"/>
-        <activity android:name=".ContractorRegistration"/>
-        <activity android:name=".LaborerRegistration"/>
-        <activity android:name=".WorkRequestPage"/>
-        <activity android:name=".WorkRequestSelf"/>
-        <activity android:name=".WorkRequestFriend"/>
+        <activity android:name=".LaborerStatusPage" />
+        <activity android:name=".LoginPage" />
+        <activity android:name=".ContractorPostLogin" />
+        <activity android:name=".ContractorRegistration" />
+        <activity android:name=".LaborerRegistration" />
+        <activity android:name=".WorkRequestPage" />
+        <activity android:name=".WorkRequestSelf" />
+        <activity android:name=".WorkRequestFriend" />
     </application>
+
 </manifest>
