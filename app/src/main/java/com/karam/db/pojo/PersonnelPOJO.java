@@ -4,6 +4,7 @@ package com.karam.db.pojo;
 /**
  * POJO class for storing personnel attributes.
  * Fill in the licence information.
+ *
  * @author Rishabh Pandita
  */
 public class PersonnelPOJO {
@@ -16,6 +17,7 @@ public class PersonnelPOJO {
 
     /**
      * Returns prsnlId.
+     *
      * @return Gets the value of prsnlId and returns prsnlId
      */
     public long getPrsnlId() {
@@ -31,6 +33,7 @@ public class PersonnelPOJO {
 
     /**
      * Returns personId.
+     *
      * @return Gets the value of personId and returns personId
      */
     public long getPersonId() {
@@ -46,6 +49,7 @@ public class PersonnelPOJO {
 
     /**
      * Returns roleType.
+     *
      * @return Gets the value of roleType and returns roleType
      */
     public String getRoleType() {
@@ -61,6 +65,7 @@ public class PersonnelPOJO {
 
     /**
      * Returns skillDescription.
+     *
      * @return Gets the value of skillDescription and returns skillDescription
      */
     public String getSkillDescription() {
@@ -76,6 +81,7 @@ public class PersonnelPOJO {
 
     /**
      * Returns isActive.
+     *
      * @return Gets the value of isActive and returns isActive
      */
     public boolean isActive() {
@@ -91,6 +97,7 @@ public class PersonnelPOJO {
 
     /**
      * Returns locationPref.
+     *
      * @return Gets the value of locationPref and returns locationPref
      */
     public String getLocationPref() {
