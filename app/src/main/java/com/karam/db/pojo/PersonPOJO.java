@@ -3,8 +3,9 @@ package com.karam.db.pojo;
 /**
  * POJO class for storing person attributes. This class will be used while interacting with the database.
  * Fill in the licence information.
+ *
  * @author Rishabh Pandita
-*/
+ */
 public class PersonPOJO {
     private long personId;
     private String firstName;
@@ -18,6 +19,7 @@ public class PersonPOJO {
 
     /**
      * Returns personId.
+     *
      * @return Gets the value of personId and returns personId
      */
     public long getPersonId() {
@@ -33,6 +35,7 @@ public class PersonPOJO {
 
     /**
      * Returns firstName.
+     *
      * @return Gets the value of firstName and returns firstName
      */
     public String getFirstName() {
@@ -48,6 +51,7 @@ public class PersonPOJO {
 
     /**
      * Returns lastName.
+     *
      * @return Gets the value of lastName and returns lastName
      */
     public String getLastName() {
@@ -63,6 +67,7 @@ public class PersonPOJO {
 
     /**
      * Returns gender.
+     *
      * @return Gets the value of gender and returns gender
      */
     public String getGender() {
@@ -78,6 +83,7 @@ public class PersonPOJO {
 
     /**
      * Returns phoneNumber.
+     *
      * @return Gets the value of phoneNumber and returns phoneNumber
      */
     public long getPhoneNumber() {
@@ -93,6 +99,7 @@ public class PersonPOJO {
 
     /**
      * Returns address.
+     *
      * @return Gets the value of address and returns address
      */
     public String getAddress() {
@@ -108,6 +115,7 @@ public class PersonPOJO {
 
     /**
      * Returns adharCard.
+     *
      * @return Gets the value of adharCard and returns adharCard
      */
     public String getAdharCard() {
@@ -123,6 +131,7 @@ public class PersonPOJO {
 
     /**
      * Returns adharCardActive.
+     *
      * @return Gets the value of adharCardActive and returns adharCardActive
      */
     public boolean isAdharCardActive() {
@@ -138,6 +147,7 @@ public class PersonPOJO {
 
     /**
      * Returns panCard.
+     *
      * @return Gets the value of panCard and returns panCard
      */
     public String getPanCard() {

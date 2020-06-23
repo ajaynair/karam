@@ -41,7 +41,7 @@ public class ContractorPostLogin extends AppCompatActivity {
         laborerSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ContractorPostLogin.this, ContractorPostLoginSearch.class));
+                // startActivity(new Intent(ContractorPostLogin.this, ContractorPostLoginSearch.class));
             }
         });
     }
@@ -58,9 +58,7 @@ public class ContractorPostLogin extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu, menu);
-        menu.removeItem(R.id.user_settings);
-        menu.removeItem(R.id.check_status);
+        getMenuInflater().inflate(R.menu.menu_contractor, menu);
         return true;
     }
 
@@ -79,6 +77,12 @@ public class ContractorPostLogin extends AppCompatActivity {
             case (R.id.logout):
                 startActivity(new Intent(ContractorPostLogin.this, LoginPage.class));
                 return true;
+            case (R.id.about_us):
+                startActivity(new Intent(ContractorPostLogin.this, AboutUs.class));
+                return true;
+            case (R.id.user_settings):
+                startActivity(new Intent(ContractorPostLogin.this, UserSettings.class));
+                return true;
             default:
                 Toast.makeText(getApplicationContext(), "Oops! Error. You shouldn't be seeing this message",
                         Toast.LENGTH_SHORT).show();
@@ -87,9 +91,11 @@ public class ContractorPostLogin extends AppCompatActivity {
         }
     }
 
+    /*
     // TODO: The back button does not work for this page. Fix the issue.
     @Override
     public void onBackPressed() {
         Toast.makeText(getApplicationContext(), "back pressed", Toast.LENGTH_SHORT).show();
     }
+     */
 }
