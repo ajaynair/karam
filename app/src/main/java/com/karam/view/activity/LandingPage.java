@@ -2,6 +2,7 @@ package com.karam.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +15,22 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.karam.db.pojo.TestApiResponse;
+import com.karam.db.pojo.User;
+import com.karam.db.pojo.UserApiResponse;
 import com.karam.view.LanguageArrayAdapter;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 
 /**
@@ -24,6 +40,52 @@ public class LandingPage extends AppCompatActivity {
 
     ArrayAdapter<String> adapter;
 
+    public void test() {
+        try {
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
+        Retrofit retrofit = new Retrofit.Builder()
+              .baseUrl("http://10.0.2.2:5000/")
+
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(httpClient.build())
+                .build();
+
+        testService service = retrofit.create(testService.class);
+
+        // Calling '/api/users/2'
+            User user = new User(12, "a", "b", "c");
+        Call<TestApiResponse> callSync = service.getTest(user);
+            callSync.enqueue(new Callback<TestApiResponse>() {
+                @Override
+                public void onResponse(Call<TestApiResponse> call, Response<TestApiResponse> response) {
+                     TestApiResponse apiResponse = response.body();
+                     System.out.println(apiResponse);
+                     Toast.makeText(getApplicationContext(), apiResponse.toString(),
+                            Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onFailure(Call<TestApiResponse> call, Throwable t) {
+
+                }
+            });
+
+            // Next 2 lines required if callsync.enqueue is not called
+            // Response<TestApiResponse> response = callSync.execute();
+            // TestApiResponse apiResponse = response.body();
+            // System.out.println(apiResponse);
+            // Toast.makeText(getApplicationContext(), apiResponse.toString(),
+            //        Toast.LENGTH_SHORT).show();
+        } catch (Exception ex) {
+            Toast.makeText(getApplicationContext(), ex.toString(),
+                    Toast.LENGTH_LONG).show();
+            ex.printStackTrace();
+        }
+    }
 
     /**
      * Handle what happens when the view.activity is created
@@ -49,6 +111,7 @@ public class LandingPage extends AppCompatActivity {
         assignListenerToViews();
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+        test();
     }
 
     /**
@@ -121,5 +184,34 @@ public class LandingPage extends AppCompatActivity {
                 // Add code to report bug
                 return false;
         }
+    }
+
+    // Simple POST with variable URL
+    public interface testService4 {
+        @POST("/v1.0/test/{id}/test/{pid}")
+        public Call<TestApiResponse> getTest(@Path("id") long id, @Path("pid") long pid);
+    }
+
+    // Simple POST test
+    public interface testService3 {
+        @POST("/v1.0/test")
+        public Call<TestApiResponse> getTest();
+    }
+
+    // Simple GET test
+    public interface testService2 {
+        @GET("/v1.0/test")
+        public Call<TestApiResponse> getTest();
+    }
+
+    // Simple GET test
+    public interface testService5 {
+        @PUT("/v1.0/test")
+        public Call<TestApiResponse> getTest();
+    }
+
+    public interface testService {
+        @POST("/v1.0/test/withbody")
+        Call<TestApiResponse> getTest(@Body User user);
     }
 }

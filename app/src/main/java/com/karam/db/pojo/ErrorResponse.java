@@ -1,14 +1,12 @@
 package com.karam.db.pojo;
 
-import com.google.gson.annotations.SerializedName;
-
-public class TestApiResponse {
-    private String test;
+public class ErrorResponse {
+    private String error;
 
     //Setters and getters
 
     public String toString() {
-        return "UserApiResponse [data=" + test + "]";
+        return "UserApiResponse [data=" + error + "]";
     }
 }
 

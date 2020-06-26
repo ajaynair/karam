@@ -1,12 +1,29 @@
 package com.karam.view.activity;
 
 import android.content.Intent;
+import android.os.StrictMode;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.karam.db.pojo.Contractor;
+import com.karam.db.pojo.ErrorResponse;
+import com.karam.db.pojo.Laborer;
+import com.karam.db.pojo.TestApiResponse;
+import com.karam.db.pojo.User;
+import com.karam.view.restservice.RestService;
+import com.karam.view.restservice.RetroFitService;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -29,6 +46,29 @@ public class ContractorRegistration extends AppCompatActivity {
         assignListenerToViews();
     }
 
+    private void send_rest_request() {
+        RetroFitService retro = new RetroFitService(getApplicationContext());
+        RestService service = retro.getService();
+
+        Contractor contractor = new Contractor("a", "a", "a", 4);
+        Call<ErrorResponse> callSync = service.createContractor(contractor);
+        callSync.enqueue(new Callback<ErrorResponse>() {
+            @Override
+            public void onResponse(Call<ErrorResponse> call, Response<ErrorResponse> response) {
+                ErrorResponse apiResponse = response.body();
+                System.out.println(apiResponse);
+                Toast.makeText(getApplicationContext(), apiResponse.toString(),
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<ErrorResponse> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.toString(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     /**
      * Assign all listener to different views of the view.activity
      */
@@ -37,6 +77,7 @@ public class ContractorRegistration extends AppCompatActivity {
         laborerReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                send_rest_request();
                 startActivity(new Intent(ContractorRegistration.this, ContractorPostLogin.class));
             }
         });
