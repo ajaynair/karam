@@ -11,6 +11,17 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.karam.db.pojo.Contractor;
+import com.karam.db.pojo.ErrorResponse;
+import com.karam.db.pojo.Laborer;
+import com.karam.view.restservice.RestService;
+import com.karam.view.restservice.RetroFitService;
+
+import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Response;
+
 /**
  * Contractor's landing page once they login
  * The contractor can search for laborers from this page
@@ -33,6 +44,24 @@ public class ContractorPostLogin extends AppCompatActivity {
         setSupportActionBar(myToolbar);
     }
 
+    void send_rest_request() throws IOException {
+        try {
+            RetroFitService retro = new RetroFitService(getApplicationContext());
+            RestService service = retro.getService();
+
+            String[] s = new String[]{"a", "b"};
+            Call<Laborer> callSync = service.getLaborer(s, s);
+            Response<Laborer> response = callSync.execute();
+            Laborer apiResponse = response.body();
+            Toast.makeText(getApplicationContext(), apiResponse.toString(),
+                    Toast.LENGTH_SHORT).show();
+        }     catch (Exception ex) {
+            Toast.makeText(getApplicationContext(), ex.toString(),
+                    Toast.LENGTH_LONG).show();
+            ex.printStackTrace();
+        }
+    }
+
     /**
      * Assign all listener to different views of the view.activity
      */
@@ -41,6 +70,11 @@ public class ContractorPostLogin extends AppCompatActivity {
         laborerSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try {
+                    send_rest_request();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 // startActivity(new Intent(ContractorPostLogin.this, ContractorPostLoginSearch.class));
             }
         });
