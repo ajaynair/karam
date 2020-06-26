@@ -1,6 +1,7 @@
 package com.karam.controller;
 
 import android.app.Application;
+import android.os.StrictMode;
 import android.widget.Toast;
 
 import androidx.work.ExistingPeriodicWorkPolicy;
@@ -51,6 +52,10 @@ public class KaramApplication extends Application {
         enableOneTimeNotify();
         Toast.makeText(getApplicationContext(), "Application started", Toast.LENGTH_SHORT).show();
         // enablePeriodicNotify();
+
+        // TODO Remove these 2 lines and implement threadpool
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
     }
 
     /**
