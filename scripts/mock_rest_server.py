@@ -3,6 +3,7 @@ import os
 
 from flask import Flask, jsonify, request
 import json
+from personTransaction.py import *
 
 app = Flask(__name__)
 
@@ -140,14 +141,26 @@ def create_laborer_profile():
     print(data)
     print ('end')
 
-    #name = data['information']['name']
-    #address = data['information']['address']
-    #contactno = data['information']['contactno']
-    #age = data['information']['age']
-    #preferred_location = data['information']['preferred_location']
-    #aadhar_status = data['information']['aadhar_status']
+    laborerId = data['information']['laborerId']
+    parentId = data['information']['parentId']
+    fname = data['information']['fname']
+    lname = data['information']['lname']
+    gender = data['information']['gender']
+    phno = data['information']['phno']
+    address = data['information']['address']
+    aadharStatus = data['information']['aadharStatus']
+    adharNo = data['information']['aadharNumber']
+    panCard = data['information']['panCard']
+    skill = data['information']['skill']
+    activeInd = data['information']['activeInd']
+    preferredJobLocation = data['information']['preferred_location']
+    #age = data['information']['age'] add this to database column 
+
+    personTransaction obj1 = personTransaction()
+    status = obj1.createLaborer(laborerId,parentId,fname,lname,gender,phno,address,adharNo,adharStatus,panCard,skill,activeInd,preferredJobLocation):
 
     resp = {
+        "status" : status
         "error": 2
     }
 
