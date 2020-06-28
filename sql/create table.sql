@@ -7,7 +7,7 @@ CREATE TABLE user (
          
 CREATE TABLE laborer (
          laborer_id varchar(50) NOT NULL PRIMARY KEY,
-         user_id varchar(50) NOT NULL,
+         parent_id varchar(50),
          first_name varchar(100),
          last_name varchar(100),
          gender varchar(10),
@@ -19,13 +19,10 @@ CREATE TABLE laborer (
          skill varchar(200),
          active_ind varchar(2),
          preferred_job_location varchar(200));
-
-ALTER TABLE laborer
-ADD FOREIGN KEY (user_id) REFERENCES user(user_id);
 
 CREATE TABLE contractor (
          contractor_id varchar(50) NOT NULL PRIMARY KEY,
-         user_id varchar(50) NOT NULL,
+		 parent_id varchar(50),
          first_name varchar(100),
          last_name varchar(100),
          gender varchar(10),
@@ -37,9 +34,6 @@ CREATE TABLE contractor (
          skill varchar(200),
          active_ind varchar(2),
          preferred_job_location varchar(200));
-
-ALTER TABLE contractor
-ADD FOREIGN KEY (user_id) REFERENCES user(user_id);
          
 CREATE TABLE job (
          job_id varchar(50) NOT NULL PRIMARY KEY,
