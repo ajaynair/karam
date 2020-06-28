@@ -15,12 +15,12 @@ class PersonTransaction:
     dbName = config.get('configuration','database').strip('"')
 
     th = ThreadExecutor.instance()
-
-    def create(id,fname,lname,gender,phno,address,adharNo,adharStatus,panCardNo):
-        future = th.executor.submit(createTask,id,fname,lname,gender,phno,address,adharNo,adharStatus,panCardNo)
+    # TODO Update rest of sql functions like create, they are referring to old table schema
+    def createLaborer(id,parentId,fname,lname,gender,phno,address,adharNo,adharStatus,panCardNo,skill,activeInd,preferredJobLocation):
+        future = th.executor.submit(createTask,id,parent_id,fname,lname,gender,phno,address,adharNo,adharStatus,panCardNo,skill,activeInd,preferredJobLocation)
         return future.result()
 
-    def createTask(id,fname,lname,gender,phno,address,adharNo,adharStatus,panCardNo):
+    def createTask(id,parentId,fname,lname,gender,phno,address,adharNo,adharStatus,panCardNo,skill,activeInd,preferredJobLocation):
         try:
             connection = mysql.connector.connect(host=hostURL,
                                                 database=dbName,
@@ -30,12 +30,12 @@ class PersonTransaction:
                 db_Info = connection.get_server_info()
                 print("Connected to MySQL Server version ", db_Info)
                 cursor = connection.cursor()
-                statement = "Insert into karamdb.person"
-                colNames = "(person_id, first_name, last_name, gender, phone_number, address,adhar_card_number,adhar_card_status,pan_card)"
-                colValues = "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+                statement = "Insert into karamdb.laborer"
+                colNames = "(laborer_id, first_name, last_name, gender, phone_number, address,adhar_card_number,adhar_card_status,pan_card,skill,active_ind,preferred_job_location)"
+                colValues = "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
                 sql = statement+colNames+colValues
 
-                val = (id,fname,lname,gender,phno,address,adharNo,adharStatus,panCardNo)
+                val = (id,parentId,fname,lname,gender,phno,address,adharNo,adharStatus,panCardNo,skill,activeInd,preferredJobLocation)
                 cursor.execute(sql,val)
                 connection.commit()
                 record = cursor.fetchone()
