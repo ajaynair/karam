@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.karam.db.pojo.Contractor;
 import com.karam.db.pojo.ErrorResponse;
@@ -18,6 +21,7 @@ import com.karam.view.restservice.RestService;
 import com.karam.view.restservice.RetroFitService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -28,6 +32,31 @@ import retrofit2.Response;
  */
 public class ContractorPostLogin extends AppCompatActivity {
 
+    LaborerListAdapter adapter;
+
+    private void initLaborerStatus() throws IOException {
+        initRecyclerView();
+        send_rest_request();
+    }
+
+    private void initRecyclerView() {
+        RecyclerView view = findViewById(R.id.recycler_view);
+        view.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+
+                if (!recyclerView.canScrollVertically(1)) {
+                    Toast.makeText(getApplicationContext(), "last", Toast.LENGTH_LONG);
+                }
+            }
+        });
+        ArrayList<Laborer> laborers = new ArrayList<>();
+        adapter = new LaborerListAdapter(laborers, this);
+        view.setAdapter(adapter);
+        view.setLayoutManager(new LinearLayoutManager(this));
+    }
+
     /**
      * Handle what happens when the view.activity is created
      *
@@ -35,13 +64,21 @@ public class ContractorPostLogin extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.contractor_post_login);
-        assignListenerToViews();
+        try {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.contractor_post_login);
+            assignListenerToViews();
 
-        // Attach action bar to the view.activity
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
+            // Attach action bar to the view.activity
+            Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+            setSupportActionBar(myToolbar);
+            initLaborerStatus();
+            }     catch (Exception ex) {
+                    Toast.makeText(getApplicationContext(), ex.toString(),
+                        Toast.LENGTH_LONG).show();
+                    ex.printStackTrace();
+        }
+
     }
 
     void send_rest_request() throws IOException {
@@ -49,12 +86,14 @@ public class ContractorPostLogin extends AppCompatActivity {
             RetroFitService retro = new RetroFitService(getApplicationContext());
             RestService service = retro.getService();
 
-            String[] s = new String[]{"a", "b"};
-            Call<Laborer> callSync = service.getLaborer(s, s);
-            Response<Laborer> response = callSync.execute();
-            Laborer apiResponse = response.body();
-            Toast.makeText(getApplicationContext(), apiResponse.toString(),
-                    Toast.LENGTH_SHORT).show();
+            String[] skills = new String[]{"skill1", "skill2"};
+            String[] locations = new String[]{"location1", "location2"};
+
+            Call<ArrayList<Laborer>> callSync = service.getLaborers(skills, locations);
+            Response<ArrayList<Laborer>> response = callSync.execute();
+            ArrayList<Laborer> apiResponse = response.body();
+            adapter.addItems(apiResponse);
+            adapter.notifyDataSetChanged();
         }     catch (Exception ex) {
             Toast.makeText(getApplicationContext(), ex.toString(),
                     Toast.LENGTH_LONG).show();
@@ -67,17 +106,25 @@ public class ContractorPostLogin extends AppCompatActivity {
      */
     private void assignListenerToViews() {
         SearchView laborerSearch = (SearchView) findViewById(R.id.search);
-        laborerSearch.setOnClickListener(new View.OnClickListener() {
+        laborerSearch.setIconifiedByDefault(false);
+        laborerSearch.setOnQueryTextListener(new android.widget.SearchView.OnQueryTextListener() {
+
             @Override
-            public void onClick(View v) {
+            public boolean onQueryTextSubmit(String query) {
                 try {
                     send_rest_request();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                // startActivity(new Intent(ContractorPostLogin.this, ContractorPostLoginSearch.class));
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
             }
         });
+
+
     }
 
     // TODO: This function can be moved to a separate menu class as its
@@ -124,12 +171,4 @@ public class ContractorPostLogin extends AppCompatActivity {
                 return false;
         }
     }
-
-    /*
-    // TODO: The back button does not work for this page. Fix the issue.
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(getApplicationContext(), "back pressed", Toast.LENGTH_SHORT).show();
-    }
-     */
 }

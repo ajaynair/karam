@@ -2,7 +2,6 @@ package com.karam.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,17 +16,12 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.karam.db.pojo.ErrorResponse;
 import com.karam.db.pojo.Laborer;
-import com.karam.db.pojo.TestApiResponse;
-import com.karam.db.pojo.User;
 import com.karam.view.restservice.RestService;
 import com.karam.view.restservice.RetroFitService;
 
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Page for the laborer to register themselves to the app

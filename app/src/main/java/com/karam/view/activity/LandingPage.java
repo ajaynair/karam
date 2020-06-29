@@ -15,22 +15,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.karam.db.pojo.TestApiResponse;
-import com.karam.db.pojo.User;
-import com.karam.db.pojo.UserApiResponse;
 import com.karam.view.LanguageArrayAdapter;
 
 import okhttp3.OkHttpClient;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.PUT;
-import retrofit2.http.Path;
 
 
 /**
@@ -54,7 +43,9 @@ public class LandingPage extends AppCompatActivity {
                 .client(httpClient.build())
                 .build();
 
+        /*
         testService service = retrofit.create(testService.class);
+
 
         // Calling '/api/users/2'
             User user = new User(12, "a", "b", "c");
@@ -80,6 +71,8 @@ public class LandingPage extends AppCompatActivity {
             // System.out.println(apiResponse);
             // Toast.makeText(getApplicationContext(), apiResponse.toString(),
             //        Toast.LENGTH_SHORT).show();
+
+         */
         } catch (Exception ex) {
             Toast.makeText(getApplicationContext(), ex.toString(),
                     Toast.LENGTH_LONG).show();
@@ -186,6 +179,7 @@ public class LandingPage extends AppCompatActivity {
         }
     }
 
+    /*
     // Simple POST with variable URL
     public interface testService4 {
         @POST("/v1.0/test/{id}/test/{pid}")
@@ -214,4 +208,5 @@ public class LandingPage extends AppCompatActivity {
         @POST("/v1.0/test/withbody")
         Call<TestApiResponse> getTest(@Body User user);
     }
+    */
 }
