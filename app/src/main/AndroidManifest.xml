@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/KaramTheme">
-        <activity android:name=".UserSettings"></activity>
+        <activity android:name=".UserSettings"/>
         <activity android:name=".AboutUs" />
         <activity android:name=".LandingPage">
             <intent-filter>

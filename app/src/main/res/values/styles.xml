@@ -2,7 +2,7 @@
     <!-- Main app theme -->
     <style name="KaramTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/background_green</item>
-        <item name="android:fontFamily">sans-serif-condensed-light</item>
+        <item name="android:fontFamily">@string/default_font</item>
     </style>
 
     <!-- Style for all the buttons -->
@@ -14,4 +14,6 @@
     <style name="EditTextUnderscore" parent="Widget.AppCompat.EditText">
         <item name="android:background">@drawable/edit_text_selector</item>
     </style>
+
+    <string name="default_font">sans-serif-condensed-light</string>
 </resources>

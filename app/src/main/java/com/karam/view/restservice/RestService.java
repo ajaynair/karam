@@ -4,6 +4,8 @@ import com.karam.db.pojo.Contractor;
 import com.karam.db.pojo.ErrorResponse;
 import com.karam.db.pojo.Laborer;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -18,5 +20,5 @@ public interface RestService {
     public Call<ErrorResponse> createContractor(@Body Contractor contractor);
 
     @GET("/v1.0/person/laborer")
-    public Call<Laborer> getLaborer(@Query("skills") String [] skills, @Query("locations") String [] locations);
+    public Call<ArrayList<Laborer>> getLaborers(@Query("skills") String [] skills, @Query("locations") String [] locations);
 }
