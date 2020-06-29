@@ -31,7 +31,7 @@ The project is in an early stage and so we require all kinds of contribution inc
 * WhatsApp +14126268877
 
 # **Slack workspace**
-https://join.slack.com/t/karam2/shared_invite/zt-e94kznp3-3axF0oG2ZRp6BrCTxtUNeQ
+https://join.slack.com/t/karam2/shared_invite/zt-ffltc2x1-_Yn1bEgEQ7wrfVOajxLFgw
 
 # **Mockup for Release 1**
 https://docs.google.com/presentation/d/1oI2-cqtVGvDCyyQhp7ustE7U4FWTkWYEDvSsy-Ri0ag/edit?usp=sharing
