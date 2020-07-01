@@ -67,8 +67,8 @@ public class LaborerRegistration extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         });
-
     }
+
     /**
      * Assign all listener to different views of the view.activity
      */
