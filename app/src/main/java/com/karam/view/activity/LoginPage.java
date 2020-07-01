@@ -12,10 +12,23 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.karam.db.pojo.Credentials;
+import com.karam.db.pojo.ErrorResponse;
+import com.karam.db.pojo.Session;
+import com.karam.view.restservice.RestService;
+import com.karam.view.restservice.RetroFitService;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 /**
  * Page for a registered user to login
  */
 public class LoginPage extends AppCompatActivity {
+    EditText name;
+    EditText password;
+    Button login;
 
     /**
      * Handle what happens when the view.activity is created
@@ -26,29 +39,59 @@ public class LoginPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
+
+        name = findViewById(R.id.loginUserNameText);
+        password = findViewById(R.id.loginPasswordText);
+        login = findViewById(R.id.loginButton);
+
         assignListenerToViews();
     }
+
+    private void send_rest_request() {
+        RetroFitService retro = new RetroFitService(getApplicationContext());
+        RestService service = retro.getService();
+
+        Credentials credentials = new Credentials("a", "b");
+        Call<Session> callSync = service.createSession(credentials);
+        callSync.enqueue(new Callback<Session>() {
+            @Override
+            public void onResponse(Call<Session> call, Response<Session> response) {
+                Session apiResponse = response.body();
+                System.out.println(apiResponse);
+                Toast.makeText(getApplicationContext(), apiResponse.toString(),
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Session> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.toString(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    View.OnClickListener loginClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            send_rest_request();
+            if (name.getText().toString().equals("l")) {
+                Toast.makeText(getApplicationContext(), "laborer selected",
+                        Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(LoginPage.this, LaborerStatusPage.class));
+            } else {
+                startActivity(new Intent(LoginPage.this, ContractorPostLogin.class));
+            }
+        }
+    };
 
     /**
      * Assign all listener to different views of the view.activity
      */
     private void assignListenerToViews() {
-        Button laborerReg = (Button) findViewById(R.id.loginButton);
-        laborerReg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText name = findViewById(R.id.loginUserNameText);
-                if (name.getText().toString().equals("l")) {
-                    Toast.makeText(getApplicationContext(), "laborer selected",
-                            Toast.LENGTH_SHORT).show();
-
-                    startActivity(new Intent(LoginPage.this, LaborerStatusPage.class));
-                } else {
-                    startActivity(new Intent(LoginPage.this, ContractorPostLogin.class));
-                }
-            }
-        });
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        login.setOnClickListener(loginClickListener);
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
     }
 

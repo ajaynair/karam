@@ -50,7 +50,6 @@ public class KaramApplication extends Application {
         super.onCreate();
         // Required initialization logic here!
         enableOneTimeNotify();
-        Toast.makeText(getApplicationContext(), "Application started", Toast.LENGTH_SHORT).show();
         // enablePeriodicNotify();
 
         // TODO Remove these 2 lines and implement threadpool
