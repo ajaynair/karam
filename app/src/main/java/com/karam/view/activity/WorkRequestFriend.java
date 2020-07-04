@@ -5,16 +5,40 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import com.karam.db.pojo.ErrorResponse;
+import com.karam.db.pojo.Laborer;
+import com.karam.utils.BaseActivity;
+import com.karam.view.restservice.RestService;
+import com.karam.view.restservice.RetroFitService;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Page for a user to register their friend as a laborer for a job request
  */
-public class WorkRequestFriend extends AppCompatActivity {
+public class WorkRequestFriend extends BaseActivity {
+    EditText name;
+    EditText age;
+    EditText address;
+    RadioGroup aadharStatus;
+    EditText phone;
+    EditText password;
+    Spinner location;
+    Button register;
+
+    @Override
+    protected int getLayoutResource() {
+        return R.layout.work_request_friend;
+    }
 
     /**
      * Handle what happens when the view.activity is created
@@ -24,10 +48,49 @@ public class WorkRequestFriend extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.work_request_friend);
+        //setContentView(R.layout.work_request_friend);
+
+        name = findViewById(R.id.inputName);
+        age = findViewById(R.id.inputAge);
+        address = findViewById(R.id.inputAddress);
+        aadharStatus = findViewById(R.id.radio_group);
+        phone = findViewById(R.id.phone);
+        password = findViewById(R.id.password);
+        register = findViewById(R.id.register);
+        location = findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.locations, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        location.setAdapter(adapter);
+
         assignListenerToViews();
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
+        //Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        //setSupportActionBar(myToolbar);
+    }
+
+    private void send_rest_request() {
+        RetroFitService retro = new RetroFitService(getApplicationContext());
+        RestService service = retro.getService();
+        Toast.makeText(getApplicationContext(), age.getText(),
+                Toast.LENGTH_SHORT).show();
+
+        Laborer laborer = new Laborer(name.getText().toString(), location.getSelectedItem().toString(), phone.getText().toString(), Integer.valueOf(age.getText().toString()), "f", aadharStatus.getCheckedRadioButtonId());
+        Call<ErrorResponse> callSync = service.createLaborer(laborer);
+        callSync.enqueue(new Callback<ErrorResponse>() {
+            @Override
+            public void onResponse(Call<ErrorResponse> call, Response<ErrorResponse> response) {
+                ErrorResponse apiResponse = response.body();
+                System.out.println(apiResponse);
+                Toast.makeText(getApplicationContext(), apiResponse.toString(),
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<ErrorResponse> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.toString(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     /**
@@ -38,6 +101,8 @@ public class WorkRequestFriend extends AppCompatActivity {
         laborerReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                send_rest_request();
+                Toast.makeText(WorkRequestFriend.this, "Mast", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(WorkRequestFriend.this, LaborerStatusPage.class));
             }
         });
@@ -51,13 +116,14 @@ public class WorkRequestFriend extends AppCompatActivity {
      *
      * @param menu: Menu options (https://pasteboard.co/Jc4U58s.png) to be shown in the view.activity
      * @return: true on no error
-     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_laborers, menu);
         return true;
     }
+     */
 
     // TODO: This function can be moved to a separate menu class as its
     // used by all view.activity class
@@ -67,7 +133,7 @@ public class WorkRequestFriend extends AppCompatActivity {
      *
      * @param item: The item in the menu that is selected
      * @return: return false in case of error, true otherwise
-     */
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -88,4 +154,5 @@ public class WorkRequestFriend extends AppCompatActivity {
         }
         return true;
     }
+     */
 }

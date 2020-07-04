@@ -2,7 +2,6 @@ package com.karam.controller;
 
 import android.app.Application;
 import android.os.StrictMode;
-import android.widget.Toast;
 
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.OneTimeWorkRequest;
@@ -49,12 +48,9 @@ public class KaramApplication extends Application {
     public void onCreate() {
         super.onCreate();
         // Required initialization logic here!
-        enableOneTimeNotify();
+        // Following 2 lines are just to test android notification
+        // enableOneTimeNotify();
         // enablePeriodicNotify();
-
-        // TODO Remove these 2 lines and implement threadpool
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
     }
 
     /**

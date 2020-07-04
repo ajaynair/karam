@@ -8,13 +8,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import com.karam.utils.BaseActivity;
 
 /**
  * Main page for a user to register for a job request
  */
-public class WorkRequestPage extends AppCompatActivity {
+public class WorkRequestPage extends BaseActivity {
+
+    @Override
+    protected int getLayoutResource() {
+        return R.layout.work_request_page;
+    }
 
     /**
      * Handle what happens when the view.activity is created
@@ -24,10 +28,10 @@ public class WorkRequestPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.work_request_page);
+        // setContentView(R.layout.work_request_page);
         assignListenerToViews();
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
+        //Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        //setSupportActionBar(myToolbar);
     }
 
     /**
@@ -58,14 +62,14 @@ public class WorkRequestPage extends AppCompatActivity {
      *
      * @param menu: Menu options (https://pasteboard.co/Jc4U58s.png) to be shown in the view.activity
      * @return: true on no error
-     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_laborers, menu);
         return true;
     }
-
+     */
     // TODO: This function can be moved to a separate menu class as its
     // used by all view.activity class
 
@@ -74,7 +78,7 @@ public class WorkRequestPage extends AppCompatActivity {
      *
      * @param item: The item in the menu that is selected
      * @return: return false in case of error, true otherwise
-     */
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -95,4 +99,5 @@ public class WorkRequestPage extends AppCompatActivity {
         }
         return true;
     }
+         */
 }

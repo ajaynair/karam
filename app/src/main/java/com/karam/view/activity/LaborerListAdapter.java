@@ -4,22 +4,16 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.karam.db.pojo.Laborer;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class LaborerListAdapter extends RecyclerView.Adapter<LaborerListAdapter.ViewHolder> {
     private ArrayList<Laborer> laborers;
@@ -48,19 +42,19 @@ public class LaborerListAdapter extends RecyclerView.Adapter<LaborerListAdapter.
         Toast.makeText(mContext, "Position" + position,
                 Toast.LENGTH_LONG).show();
         Laborer l = this.laborers.get(position);
-    holder.skills.setText(l.getSkill());
-    holder.name.setText(l.getName());
-    holder.phoneNo.setText(l.getPhoneNo());
-    holder.preferredLocation.setText(l.getLocation());
+        holder.skills.setText(l.getSkill());
+        holder.name.setText(l.getName());
+        holder.phoneNo.setText(l.getPhoneNo());
+        holder.preferredLocation.setText(l.getLocation());
 
     }
 
     @Override
     public int getItemCount() {
-    return this.laborers.size();
+        return this.laborers.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         RelativeLayout parentRelativeLayout;
         TextView name;
@@ -77,5 +71,7 @@ public class LaborerListAdapter extends RecyclerView.Adapter<LaborerListAdapter.
             preferredLocation = itemView.findViewById(R.id.location);
             skills = itemView.findViewById(R.id.skills);
         }
-    };
+    }
+
+    ;
 }

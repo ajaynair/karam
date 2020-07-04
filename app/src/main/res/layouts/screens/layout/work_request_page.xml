@@ -8,6 +8,8 @@
 
     <include layout="@layout/toolbar" />
 
+    <include layout="@layout/bottom_navigation_laborer" />
+
     <Button
         android:id="@+id/RegisterForFriend"
         android:layout_width="0dp"

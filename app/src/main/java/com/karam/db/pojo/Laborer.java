@@ -11,6 +11,21 @@ public class Laborer {
     private String skill;
     private String PhoneNo;
     private int aadharStatus;
+    private String password;
+
+    public Laborer(String name, String location, String PhoneNo, int age, String gender, int aadharStatus) {
+        this.id = 1;
+        this.name = name;
+        this.location = location;
+        this.PhoneNo = PhoneNo;
+        this.age = age;
+        this.gender = gender;
+        this.aadharStatus = aadharStatus;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 
     public int getId() {
         return id;
@@ -73,16 +88,6 @@ public class Laborer {
     }
 
     public void setAadharStatus(int aadharStatus) {
-        this.aadharStatus = aadharStatus;
-    }
-
-    public Laborer(String name, String location, String PhoneNo, int age, String gender, int aadharStatus) {
-        this.id = 1;
-        this.name = name;
-        this.location = location;
-        this.PhoneNo = PhoneNo;
-        this.age = age;
-        this.gender = gender;
         this.aadharStatus = aadharStatus;
     }
 
