@@ -11,18 +11,21 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
+import com.karam.utils.BaseActivity;
 import com.karam.view.LanguageArrayAdapter;
 import com.karam.view.UserSettingsAdapter;
 
-public class UserSettings extends AppCompatActivity {
+public class UserSettings extends BaseActivity {
+
+    @Override
+    protected int getLayoutResource() {
+        return R.layout.user_settings;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_settings);
+        //setContentView(R.layout.user_settings);
         final ArrayAdapter<String> adapter = new UserSettingsAdapter<String>(this,
                 android.R.layout.simple_list_item_1);
         ListView settingList = findViewById(R.id.settingsList);
@@ -45,8 +48,8 @@ public class UserSettings extends AppCompatActivity {
             }
         });
 
-        Toolbar myToolbar = findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
+        //Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        //setSupportActionBar(myToolbar);
         assignListenerToViews();
     }
 
@@ -68,20 +71,21 @@ public class UserSettings extends AppCompatActivity {
      *
      * @param menu: Menu options (https://pasteboard.co/Jc4U58s.png) to be shown in the view.activity
      * @return: true on no error
-     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_logged_out, menu);
         return true;
     }
+     */
 
     /**
      * Responds to menu option (https://pasteboard.co/Jc4U58s.png) of this view.activity
      *
      * @param item: The item in the menu that is selected
      * @return: return false in case of error, true otherwise
-     */
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -95,4 +99,5 @@ public class UserSettings extends AppCompatActivity {
                 return false;
         }
     }
+     */
 }

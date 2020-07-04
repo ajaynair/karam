@@ -22,12 +22,11 @@ public class RetroFitService {
                     .build();
 
             this.service = retrofit.create(RestService.class);
+        } catch (Exception ex) {
+            Toast.makeText(c, ex.toString(),
+                    Toast.LENGTH_LONG).show();
+            ex.printStackTrace();
         }
-    catch (Exception ex) {
-        Toast.makeText(c, ex.toString(),
-                Toast.LENGTH_LONG).show();
-        ex.printStackTrace();
-    }
     }
 
     public RestService getService() {
