@@ -53,6 +53,54 @@ class PersonTransaction:
         future = th.executor.submit(self.createLaborerTask,laborer)
         return future.result()
 
+    def getAllLaborerTask(self, skills, locations):
+        connection = mysql.connector.connect(host=self.hostURL,
+                                             database=self.dbName,
+                                             user=self.userName,
+                                             password=self.userPassword)
+        try:
+            if connection.is_connected():
+                db_Info = connection.get_server_info()
+                print("Connected to MySQL Server version ", db_Info)
+                cursor = connection.cursor()
+
+                sql = "SELECT * FROM karamdb.laborer"
+                if skills and not locations:
+                    sql = sql + " where skill in ({list})".format(list=','.join(['%s']*len(skills)))
+                    cursor.execute(sql, skills)
+                elif locations and not skills:
+                    sql = sql + " where preferred_job_location in ({list})".format(list=','.join(['%s']*len(locations)))
+                    cursor.execute(sql, locations)
+                elif locations and skills:
+                    sql = sql + " where preferred_job_location in ({list})".format(list=','.join(['%s']*len(locations)))
+                    sql = sql + " and skill in ({list})".format(list=','.join(['%s']*len(skills)))
+                    values = []
+                    for loc in locations:
+                        values.append(loc)
+                    for skill in skills:
+                        values.append(skill)
+                    cursor.execute(sql, values)
+                else:
+                    cursor.execute(sql)
+
+                row_headers=[x[0] for x in cursor.description]
+                rec = cursor.fetchall()
+                json_data=[]
+                for res in rec:
+                    json_data.append(dict(zip(row_headers,res)))
+                return json_data
+        except Error as e:
+            print("Error while connecting to MySQL", e)
+        finally:
+            if (connection.is_connected()):
+                cursor.close()
+                connection.close()
+                print("MySQL connection is closed")
+
+    def getAllLaborer(self, skills, locations):
+        future = th.executor.submit(self.getAllLaborerTask, skills, locations)
+        return future.result()
+
     def createContractorTask(self,contractor):
         connection = mysql.connector.connect(host=self.hostURL,
                                     database=self.dbName,
@@ -378,35 +426,6 @@ class PersonTransaction:
                 record = cursor.fetchone()
                 print("You're connected to database: ", record)
 
-        except Error as e:
-            print("Error while connecting to MySQL", e)
-        finally:
-            if (connection.is_connected()):
-                cursor.close()
-                connection.close()
-                print("MySQL connection is closed")
-
-    def getAllPerson():
-        future = th.executor.submit(getAllPersonTask)
-        return future.result()
-
-    def getAllPersonTask():
-        try:
-            connection = mysql.connector.connect(host=hostURL,
-                                                 database=dbName,
-                                                 user=userName,
-                                                 password=userPassword)
-            if connection.is_connected():
-                db_Info = connection.get_server_info()
-                print("Connected to MySQL Server version ", db_Info)
-                cursor = connection.cursor()
-                sql = "select * from karamdb.person"
-                cursor.execute(sql);
-                rec = cursor.fetchall()
-                result = list()
-                for x in rec:
-                    result.append(x)
-                return result
         except Error as e:
             print("Error while connecting to MySQL", e)
         finally:
