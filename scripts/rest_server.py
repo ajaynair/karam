@@ -3,7 +3,7 @@ import os
 
 from flask import Flask, jsonify, request
 import json
-import PersonTransaction,LaborerPOJO,ContractorPOJO,UserPOJO
+import PersonTransaction,LaborerPOJO,ContractorPOJO,UserPOJO,JobPOJO
 import datetime
 
 app = Flask(__name__)
@@ -113,6 +113,26 @@ def get_laborer_list():
     '''
     return jsonify(resp)
 
+'''
+Creates a job profile for laborer and contractor
+'''
+@app.route('/v1.0/job/create', methods=['POST'])
+def create_job():
+    data = json.loads(request.get_data())
+    job = JobPOJO.JobPOJO()
+
+    #TODO We need to remove some colums from database maybe
+    #TODO check how to do multiline code intendentation in python
+    job = job.setJobId(data['information']['jobId']).setLaborerId(data['information']['laborerId']).setContractorId(data['information']['contractorId'])
+    job = job.setActiveInd(data['information']['activeInd'])
+
+    obj1 = PersonTransaction.PersonTransaction()
+    status = obj1.createJob(job)
+    resp = {
+        "status" : status
+    }
+
+    return jsonify(resp)
 
 '''
 Creates a profile of a user while signup
