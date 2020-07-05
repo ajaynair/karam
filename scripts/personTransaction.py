@@ -18,7 +18,7 @@ class PersonTransaction:
     global th
     th = ThreadExecutor.instance()
 
-    def createTask(self,laborerId,parentId,fname,lname,gender,phno,address,adharNo,aadharStatus,panCard,skill,activeInd,preferredJobLocation):
+    def createTask(self,person):
         connection = mysql.connector.connect(host=self.hostURL,
                                     database=self.dbName,
                                     user=self.userName,
@@ -32,8 +32,7 @@ class PersonTransaction:
                 colNames = "(laborer_id,parent_id, first_name, last_name, gender, phone_number, address,adhar_card_number,adhar_card_status,pan_card,skill,active_ind,preferred_job_location)"
                 colValues = "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
                 sql = statement+colNames+colValues
-
-                val = (laborerId,parentId,fname,lname,gender,phno,address,adharNo,aadharStatus,panCard,skill,activeInd,preferredJobLocation)
+                val = (person.getLaborerId(),person.getParentId(),person.getFirstname(),person.getLastname(),person.getGender(),person.getPhoneNumber(),person.getAddress(),person.getAadharNo(),person.getAadharStatus(),person.getPanCard(),person.getSkill(),person.getActiveInd(),person.getPrefLoc())
                 cursor.execute(sql,val)
                 connection.commit()
                 print("Inserted successfully")
@@ -49,8 +48,8 @@ class PersonTransaction:
                 print("MySQL connection is closed")
 
     # TODO Update rest of sql functions like create, they are referring to old table schema
-    def createLaborer(self,laborerId,parentId,fname,lname,gender,phno,address,adharNo,aadharStatus,panCard,skill,activeInd,preferredJobLocation):
-        future = th.executor.submit(self.createTask,laborerId,parentId,fname,lname,gender,phno,address,adharNo,aadharStatus,panCard,skill,activeInd,preferredJobLocation)
+    def createLaborer(self,person):
+        future = th.executor.submit(self.createTask,person)
         return future.result()
 
     def deleteById(id):
