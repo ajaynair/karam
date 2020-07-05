@@ -204,6 +204,26 @@ def modify_laborer_profile(pid):
 
     return jsonify(resp)
 
+'''
+Modify a profile of a contractor
+'''
+@app.route('/v1.0/person/contractor/<pid>', methods=['PUT'])
+def modify_contractor_profile(pid):
+    data = json.loads(request.get_data())
+
+    contractor = ContractorPOJO.ContractorPOJO()
+    contractor = contractor.setContractorId(pid).setFirstname(data['information']['fname']).setLastname(data['information']['lname']).setPhoneNumber(data['information']['phno'])
+    contractor = contractor.setAddress(data['information']['address']).setAadharStatus(data['information']['aadharStatus']).setAadharNo(data['information']['aadharNumber'])
+    contractor = contractor.setPanCard(data['information']['panCard']).setSkill(data['information']['skill']).setActiveInd(data['information']['activeInd']).setPrefLoc(data['information']['preferred_location'])
+
+    obj1 = PersonTransaction.PersonTransaction()
+    status = obj1.updateContractor(contractor)
+    resp = {
+        "status" : status
+    }
+
+    return jsonify(resp)
+
 @app.route('/v1.0/person/laborer/<pid>/laborer', methods=['GET'])
 def get_laborer_and_friends(pid):
     resp = {
