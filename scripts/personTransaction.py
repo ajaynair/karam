@@ -117,6 +117,39 @@ class PersonTransaction:
                 connection.close()
                 print("MySQL connection is closed")
 
+    def createJob(self,job):
+        future = th.executor.submit(self.createJobTask,job)
+        return future.result()
+
+    def createJobTask(self,job):
+        connection = mysql.connector.connect(host=self.hostURL,
+                                    database=self.dbName,
+                                    user=self.userName,
+                                    password=self.userPassword)
+        try:
+            if connection.is_connected():
+                db_Info = connection.get_server_info()
+                print("Connected to MySQL Server version ", db_Info)
+                cursor = connection.cursor()
+                statement = "Insert into karamdb.job"
+                colNames = "(job_id,labour_id,contractor_id,active_ind)"
+                colValues = "VALUES (%s,%s,%s,%s)"
+                sql = statement+colNames+colValues
+                val = (job.getJobId(),job.getLaborerId(),job.getContractorId(),job.getActiveInd())
+                cursor.execute(sql,val)
+                connection.commit()
+                print("Inserted successfully in job table")
+                return "SUCCESS"
+
+        except Error as e:
+            print("Error while inserting into user table", e)
+            return str(e)
+        finally:
+            if (connection.is_connected()):
+                cursor.close()
+                connection.close()
+                print("MySQL connection is closed")
+
     def createUser(self,user):
         future = th.executor.submit(self.createUserTask,user)
         return future.result()
