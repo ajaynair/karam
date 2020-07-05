@@ -2,6 +2,7 @@ import mysql.connector
 from mysql.connector import Error
 import configparser
 import os
+from datetime import datetime
 from ThreadExecutor import ThreadExecutor
 
 class PersonTransaction:
@@ -47,7 +48,7 @@ class PersonTransaction:
                 connection.close()
                 print("MySQL connection is closed")
 
-    # TODO Update rest of sql functions like create, they are referring to old table schema
+
     def createLaborer(self,laborer):
         future = th.executor.submit(self.createLaborerTask,laborer)
         return future.result()
@@ -85,6 +86,39 @@ class PersonTransaction:
     # TODO Update rest of sql functions like create, they are referring to old table schema
     def createContractor(self,contractor):
         future = th.executor.submit(self.createContractorTask,contractor)
+        return future.result()
+
+    def createUserTask(self,user):
+        connection = mysql.connector.connect(host=self.hostURL,
+                                    database=self.dbName,
+                                    user=self.userName,
+                                    password=self.userPassword)
+        try:
+            if connection.is_connected():
+                db_Info = connection.get_server_info()
+                print("Connected to MySQL Server version ", db_Info)
+                cursor = connection.cursor()
+                statement = "Insert into karamdb.user"
+                colNames = "(user_id,role_type,user_name,password_hash)"
+                colValues = "VALUES (%s,%s,%s,%s)"
+                sql = statement+colNames+colValues
+                val = (user.getUserId(),user.getRoleType(),user.getUserName(),user.getPasswordHash())
+                cursor.execute(sql,val)
+                connection.commit()
+                print("Inserted successfully in user table")
+                return "SUCCESS"
+
+        except Error as e:
+            print("Error while inserting into user table", e)
+            return str(e)
+        finally:
+            if (connection.is_connected()):
+                cursor.close()
+                connection.close()
+                print("MySQL connection is closed")
+
+    def createUser(self,user):
+        future = th.executor.submit(self.createUserTask,user)
         return future.result()
 
     def deleteById(id):
