@@ -3,7 +3,7 @@ import os
 
 from flask import Flask, jsonify, request
 import json
-import personTransaction,PersonPOJO
+import PersonTransaction,LaborerPOJO,ContractorPOJO
 
 app = Flask(__name__)
 
@@ -118,15 +118,19 @@ Creates a profile of a contractor
 @app.route('/v1.0/person/contractor', methods=['POST'])
 def create_contractor_profile():
     data = json.loads(request.get_data())
-    print(data)
+    contractor = ContractorPOJO.ContractorPOJO()
 
-    #name = data['information']['name']
-    #address = data['information']['address']
-    #contactno = data['information']['contactno']
-    #age = data['information']['age']
+    #TODO We need to remove some colums from database maybe
+    #TODO check how to do multiline code intendentation in python
+    contractor = contractor.setContractorId(data['information']['contractorId']).setParentId(data['information']['parentId']).setFirstname(data['information']['fname'])
+    contractor = contractor.setLastname(data['information']['lname']).setGender(data['information']['gender']).setPhoneNumber(data['information']['phno'])
+    contractor = contractor.setAddress(data['information']['address']).setAadharStatus(data['information']['aadharStatus']).setAadharNo(data['information']['aadharNumber'])
+    contractor = contractor.setPanCard(data['information']['panCard']).setSkill(data['information']['skill']).setActiveInd(data['information']['activeInd']).setPrefLoc(data['information']['preferred_location'])
 
+    obj1 = PersonTransaction.PersonTransaction()
+    status = obj1.createContractor(contractor)
     resp = {
-        "error": 1
+        "status" : status
     }
 
     return jsonify(resp)
@@ -137,16 +141,17 @@ Creates a profile of a laborer
 @app.route('/v1.0/person/laborer', methods=['POST'])
 def create_laborer_profile():
     data = json.loads(request.get_data())
-    person = PersonPOJO.PersonPOJO()
+    laborer = LaborerPOJO.LaborerPOJO()
 
+    #TODO We need to remove some colums from database maybe
     #TODO check how to do multiline code intendentation in python
-    person = person.setLaborerId(data['information']['laborerId']).setParentId(data['information']['parentId']).setFirstname(data['information']['fname'])
-    person = person.setLastname(data['information']['lname']).setGender(data['information']['gender']).setPhoneNumber(data['information']['phno'])
-    person = person.setAddress(data['information']['address']).setAadharStatus(data['information']['aadharStatus']).setAadharNo(data['information']['aadharNumber'])
-    person = person.setPanCard(data['information']['panCard']).setSkill(data['information']['skill']).setActiveInd(data['information']['activeInd']).setPrefLoc(data['information']['preferred_location'])
+    laborer = laborer.setLaborerId(data['information']['laborerId']).setParentId(data['information']['parentId']).setFirstname(data['information']['fname'])
+    laborer = laborer.setLastname(data['information']['lname']).setGender(data['information']['gender']).setPhoneNumber(data['information']['phno'])
+    laborer = laborer.setAddress(data['information']['address']).setAadharStatus(data['information']['aadharStatus']).setAadharNo(data['information']['aadharNumber'])
+    laborer = laborer.setPanCard(data['information']['panCard']).setSkill(data['information']['skill']).setActiveInd(data['information']['activeInd']).setPrefLoc(data['information']['preferred_location'])
 
-    obj1 = personTransaction.PersonTransaction()
-    status = obj1.createLaborer(person)
+    obj1 = PersonTransaction.PersonTransaction()
+    status = obj1.createLaborer(laborer)
     resp = {
         "status" : status
     }

@@ -1,4 +1,4 @@
-class PersonPOJO:
+class LaborerPOJO:
 
     def setLaborerId(self, laborerId):
         self.laborerId=laborerId
