@@ -3,7 +3,7 @@ import os
 
 from flask import Flask, jsonify, request
 import json
-import personTransaction
+import personTransaction,PersonPOJO
 
 app = Flask(__name__)
 
@@ -137,27 +137,16 @@ Creates a profile of a laborer
 @app.route('/v1.0/person/laborer', methods=['POST'])
 def create_laborer_profile():
     data = json.loads(request.get_data())
-    print ('start')
-    print(data)
-    print ('end')
+    person = PersonPOJO.PersonPOJO()
 
-    laborerId = data['information']['laborerId']
-    parentId = data['information']['parentId']
-    fname = data['information']['fname']
-    lname = data['information']['lname']
-    gender = data['information']['gender']
-    phno = data['information']['phno']
-    address = data['information']['address']
-    aadharStatus = data['information']['aadharStatus']
-    adharNo = data['information']['aadharNumber']
-    panCard = data['information']['panCard']
-    skill = data['information']['skill']
-    activeInd = data['information']['activeInd']
-    preferredJobLocation = data['information']['preferred_location']
-    #age = data['information']['age'] add this to database column
+    #TODO check how to do multiline code intendentation in python
+    person = person.setLaborerId(data['information']['laborerId']).setParentId(data['information']['parentId']).setFirstname(data['information']['fname'])
+    person = person.setLastname(data['information']['lname']).setGender(data['information']['gender']).setPhoneNumber(data['information']['phno'])
+    person = person.setAddress(data['information']['address']).setAadharStatus(data['information']['aadharStatus']).setAadharNo(data['information']['aadharNumber'])
+    person = person.setPanCard(data['information']['panCard']).setSkill(data['information']['skill']).setActiveInd(data['information']['activeInd']).setPrefLoc(data['information']['preferred_location'])
 
     obj1 = personTransaction.PersonTransaction()
-    status = obj1.createLaborer(laborerId,parentId,fname,lname,gender,phno,address,adharNo,aadharStatus,panCard,skill,activeInd,preferredJobLocation)
+    status = obj1.createLaborer(person)
     resp = {
         "status" : status
     }
