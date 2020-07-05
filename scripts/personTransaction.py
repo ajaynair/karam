@@ -200,6 +200,68 @@ class PersonTransaction:
         future = th.executor.submit(self.createContractorTask,contractor)
         return future.result()
 
+    def updateContractorTask(self,contractor):
+        connection = mysql.connector.connect(host=self.hostURL,
+                                            database=self.dbName,
+                                            user=self.userName,
+                                            password=self.userPassword)
+        try:
+            if connection.is_connected():
+                db_Info = connection.get_server_info()
+                print("Connected to MySQL Server version ", db_Info)
+                cursor = connection.cursor()
+                sql = "update karamdb.contractor set "
+                values = []
+                if(contractor.getFirstname()):
+                    sql+="first_name = %s,"
+                    values.append(contractor.getFirstname())
+                if(contractor.getLastname()):
+                    sql+="last_name = %s,"
+                    values.append(contractor.getLastname())
+                if(contractor.getPhoneNumber()):
+                    sql+="phone_number = %s,"
+                    values.append(contractor.getPhoneNumber())
+                if(contractor.getAddress()):
+                    sql+="address = %s,"
+                    values.append(contractor.getAddress())
+                if(contractor.getAadharStatus()):
+                    sql+="adhar_card_status = %s,"
+                    values.append(contractor.getAadharStatus())
+                if(contractor.getAadharNo()):
+                    sql+="adhar_card_number = %s,"
+                    values.append(contractor.getAadharNo())
+                if(contractor.getPanCard()):
+                    sql+="pan_card = %s,"
+                    values.append(contractor.getPanCard())
+                if(contractor.getSkill()):
+                    sql+="skill = %s,"
+                    values.append(contractor.getSkill())
+                if(contractor.getActiveInd()):
+                    sql+="active_ind = %s,"
+                    values.append(contractor.getActiveInd())
+                if(contractor.getPrefLoc()):
+                    sql+="preferred_job_location = %s,"
+                    values.append(contractor.getPrefLoc())
+
+                sql=sql.rstrip(',')
+                cursor.execute(sql, values)
+                connection.commit()
+                print("Updated successfully contractor table for "+contractor.getContractorId())
+                return "SUCCESS"
+
+        except Error as e:
+            print("Error while connecting to MySQL", e)
+            return str(e)
+        finally:
+            if (connection.is_connected()):
+                cursor.close()
+                connection.close()
+                print("MySQL connection is closed")
+
+    def updateContractor(self,contractor):
+        future = th.executor.submit(self.updateContractorTask,contractor)
+        return future.result()
+
     def getAllContractorTask(self):
         connection = mysql.connector.connect(host=self.hostURL,
                                              database=self.dbName,
