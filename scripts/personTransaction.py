@@ -18,7 +18,7 @@ class PersonTransaction:
     global th
     th = ThreadExecutor.instance()
 
-    def createTask(self,person):
+    def createLaborerTask(self,laborer):
         connection = mysql.connector.connect(host=self.hostURL,
                                     database=self.dbName,
                                     user=self.userName,
@@ -32,14 +32,14 @@ class PersonTransaction:
                 colNames = "(laborer_id,parent_id, first_name, last_name, gender, phone_number, address,adhar_card_number,adhar_card_status,pan_card,skill,active_ind,preferred_job_location)"
                 colValues = "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
                 sql = statement+colNames+colValues
-                val = (person.getLaborerId(),person.getParentId(),person.getFirstname(),person.getLastname(),person.getGender(),person.getPhoneNumber(),person.getAddress(),person.getAadharNo(),person.getAadharStatus(),person.getPanCard(),person.getSkill(),person.getActiveInd(),person.getPrefLoc())
+                val = (laborer.getLaborerId(),laborer.getParentId(),laborer.getFirstname(),laborer.getLastname(),laborer.getGender(),laborer.getPhoneNumber(),laborer.getAddress(),laborer.getAadharNo(),laborer.getAadharStatus(),laborer.getPanCard(),laborer.getSkill(),laborer.getActiveInd(),laborer.getPrefLoc())
                 cursor.execute(sql,val)
                 connection.commit()
-                print("Inserted successfully")
+                print("Inserted successfully in laborer table")
                 return "SUCCESS"
 
         except Error as e:
-            print("Error while connecting to MySQL", e)
+            print("Error while inserting into laborer table", e)
             return str(e)
         finally:
             if (connection.is_connected()):
@@ -48,8 +48,43 @@ class PersonTransaction:
                 print("MySQL connection is closed")
 
     # TODO Update rest of sql functions like create, they are referring to old table schema
-    def createLaborer(self,person):
-        future = th.executor.submit(self.createTask,person)
+    def createLaborer(self,laborer):
+        future = th.executor.submit(self.createLaborerTask,laborer)
+        return future.result()
+
+    def createContractorTask(self,contractor):
+        connection = mysql.connector.connect(host=self.hostURL,
+                                    database=self.dbName,
+                                    user=self.userName,
+                                    password=self.userPassword)
+        try:
+            if connection.is_connected():
+                db_Info = connection.get_server_info()
+                print("Connected to MySQL Server version ", db_Info)
+                cursor = connection.cursor()
+                statement = "Insert into karamdb.contractor"
+                colNames = "(contractor_id,parent_id, first_name, last_name, gender, phone_number, address,adhar_card_number,adhar_card_status,pan_card,skill,active_ind,preferred_job_location)"
+                colValues = "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+                sql = statement+colNames+colValues
+                # TODO how to make it multiline
+                val = (contractor.getContractorId(),contractor.getParentId(),contractor.getFirstname(),contractor.getLastname(),contractor.getGender(),contractor.getPhoneNumber(),contractor.getAddress(),contractor.getAadharNo(),contractor.getAadharStatus(),contractor.getPanCard(),contractor.getSkill(),contractor.getActiveInd(),contractor.getPrefLoc())
+                cursor.execute(sql,val)
+                connection.commit()
+                print("Inserted successfully in contractor table")
+                return "SUCCESS"
+
+        except Error as e:
+            print("Error while inserting into contractor table", e)
+            return str(e)
+        finally:
+            if (connection.is_connected()):
+                cursor.close()
+                connection.close()
+                print("MySQL connection is closed")
+
+    # TODO Update rest of sql functions like create, they are referring to old table schema
+    def createContractor(self,contractor):
+        future = th.executor.submit(self.createContractorTask,contractor)
         return future.result()
 
     def deleteById(id):
