@@ -61,25 +61,11 @@ Returns a list of job details
 '''
 @app.route('/v1.0/person/laborer', methods=['GET'])
 def get_laborer_list():
-    #data = json.loads(request.get_data())
-
-    #skills = data['filter']['skills']
-    #locations = data['filter']['locations']
-
-    resp = {
-        "id": 1,
-        "name": "test_name",
-        "age": 20,
-        "gender": "M",
-        "location": "Pune, Mumbai",
-        "skill": "Carpenter",
-        "PhoneNo": 9923033442,
-        "aadharStatus": 1,
-        #            "links": {
-        #                "self": request.path + '/1',
-        #                "parent": request.path
-        #            }
-    }
+    data = json.loads(request.get_data())
+    skills = data['filter']['skills']
+    locations = data['filter']['locations']
+    obj1 = PersonTransaction.PersonTransaction()
+    return jsonify(obj1.getAllLaborer(skills, locations))
     '''
     resporg = {
         {
@@ -111,7 +97,6 @@ def get_laborer_list():
         }
     }
     '''
-    return jsonify(resp)
 
 '''
 Creates a job profile for laborer and contractor
