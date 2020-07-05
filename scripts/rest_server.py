@@ -204,6 +204,26 @@ def modify_laborer_profile(pid):
 
     return jsonify(resp)
 
+
+'''
+sample request for modify
+{
+    "information" :
+    {
+    "fname": "",
+    "lname": "",
+    "gender": "",
+    "phno": "",
+    "address": "",
+    "aadharStatus": "",
+    "aadharNumber" : "",
+    "panCard" : "",
+    "skill" : "BUILDING",
+    "activeInd" : "",
+    "preferred_location": "MAHARASTRA"
+    }
+}
+'''
 '''
 Modify a profile of a contractor
 '''
