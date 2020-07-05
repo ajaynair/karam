@@ -118,7 +118,6 @@ def create_user_profile():
 
     return jsonify(resp)
 
-
 '''
 Creates a profile of a contractor
 '''
@@ -166,23 +165,41 @@ def create_laborer_profile():
     return jsonify(resp)
 
 '''
+Create a laborer profile for a friend
+'''
+@app.route('/v1.0/person/laborer/<pid>/laborer', methods=['POST'])
+def create_friend_profile(pid):
+    data = json.loads(request.get_data())
+    laborer = LaborerPOJO.LaborerPOJO()
+    laborer = laborer.setLaborerId(data['information']['laborerId']).setParentId(pid).setFirstname(data['information']['fname'])
+    laborer = laborer.setLastname(data['information']['lname']).setGender(data['information']['gender']).setPhoneNumber(data['information']['phno'])
+    laborer = laborer.setAddress(data['information']['address']).setAadharStatus(data['information']['aadharStatus']).setAadharNo(data['information']['aadharNumber'])
+    laborer = laborer.setPanCard(data['information']['panCard']).setSkill(data['information']['skill']).setActiveInd(data['information']['activeInd']).setPrefLoc(data['information']['preferred_location'])
+
+    obj1 = PersonTransaction.PersonTransaction()
+    status = obj1.createLaborer(laborer)
+    resp = {
+        "status" : status
+    }
+
+    return jsonify(resp)
+
+'''
 Modify a profile of a laborer
 '''
 @app.route('/v1.0/person/laborer/<pid>', methods=['PUT'])
 def modify_laborer_profile(pid):
     data = json.loads(request.get_data())
-    print(jsonify(data))
 
-    name = data['information']['name']
-    address = data['information']['address']
-    contactno = data['information']['contactno']
-    age = data['information']['age']
-    preferred_location = data['information']['preferred_location']
-    aadhar_status = data['information']['aadhar_status']
-    work_status = data['information']['work_status']
+    laborer = LaborerPOJO.LaborerPOJO()
+    laborer = laborer.setLaborerId(pid).setFirstname(data['information']['fname']).setLastname(data['information']['lname']).setPhoneNumber(data['information']['phno'])
+    laborer = laborer.setAddress(data['information']['address']).setAadharStatus(data['information']['aadharStatus']).setAadharNo(data['information']['aadharNumber'])
+    laborer = laborer.setPanCard(data['information']['panCard']).setSkill(data['information']['skill']).setActiveInd(data['information']['activeInd']).setPrefLoc(data['information']['preferred_location'])
 
+    obj1 = PersonTransaction.PersonTransaction()
+    status = obj1.updateLaborer(laborer)
     resp = {
-        "error": 0
+        "status" : status
     }
 
     return jsonify(resp)
@@ -235,20 +252,6 @@ def get_person_session():
     return jsonify(resp)
 
 
-@app.route('/v1.0/person/laborer/<pid>/laborer', methods=['POST'])
-def create_friend_profile(pid):
-    data = json.loads(request.get_data())
-    name = data['information']['name']
-    address = data['information']['address']
-    contactno = data['information']['contactno']
-    age = data['information']['age']
-    preferred_location = data['information']['preferred_location']
-    aadhar_status = data['information']['aadhar_status']
-
-    resp = {
-        "error": 0
-    }
-    return jsonify(resp)
 
 
 ##################################################################

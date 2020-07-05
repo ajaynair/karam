@@ -53,6 +53,70 @@ class PersonTransaction:
         future = th.executor.submit(self.createLaborerTask,laborer)
         return future.result()
 
+    def updateLaborerTask(self,laborer):
+        connection = mysql.connector.connect(host=self.hostURL,
+                                            database=self.dbName,
+                                            user=self.userName,
+                                            password=self.userPassword)
+        try:
+            if connection.is_connected():
+                db_Info = connection.get_server_info()
+                print("Connected to MySQL Server version ", db_Info)
+                cursor = connection.cursor()
+                sql = "update karamdb.laborer set "
+                values = []
+                if(laborer.getFirstname()):
+                    sql+="first_name = %s,"
+                    values.append(laborer.getFirstname())
+                if(laborer.getLastname()):
+                    sql+="last_name = %s,"
+                    values.append(laborer.getLastname())
+                if(laborer.getPhoneNumber()):
+                    sql+="phone_number = %s,"
+                    values.append(laborer.getPhoneNumber())
+                if(laborer.getAddress()):
+                    sql+="address = %s,"
+                    values.append(laborer.getAddress())
+                if(laborer.getAadharStatus()):
+                    sql+="adhar_card_status = %s,"
+                    values.append(laborer.getAadharStatus())
+                if(laborer.getAadharNo()):
+                    sql+="adhar_card_number = %s,"
+                    values.append(laborer.getAadharNo())
+                if(laborer.getPanCard()):
+                    sql+="pan_card = %s,"
+                    values.append(laborer.getPanCard())
+                if(laborer.getSkill()):
+                    sql+="skill = %s,"
+                    values.append(laborer.getSkill())
+                if(laborer.getActiveInd()):
+                    sql+="active_ind = %s,"
+                    values.append(laborer.getActiveInd())
+                if(laborer.getPrefLoc()):
+                    sql+="preferred_job_location = %s,"
+                    values.append(laborer.getPrefLoc())
+
+                sql=sql.rstrip(',')
+                print(sql)
+                print(values)
+                cursor.execute(sql,values)
+                connection.commit()
+                print("Updated successfully laborer table for "+laborer.getLaborerId())
+                return "SUCCESS"
+
+        except Error as e:
+            print("Error while connecting to MySQL", e)
+            return str(e)
+        finally:
+            if (connection.is_connected()):
+                cursor.close()
+                connection.close()
+                print("MySQL connection is closed")
+
+    def updateLaborer(self,laborer):
+        future = th.executor.submit(self.updateLaborerTask,laborer)
+        return future.result()
+
     def getAllLaborerTask(self, skills, locations):
         connection = mysql.connector.connect(host=self.hostURL,
                                              database=self.dbName,
@@ -248,209 +312,6 @@ class PersonTransaction:
                 cursor = connection.cursor()
                 sql = "delete from karamdb.person where person_id = %s"
                 val = (id,)
-                cursor.execute(sql,val)
-                connection.commit()
-                record = cursor.fetchone()
-                print("You're connected to database: ", record)
-
-        except Error as e:
-            print("Error while connecting to MySQL", e)
-        finally:
-            if (connection.is_connected()):
-                cursor.close()
-                connection.close()
-                print("MySQL connection is closed")
-
-    def updateFirstName(firstName, id):
-        future = th.executor.submit(updateFirstNameTask,firstName,id)
-        return future.result()
-
-    def updateFirstNameTask(firstName, id):
-        try:
-            connection = mysql.connector.connect(host=hostURL,
-                                                database=dbName,
-                                                user=userName,
-                                                password=userPassword)
-            if connection.is_connected():
-                db_Info = connection.get_server_info()
-                print("Connected to MySQL Server version ", db_Info)
-                cursor = connection.cursor()
-                sql = "update karamdb.person set first_name = %s where person_id = %s"
-                val = (firstName,id,)
-                cursor.execute(sql,val)
-                connection.commit()
-                record = cursor.fetchone()
-                print("You're connected to database: ", record)
-
-        except Error as e:
-            print("Error while connecting to MySQL", e)
-        finally:
-            if (connection.is_connected()):
-                cursor.close()
-                connection.close()
-                print("MySQL connection is closed")
-
-    def updateLastName(lastName, id):
-        future = th.executor.submit(updateLastNameTask,lastName,id)
-        return future.result()
-
-    def updateLastNameTask(lastName, id):
-        try:
-            connection = mysql.connector.connect(host=hostURL,
-                                                 database=dbName,
-                                                 user=userName,
-                                                 password=userPassword)
-            if connection.is_connected():
-                db_Info = connection.get_server_info()
-                print("Connected to MySQL Server version ", db_Info)
-                cursor = connection.cursor()
-                sql = "update karamdb.person set last_name = %s where person_id = %s"
-                val = (lastName,id,)
-                cursor.execute(sql,val)
-                connection.commit()
-                record = cursor.fetchone()
-                print("You're connected to database: ", record)
-
-        except Error as e:
-            print("Error while connecting to MySQL", e)
-        finally:
-            if (connection.is_connected()):
-                cursor.close()
-                connection.close()
-                print("MySQL connection is closed")
-
-    def updatePhoneNumber(phoneNumber, id):
-        future = th.executor.submit(updatePhoneNumberTask,phoneNumber,id)
-        return future.result()
-
-    def updatePhoneNumberTask(phoneNumber, id):
-        try:
-            connection = mysql.connector.connect(host=hostURL,
-                                                 database=dbName,
-                                                 user=userName,
-                                                 password=userPassword)
-            if connection.is_connected():
-                db_Info = connection.get_server_info()
-                print("Connected to MySQL Server version ", db_Info)
-                cursor = connection.cursor()
-                sql = "update karamdb.person set phone_number = %s where person_id = %s"
-                val = (phoneNumber, id,)
-                cursor.execute(sql,val)
-                connection.commit()
-                record = cursor.fetchone()
-                print("You're connected to database: ", record)
-
-        except Error as e:
-            print("Error while connecting to MySQL", e)
-        finally:
-            if (connection.is_connected()):
-                cursor.close()
-                connection.close()
-                print("MySQL connection is closed")
-
-    def updateAddress(address, id):
-        future = th.executor.submitt(updateAddressTask,address,id)
-        return future.result()
-
-    def updateAddressTask(address, id):
-        try:
-            connection = mysql.connector.connect(host=hostURL,
-                                                 database=dbName,
-                                                 user=userName,
-                                                 password=userPassword)
-            if connection.is_connected():
-                db_Info = connection.get_server_info()
-                print("Connected to MySQL Server version ", db_Info)
-                cursor = connection.cursor()
-                sql = "update karamdb.person set ADDRESS = %s where person_id = %s"
-                val = (address, id,)
-                cursor.execute(sql,val)
-                connection.commit()
-                record = cursor.fetchone()
-                print("You're connected to database: ", record)
-
-        except Error as e:
-            print("Error while connecting to MySQL", e)
-        finally:
-            if (connection.is_connected()):
-                cursor.close()
-                connection.close()
-                print("MySQL connection is closed")
-
-    def updatePanCard(panCard, id):
-        future = th.executor.submit(updatePanCardTask,panCard,id)
-        return future.result()
-
-    def updatePanCardTask(panCard, id):
-        try:
-            connection = mysql.connector.connect(host=hostURL,
-                                                 database=dbName,
-                                                 user=userName,
-                                                 password=userPassword)
-            if connection.is_connected():
-                db_Info = connection.get_server_info()
-                print("Connected to MySQL Server version ", db_Info)
-                cursor = connection.cursor()
-                sql = "update karamdb.person set pan_card = %s where person_id = %s"
-                val = (panCard, id,)
-                cursor.execute(sql,val)
-                connection.commit()
-                record = cursor.fetchone()
-                print("You're connected to database: ", record)
-
-        except Error as e:
-            print("Error while connecting to MySQL", e)
-        finally:
-            if (connection.is_connected()):
-                cursor.close()
-                connection.close()
-                print("MySQL connection is closed")
-
-    def updateAdharCardNumber(adharCardNumber, id):
-        future = th.executor.submit(updateAdharCardNumberTask,adharCardNumber,id)
-        return future.result()
-
-    def updateAdharCardNumberTask(adharCardNumber, id):
-        try:
-            connection = mysql.connector.connect(host=hostURL,
-                                                 database=dbName,
-                                                 user=userName,
-                                                 password=userPassword)
-            if connection.is_connected():
-                db_Info = connection.get_server_info()
-                print("Connected to MySQL Server version ", db_Info)
-                cursor = connection.cursor()
-                sql = "update karamdb.person set adhar_card_number = %s where person_id = %s"
-                val = (adharCardNumber, id,)
-                cursor.execute(sql,val)
-                connection.commit()
-                record = cursor.fetchone()
-                print("You're connected to database: ", record)
-
-        except Error as e:
-            print("Error while connecting to MySQL", e)
-        finally:
-            if (connection.is_connected()):
-                cursor.close()
-                connection.close()
-                print("MySQL connection is closed")
-
-    def updateAdharCardStatus(status, id):
-        future = th.executor.submit(updateAdharCardStatusTask,status,id)
-        return future.result()
-
-    def updateAdharCardStatusTask(status, id):
-        try:
-            connection = mysql.connector.connect(host=hostURL,
-                                                 database=dbName,
-                                                 user=userName,
-                                                 password=userPassword)
-            if connection.is_connected():
-                db_Info = connection.get_server_info()
-                print("Connected to MySQL Server version ", db_Info)
-                cursor = connection.cursor()
-                sql = "update karamdb.person set adhar_card_status = %s where person_id = %s"
-                val = (status, id,)
                 cursor.execute(sql,val)
                 connection.commit()
                 record = cursor.fetchone()
