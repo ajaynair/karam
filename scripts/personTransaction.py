@@ -136,6 +136,36 @@ class PersonTransaction:
         future = th.executor.submit(self.createContractorTask,contractor)
         return future.result()
 
+    def getAllContractorTask(self):
+        connection = mysql.connector.connect(host=self.hostURL,
+                                             database=self.dbName,
+                                             user=self.userName,
+                                             password=self.userPassword)
+        try:
+            if connection.is_connected():
+                db_Info = connection.get_server_info()
+                print("Connected to MySQL Server version ", db_Info)
+                cursor = connection.cursor()
+                sql = "SELECT * FROM karamdb.contractor"
+                cursor.execute(sql)
+                row_headers=[x[0] for x in cursor.description]
+                rec = cursor.fetchall()
+                json_data=[]
+                for res in rec:
+                    json_data.append(dict(zip(row_headers,res)))
+                return json_data
+        except Error as e:
+            print("Error while connecting to MySQL", e)
+        finally:
+            if (connection.is_connected()):
+                cursor.close()
+                connection.close()
+                print("MySQL connection is closed")
+
+    def getAllContractor(self):
+        future = th.executor.submit(self.getAllContractorTask)
+        return future.result()
+
     def createUserTask(self,user):
         connection = mysql.connector.connect(host=self.hostURL,
                                     database=self.dbName,

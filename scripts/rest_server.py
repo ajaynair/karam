@@ -66,37 +66,15 @@ def get_laborer_list():
     locations = data['filter']['locations']
     obj1 = PersonTransaction.PersonTransaction()
     return jsonify(obj1.getAllLaborer(skills, locations))
-    '''
-    resporg = {
-        {
-            "id": 1,
-            "name": "test_name",
-            "age": 20,
-            "gender": "M",
-            "location": "Pune, Mumbai",
-            "skill": "Carpenter",
-            "PhoneNo": 9923033442,
-            "aadharStatus": 1,
-#            "links": {
-#                "self": request.path + '/1',
-#                "parent": request.path
-#            }
-        },
-        {
-            "id": 2,
-            "Name": "test_name2",
-            "Age": 20,
-            "Gender": "M",
-            "Preferred Location": "Pune, Mumbai",
-            "Skill": "Carpenter",
-            "Contact No": 9923033442,
-            "links": {
-                "self": request.path + '/2',
-                "parent": request.path
-            }
-        }
-    }
-    '''
+
+'''
+Returns a list of contractors
+'''
+@app.route('/v1.0/person/contractor', methods=['GET'])
+def get_contractor_list():
+    data = json.loads(request.get_data())
+    obj1 = PersonTransaction.PersonTransaction()
+    return jsonify(obj1.getAllContractor())
 
 '''
 Creates a job profile for laborer and contractor
