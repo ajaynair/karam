@@ -3,7 +3,7 @@ import os
 
 from flask import Flask, jsonify, request
 import json
-from personTransaction.py import *
+import personTransaction
 
 app = Flask(__name__)
 
@@ -137,7 +137,7 @@ Creates a profile of a laborer
 @app.route('/v1.0/person/laborer', methods=['POST'])
 def create_laborer_profile():
     data = json.loads(request.get_data())
-    print ('strat')
+    print ('start')
     print(data)
     print ('end')
 
@@ -154,14 +154,12 @@ def create_laborer_profile():
     skill = data['information']['skill']
     activeInd = data['information']['activeInd']
     preferredJobLocation = data['information']['preferred_location']
-    #age = data['information']['age'] add this to database column 
+    #age = data['information']['age'] add this to database column
 
-    personTransaction obj1 = personTransaction()
-    status = obj1.createLaborer(laborerId,parentId,fname,lname,gender,phno,address,adharNo,adharStatus,panCard,skill,activeInd,preferredJobLocation):
-
+    obj1 = personTransaction.PersonTransaction()
+    status = obj1.createLaborer(laborerId,parentId,fname,lname,gender,phno,address,adharNo,aadharStatus,panCard,skill,activeInd,preferredJobLocation)
     resp = {
         "status" : status
-        "error": 2
     }
 
     return jsonify(resp)

@@ -14,41 +14,44 @@ class PersonTransaction:
     hostURL = config.get('configuration','host').strip('"')
     dbName = config.get('configuration','database').strip('"')
 
+    #TODO check why having global keyword is necessary
+    global th
     th = ThreadExecutor.instance()
-    # TODO Update rest of sql functions like create, they are referring to old table schema
-    def createLaborer(id,parentId,fname,lname,gender,phno,address,adharNo,adharStatus,panCardNo,skill,activeInd,preferredJobLocation):
-        future = th.executor.submit(createTask,id,parent_id,fname,lname,gender,phno,address,adharNo,adharStatus,panCardNo,skill,activeInd,preferredJobLocation)
-        return future.result()
 
-    def createTask(id,parentId,fname,lname,gender,phno,address,adharNo,adharStatus,panCardNo,skill,activeInd,preferredJobLocation):
+    def createTask(self,laborerId,parentId,fname,lname,gender,phno,address,adharNo,aadharStatus,panCard,skill,activeInd,preferredJobLocation):
+        connection = mysql.connector.connect(host=self.hostURL,
+                                    database=self.dbName,
+                                    user=self.userName,
+                                    password=self.userPassword)
         try:
-            connection = mysql.connector.connect(host=hostURL,
-                                                database=dbName,
-                                                user=userName,
-                                                password=userPassword)
             if connection.is_connected():
                 db_Info = connection.get_server_info()
                 print("Connected to MySQL Server version ", db_Info)
                 cursor = connection.cursor()
                 statement = "Insert into karamdb.laborer"
-                colNames = "(laborer_id, first_name, last_name, gender, phone_number, address,adhar_card_number,adhar_card_status,pan_card,skill,active_ind,preferred_job_location)"
+                colNames = "(laborer_id,parent_id, first_name, last_name, gender, phone_number, address,adhar_card_number,adhar_card_status,pan_card,skill,active_ind,preferred_job_location)"
                 colValues = "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
                 sql = statement+colNames+colValues
 
-                val = (id,parentId,fname,lname,gender,phno,address,adharNo,adharStatus,panCardNo,skill,activeInd,preferredJobLocation)
+                val = (laborerId,parentId,fname,lname,gender,phno,address,adharNo,aadharStatus,panCard,skill,activeInd,preferredJobLocation)
                 cursor.execute(sql,val)
                 connection.commit()
-                record = cursor.fetchone()
-                print("You're connected to database: ", record)
+                print("Inserted successfully")
+                return "SUCCESS"
 
-            except Error as e:
-                print("Error while connecting to MySQL", e)
-            finally:
-                if (connection.is_connected()):
-                    cursor.close()
-                    connection.close()
-                    print("MySQL connection is closed")
+        except Error as e:
+            print("Error while connecting to MySQL", e)
+            return str(e)
+        finally:
+            if (connection.is_connected()):
+                cursor.close()
+                connection.close()
+                print("MySQL connection is closed")
 
+    # TODO Update rest of sql functions like create, they are referring to old table schema
+    def createLaborer(self,laborerId,parentId,fname,lname,gender,phno,address,adharNo,aadharStatus,panCard,skill,activeInd,preferredJobLocation):
+        future = th.executor.submit(self.createTask,laborerId,parentId,fname,lname,gender,phno,address,adharNo,aadharStatus,panCard,skill,activeInd,preferredJobLocation)
+        return future.result()
 
     def deleteById(id):
         future = th.executor.submit(deleteByIdTask,id)
@@ -71,13 +74,13 @@ class PersonTransaction:
                 record = cursor.fetchone()
                 print("You're connected to database: ", record)
 
-            except Error as e:
-                print("Error while connecting to MySQL", e)
-            finally:
-                if (connection.is_connected()):
-                    cursor.close()
-                    connection.close()
-                    print("MySQL connection is closed")
+        except Error as e:
+            print("Error while connecting to MySQL", e)
+        finally:
+            if (connection.is_connected()):
+                cursor.close()
+                connection.close()
+                print("MySQL connection is closed")
 
     def updateFirstName(firstName, id):
         future = th.executor.submit(updateFirstNameTask,firstName,id)
@@ -341,4 +344,4 @@ class PersonTransaction:
                 connection.close()
                 print("MySQL connection is closed")
 
-print(getAllPerson())
+#print(createLaborer("DEF","","R","P","M","9819888888","address","adharNo123","Y","panCardNo123","skill123","Y","DELHI"))
