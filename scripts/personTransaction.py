@@ -155,6 +155,7 @@ class PersonTransaction:
                 return json_data
         except Error as e:
             print("Error while connecting to MySQL", e)
+            return str(e)
         finally:
             if (connection.is_connected()):
                 cursor.close()
@@ -163,6 +164,38 @@ class PersonTransaction:
 
     def getAllLaborer(self, skills, locations):
         future = th.executor.submit(self.getAllLaborerTask, skills, locations)
+        return future.result()
+
+    def getFriendOfLaborerTask(self, parentId):
+        connection = mysql.connector.connect(host=self.hostURL,
+                                             database=self.dbName,
+                                             user=self.userName,
+                                             password=self.userPassword)
+        try:
+            if connection.is_connected():
+                db_Info = connection.get_server_info()
+                print("Connected to MySQL Server version ", db_Info)
+                cursor = connection.cursor()
+                sql = "SELECT * FROM karamdb.laborer where parent_id = '"+parentId+"'"
+                cursor.execute(sql)
+
+                row_headers=[x[0] for x in cursor.description]
+                rec = cursor.fetchall()
+                json_data=[]
+                for res in rec:
+                    json_data.append(dict(zip(row_headers,res)))
+                return json_data
+        except Error as e:
+            print("Error while connecting to MySQL", e)
+            return str(e)
+        finally:
+            if (connection.is_connected()):
+                cursor.close()
+                connection.close()
+                print("MySQL connection is closed")
+
+    def getFriendOfLaborer(self, parentId):
+        future = th.executor.submit(self.getFriendOfLaborerTask, parentId)
         return future.result()
 
     def createContractorTask(self,contractor):
@@ -282,6 +315,7 @@ class PersonTransaction:
                 return json_data
         except Error as e:
             print("Error while connecting to MySQL", e)
+            return str(e)
         finally:
             if (connection.is_connected()):
                 cursor.close()

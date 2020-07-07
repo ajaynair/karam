@@ -244,40 +244,13 @@ def modify_contractor_profile(pid):
 
     return jsonify(resp)
 
+'''
+Return list of laborer who are created/friend by/of pid laborer
+'''
 @app.route('/v1.0/person/laborer/<pid>/laborer', methods=['GET'])
 def get_laborer_and_friends(pid):
-    resp = {
-        {
-            "id": 1,
-            "Name": "test_name",
-            "Age": 20,
-            "Gender": "M",
-            "Preferred Location": "Pune, Mumbai",
-            "Skill": "Carpenter",
-            "Contact No": 9923033442,
-            "type": "Self",
-            "Status": "Active",
-            "links": {
-                "self": os.path.dirname(request.path) + '/1',
-                "parent": None
-            }
-        },
-        {
-            "id": 2,
-            "Name": "test_name2",
-            "Age": 20,
-            "Gender": "M",
-            "Preferred Location": "Pune, Mumbai",
-            "Skill": "Carpenter",
-            "Contact No": 9923033442,
-            "type": "Friend",
-            "Status": "Inactive",
-            "links": {
-                "self": os.path.dirname(request.path) + '/1',
-                "parent": None
-            }
-        }
-    }
+    obj1 = PersonTransaction.PersonTransaction()
+    return jsonify(obj1.getFriendOfLaborer(pid))
 
 
 @app.route('/v1.0/person/session', methods=['POST'])
