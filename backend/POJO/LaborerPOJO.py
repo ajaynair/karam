@@ -1,5 +1,20 @@
 class LaborerPOJO:
 
+    def __init__(self):
+        self.laborerId = None
+        self.parentId = None
+        self.fname = None
+        self.lname = None
+        self.gender = None
+        self.phno = None
+        self.aadharNo = None
+        self.aadharStatus = None
+        self.address = None
+        self.panCard = None
+        self.skill = None
+        self.activeInd = None
+        self.preferredJobLocation = None
+
     def setLaborerId(self, laborerId):
         self.laborerId=laborerId
         return self

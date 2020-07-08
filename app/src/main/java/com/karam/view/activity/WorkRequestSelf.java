@@ -11,6 +11,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.karam.db.pojo.ErrorResponse;
+import com.karam.db.pojo.Laborer;
 import com.karam.utils.BaseActivity;
 import com.karam.view.restservice.RestService;
 import com.karam.view.restservice.RetroFitService;
@@ -85,7 +86,6 @@ public class WorkRequestSelf extends BaseActivity {
     /**
      * Responds to menu option (https://pasteboard.co/Jc4U58s.png) of this view.activity
      *
-     * @param item: The item in the menu that is selected
      * @return: return false in case of error, true otherwise
 
     @Override
@@ -114,7 +114,8 @@ public class WorkRequestSelf extends BaseActivity {
         RetroFitService retro = new RetroFitService(getApplicationContext());
         RestService service = retro.getService();
 
-        Call<ErrorResponse> callSync = service.putLaborers(2, 2);
+        Laborer laborer = new Laborer(2, "n", "n", "l", "123", 23, "m", "f", "skills");
+        Call<ErrorResponse> callSync = service.putLaborers(2, laborer);
         callSync.enqueue(new Callback<ErrorResponse>() {
             @Override
             public void onResponse(Call<ErrorResponse> call, Response<ErrorResponse> response) {
