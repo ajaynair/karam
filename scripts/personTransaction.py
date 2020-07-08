@@ -36,11 +36,36 @@ class PersonTransaction:
                 val = (laborer.getLaborerId(),laborer.getParentId(),laborer.getFirstname(),laborer.getLastname(),laborer.getGender(),laborer.getPhoneNumber(),laborer.getAddress(),laborer.getAadharNo(),laborer.getAadharStatus(),laborer.getPanCard(),laborer.getSkill(),laborer.getActiveInd(),laborer.getPrefLoc())
                 cursor.execute(sql,val)
                 connection.commit()
+
+                skills = laborer.getSkill().split(",")
+                # Insert into skill table
+                for skill in skills:
+                    #TODO refactor this code to use select only once
+                    sql = "select count(name) from skills where name=(%s)"
+                    val = (skill,)
+                    cursor.execute(sql,val)
+                    res = cursor.fetchone()
+                    if int(res[0]) == 0:
+                        sql = "Insert into karamdb.skills (name,description) VALUES (%s,%s)"
+                        val = (skill,"")
+                        cursor.execute(sql,val)
+                        connection.commit()
+
+                    sql = "select name from skills where name=(%s)"
+                    val = (skill,)
+                    cursor.execute(sql,val)
+                    res = cursor.fetchone()
+                    skillName = res[0]
+                    sql = "Insert into karamdb.laborerSkillRelation (laborer_id, skill_name) VALUES (%s,%s)"
+                    val = (laborer.getLaborerId(), skillName)
+                    cursor.execute(sql,val)
+                    connection.commit()
+
                 print("Inserted successfully in laborer table")
                 return "SUCCESS"
 
         except Error as e:
-            print("Error while inserting into laborer table", e)
+            print("Error while inserting into laborer, skill, laborerSkillRelation  table", e)
             return str(e)
         finally:
             if (connection.is_connected()):

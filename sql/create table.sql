@@ -56,4 +56,15 @@ create table user_activity (
         update_date_time DATETIME DEFAULT current_timestamp
 );
 
+create table skills (
+        NAME VARCHAR(100) PRIMARY KEY,
+        DESCRIPTION VARCHAR(200)
+);
+
+create table laborerSkillRelation (
+		 laborer_id INT NOT NULL , FOREIGN KEY (laborer_id) REFERENCES karamdb.laborer(laborer_id),
+         skill_name VARCHAR(100) NOT NULL, FOREIGN KEY (skill_name) REFERENCES karamdb.skills(NAME),
+         active_ind VARCHAR(2) DEFAULT "Y",
+         PRIMARY KEY (`laborer_id`, `skill_name`)
+);
 commit;
