@@ -86,7 +86,7 @@ def create_job():
 
     #TODO We need to remove some colums from database maybe
     #TODO check how to do multiline code intendentation in python
-    job = job.setJobId(data['information']['jobId']).setLaborerId(data['information']['laborerId']).setContractorId(data['information']['contractorId'])
+    job = job.setLaborerId(data['information']['laborerId']).setContractorId(data['information']['contractorId'])
     job = job.setActiveInd(data['information']['activeInd'])
 
     obj1 = PersonTransaction.PersonTransaction()
@@ -107,7 +107,7 @@ def create_user_profile():
 
     #TODO We need to remove some colums from database maybe
     #TODO check how to do multiline code intendentation in python
-    user = user.setUserId(data['information']['userId']).setRoleType(data['information']['roleType']).setUserName(data['information']['userName'])
+    user = user.setRoleType(data['information']['roleType']).setUserName(data['information']['userName'])
     user = user.setPasswordHash(data['information']['passwordHash'])
 
     obj1 = PersonTransaction.PersonTransaction()
@@ -170,8 +170,16 @@ Create a laborer profile for a friend
 @app.route('/v1.0/person/laborer/<pid>/laborer', methods=['POST'])
 def create_friend_profile(pid):
     data = json.loads(request.get_data())
+
+    #INSERT DUMMY ROW IN USER TABLE FOR FRIEND WITH EMPTY USERNAME AND PASSWORD
+    obj1 = PersonTransaction.PersonTransaction()
+    friendUserID = obj1.getNewUserId()+1
+    user = UserPOJO.UserPOJO()
+    user = user.setUserId(friendUserID).setRoleType("L").setUserName("").setPasswordHash("")
+    obj1.createUser(user)
+
     laborer = LaborerPOJO.LaborerPOJO()
-    laborer = laborer.setLaborerId(data['information']['laborerId']).setParentId(pid).setFirstname(data['information']['fname'])
+    laborer = laborer.setLaborerId(friendUserID).setParentId(pid).setFirstname(data['information']['fname'])
     laborer = laborer.setLastname(data['information']['lname']).setGender(data['information']['gender']).setPhoneNumber(data['information']['phno'])
     laborer = laborer.setAddress(data['information']['address']).setAadharStatus(data['information']['aadharStatus']).setAadharNo(data['information']['aadharNumber'])
     laborer = laborer.setPanCard(data['information']['panCard']).setSkill(data['information']['skill']).setActiveInd(data['information']['activeInd']).setPrefLoc(data['information']['preferred_location'])
@@ -185,7 +193,7 @@ def create_friend_profile(pid):
     return jsonify(resp)
 
 '''
-Modify a profile of a laborer
+Modify profile of a laborer
 '''
 @app.route('/v1.0/person/laborer/<pid>', methods=['PUT'])
 def modify_laborer_profile(pid):
@@ -203,7 +211,6 @@ def modify_laborer_profile(pid):
     }
 
     return jsonify(resp)
-
 
 '''
 sample request for modify
