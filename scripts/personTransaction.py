@@ -337,10 +337,10 @@ class PersonTransaction:
                 print("Connected to MySQL Server version ", db_Info)
                 cursor = connection.cursor()
                 statement = "Insert into karamdb.user"
-                colNames = "(user_id,role_type,user_name,password_hash)"
-                colValues = "VALUES (%s,%s,%s,%s)"
+                colNames = "(role_type,user_name,password_hash)"
+                colValues = "VALUES (%s,%s,%s)"
                 sql = statement+colNames+colValues
-                val = (user.getUserId(),user.getRoleType(),user.getUserName(),user.getPasswordHash())
+                val = (user.getRoleType(),user.getUserName(),user.getPasswordHash())
                 cursor.execute(sql,val)
                 connection.commit()
                 print("Inserted successfully in user table")
@@ -370,10 +370,10 @@ class PersonTransaction:
                 print("Connected to MySQL Server version ", db_Info)
                 cursor = connection.cursor()
                 statement = "Insert into karamdb.job"
-                colNames = "(job_id,labour_id,contractor_id,active_ind)"
-                colValues = "VALUES (%s,%s,%s,%s)"
+                colNames = "(labour_id,contractor_id,active_ind)"
+                colValues = "VALUES (%s,%s,%s)"
                 sql = statement+colNames+colValues
-                val = (job.getJobId(),job.getLaborerId(),job.getContractorId(),job.getActiveInd())
+                val = (job.getLaborerId(),job.getContractorId(),job.getActiveInd())
                 cursor.execute(sql,val)
                 connection.commit()
                 print("Inserted successfully in job table")
@@ -391,6 +391,29 @@ class PersonTransaction:
     def createUser(self,user):
         future = th.executor.submit(self.createUserTask,user)
         return future.result()
+
+    def getNewUserId(self):
+        connection = mysql.connector.connect(host=self.hostURL,
+                                             database=self.dbName,
+                                             user=self.userName,
+                                             password=self.userPassword)
+        try:
+            if connection.is_connected():
+                db_Info = connection.get_server_info()
+                print("Connected to MySQL Server version ", db_Info)
+                cursor = connection.cursor()
+                sql = "SELECT max(user_id) FROM karamdb.user"
+                cursor.execute(sql)
+                result = cursor.fetchone()
+                return int(result[0])
+        except Error as e:
+            print("Error while connecting to MySQL", e)
+            return str(e)
+        finally:
+            if (connection.is_connected()):
+                cursor.close()
+                connection.close()
+                print("MySQL connection is closed")
 
     def deleteById(id):
         future = th.executor.submit(deleteByIdTask,id)
