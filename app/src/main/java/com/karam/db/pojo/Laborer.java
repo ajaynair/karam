@@ -4,27 +4,52 @@ import androidx.annotation.NonNull;
 
 public class Laborer {
     private int id;
-    private String name;
+    private int parentId;
+    private String fname;
+    private String lname;
     private int age;
     private String gender;
-    private String location;
-    private String skill;
-    private String PhoneNo;
-    private int aadharStatus;
-    private String password;
+    private String address;
+    private String skills;
+    private String phno;
+    private String aadharStatus;
+    private String aadharNumber;
+    private String passwordHash;
 
-    public Laborer(String name, String location, String PhoneNo, int age, String gender, int aadharStatus) {
+    private String panCard;
+    private String activeInd;
+    private String preferred_location;
+
+    public Laborer(int parentId, String fname, String lname, String location, String PhoneNo, int age, String gender, String aadharStatus, String skills) {
         this.id = 1;
-        this.name = name;
-        this.location = location;
-        this.PhoneNo = PhoneNo;
+        this.fname = fname;
+        this.lname = lname;
+        this.address = location;
+        this.phno = PhoneNo;
         this.age = age;
         this.gender = gender;
         this.aadharStatus = aadharStatus;
+        this.panCard = "TestPanCardNo";
+        this.skills = skills;
+        this.activeInd = "Y";
+        this.preferred_location = "Pune, Mumbai";
+        this.passwordHash = "test";
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    public void setPassword(String password) {
+        this.passwordHash = password;
     }
 
     public String getPassword() {
-        return password;
+        return passwordHash;
     }
 
     public int getId() {
@@ -35,12 +60,12 @@ public class Laborer {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFname() {
+        return fname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 
     public int getAge() {
@@ -59,41 +84,81 @@ public class Laborer {
         this.gender = gender;
     }
 
-    public String getLocation() {
-        return location;
+    public String getAddress() {
+        return address;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getSkill() {
-        return skill;
+    public String getSkills() {
+        return skills;
     }
 
-    public void setSkill(String skill) {
-        this.skill = skill;
+    public void setSkills(String skills) {
+        this.skills = skills;
     }
 
-    public String getPhoneNo() {
-        return PhoneNo;
+    public String getPhno() {
+        return phno;
     }
 
-    public void setPhoneNo(String phoneNo) {
-        PhoneNo = phoneNo;
+    public void setPhno(String phno) {
+        this.phno = phno;
     }
 
-    public int getAadharStatus() {
+    public String getAadharStatus() {
         return aadharStatus;
     }
 
-    public void setAadharStatus(int aadharStatus) {
+    public void setAadharStatus(String aadharStatus) {
         this.aadharStatus = aadharStatus;
+    }
+
+    public int getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getAadharNumber() {
+        return aadharNumber;
+    }
+
+    public void setAadharNumber(String aadharNumber) {
+        this.aadharNumber = aadharNumber;
+    }
+
+    public String getPanCard() {
+        return panCard;
+    }
+
+    public void setPanCard(String panCard) {
+        this.panCard = panCard;
+    }
+
+    public String getActiveInd() {
+        return activeInd;
+    }
+
+    public void setActiveInd(String activeInd) {
+        this.activeInd = activeInd;
+    }
+
+    public String getPreferred_location() {
+        return preferred_location;
+    }
+
+    public void setPreferred_location(String preferred_location) {
+        this.preferred_location = preferred_location;
     }
 
     @NonNull
     @Override
     public String toString() {
-        return id + this.name;
+        return id + this.fname;
     }
 }

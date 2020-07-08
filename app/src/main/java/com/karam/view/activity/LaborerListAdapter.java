@@ -42,10 +42,10 @@ public class LaborerListAdapter extends RecyclerView.Adapter<LaborerListAdapter.
         Toast.makeText(mContext, "Position" + position,
                 Toast.LENGTH_LONG).show();
         Laborer l = this.laborers.get(position);
-        holder.skills.setText(l.getSkill());
-        holder.name.setText(l.getName());
-        holder.phoneNo.setText(l.getPhoneNo());
-        holder.preferredLocation.setText(l.getLocation());
+        holder.skills.setText(l.getSkills());
+        holder.name.setText(l.getFname());
+        holder.phoneNo.setText(l.getPhno());
+        holder.preferred_location.setText(l.getPreferred_location());
 
     }
 
@@ -59,7 +59,7 @@ public class LaborerListAdapter extends RecyclerView.Adapter<LaborerListAdapter.
         RelativeLayout parentRelativeLayout;
         TextView name;
         TextView phoneNo;
-        TextView preferredLocation;
+        TextView preferred_location;
         TextView skills;
 
         public ViewHolder(@NonNull View itemView) {
@@ -68,7 +68,7 @@ public class LaborerListAdapter extends RecyclerView.Adapter<LaborerListAdapter.
             parentRelativeLayout = itemView.findViewById(R.id.parentRelativeLayout);
             name = itemView.findViewById(R.id.name);
             phoneNo = itemView.findViewById(R.id.phoneno);
-            preferredLocation = itemView.findViewById(R.id.location);
+            preferred_location = itemView.findViewById(R.id.location);
             skills = itemView.findViewById(R.id.skills);
         }
     }

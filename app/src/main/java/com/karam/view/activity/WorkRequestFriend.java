@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.karam.db.pojo.ErrorResponse;
 import com.karam.db.pojo.Laborer;
+import com.karam.db.pojo.LaborerRegistrationResponse;
 import com.karam.utils.BaseActivity;
 import com.karam.view.restservice.RestService;
 import com.karam.view.restservice.RetroFitService;
@@ -74,19 +75,20 @@ public class WorkRequestFriend extends BaseActivity {
         Toast.makeText(getApplicationContext(), age.getText(),
                 Toast.LENGTH_SHORT).show();
 
-        Laborer laborer = new Laborer(name.getText().toString(), location.getSelectedItem().toString(), phone.getText().toString(), Integer.valueOf(age.getText().toString()), "f", aadharStatus.getCheckedRadioButtonId());
-        Call<ErrorResponse> callSync = service.createLaborer(laborer);
-        callSync.enqueue(new Callback<ErrorResponse>() {
+        //Laborer laborer = new Laborer(name.getText().toString(), location.getSelectedItem().toString(), phone.getText().toString(), Integer.valueOf(age.getText().toString()), "f", aadharStatus.getCheckedRadioButtonId());
+        Laborer laborer = new Laborer(1, name.getText().toString(), name.getText().toString(), location.getSelectedItem().toString(), phone.getText().toString(), 23, "f", aadharStatus.getCheckedRadioButtonId() == R.id.yes? "Y":"N", "Carpentry");
+        Call<LaborerRegistrationResponse> callSync = service.createLaborer(laborer);
+        callSync.enqueue(new Callback<LaborerRegistrationResponse>() {
             @Override
-            public void onResponse(Call<ErrorResponse> call, Response<ErrorResponse> response) {
-                ErrorResponse apiResponse = response.body();
+            public void onResponse(Call<LaborerRegistrationResponse> call, Response<LaborerRegistrationResponse> response) {
+                LaborerRegistrationResponse apiResponse = response.body();
                 System.out.println(apiResponse);
                 Toast.makeText(getApplicationContext(), apiResponse.toString(),
                         Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<ErrorResponse> call, Throwable t) {
+            public void onFailure(Call<LaborerRegistrationResponse> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), t.toString(),
                         Toast.LENGTH_SHORT).show();
             }

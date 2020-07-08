@@ -1,39 +1,42 @@
 import mysql.connector
 from mysql.connector import Error
+from MySql import my_sql
 import configparser
 import os
 from datetime import datetime
-from ThreadExecutor import ThreadExecutor
 
+from utils.ThreadExecutor import ThreadExecutor
+
+# TODO Give example request body and response body
+'''
+FIXME do not hardcode MySql queries. Database name and table names can be
+defined as global variables or class members. It will make it easier to change 
+table names and database names.
+'''
+'''
+FIXME Check if creating and closing connections after every MySql query is a bad idea.
+Can we create a pool of connections?
+'''
 class PersonTransaction:
-    config = configparser.ConfigParser()
-    url = 'C:\\config.txt'
-    assert os.path.exists(url)
-    config.read(url)
-    userName = config.get('configuration','userName').strip('"')
-    userPassword = config.get('configuration','password').strip('"')
-    hostURL = config.get('configuration','host').strip('"')
-    dbName = config.get('configuration','database').strip('"')
+    def __init__(self):
+        pass
 
     #TODO check why having global keyword is necessary
     global th
     th = ThreadExecutor.instance()
-
     def createLaborerTask(self,laborer):
-        connection = mysql.connector.connect(host=self.hostURL,
-                                    database=self.dbName,
-                                    user=self.userName,
-                                    password=self.userPassword)
+        connection = my_sql.mysql_get_connection()
         try:
             if connection.is_connected():
                 db_Info = connection.get_server_info()
                 print("Connected to MySQL Server version ", db_Info)
                 cursor = connection.cursor()
                 statement = "Insert into karamdb.laborer"
-                colNames = "(laborer_id,parent_id, first_name, last_name, gender, phone_number, address,adhar_card_number,adhar_card_status,pan_card,skill,active_ind,preferred_job_location)"
+                colNames = "(laborer_id,parent_id, first_name, last_name, gender, phone_number, address,aadhar_card_number,aadhar_card_status,pan_card,skills,active_ind,preferred_job_location)"
                 colValues = "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
                 sql = statement+colNames+colValues
                 val = (laborer.getLaborerId(),laborer.getParentId(),laborer.getFirstname(),laborer.getLastname(),laborer.getGender(),laborer.getPhoneNumber(),laborer.getAddress(),laborer.getAadharNo(),laborer.getAadharStatus(),laborer.getPanCard(),laborer.getSkill(),laborer.getActiveInd(),laborer.getPrefLoc())
+                print (val)
                 cursor.execute(sql,val)
                 connection.commit()
                 print("Inserted successfully in laborer table")
@@ -41,6 +44,9 @@ class PersonTransaction:
 
         except Error as e:
             print("Error while inserting into laborer table", e)
+            '''
+            FIXME Create a json message not a string
+            '''
             return str(e)
         finally:
             if (connection.is_connected()):
@@ -54,10 +60,7 @@ class PersonTransaction:
         return future.result()
 
     def updateLaborerTask(self,laborer):
-        connection = mysql.connector.connect(host=self.hostURL,
-                                            database=self.dbName,
-                                            user=self.userName,
-                                            password=self.userPassword)
+        connection = my_sql.mysql_get_connection()
         try:
             if connection.is_connected():
                 db_Info = connection.get_server_info()
@@ -118,10 +121,7 @@ class PersonTransaction:
         return future.result()
 
     def getAllLaborerTask(self, skills, locations):
-        connection = mysql.connector.connect(host=self.hostURL,
-                                             database=self.dbName,
-                                             user=self.userName,
-                                             password=self.userPassword)
+        connection = my_sql.mysql_get_connection()
         try:
             if connection.is_connected():
                 db_Info = connection.get_server_info()
@@ -152,6 +152,7 @@ class PersonTransaction:
                 json_data=[]
                 for res in rec:
                     json_data.append(dict(zip(row_headers,res)))
+                print (json_data)
                 return json_data
         except Error as e:
             print("Error while connecting to MySQL", e)
@@ -166,10 +167,7 @@ class PersonTransaction:
         return future.result()
 
     def createContractorTask(self,contractor):
-        connection = mysql.connector.connect(host=self.hostURL,
-                                    database=self.dbName,
-                                    user=self.userName,
-                                    password=self.userPassword)
+        connection = my_sql.mysql_get_connection()
         try:
             if connection.is_connected():
                 db_Info = connection.get_server_info()
@@ -195,16 +193,13 @@ class PersonTransaction:
                 connection.close()
                 print("MySQL connection is closed")
 
-    # TODO Update rest of sql functions like create, they are referring to old table schema
+    # TODO Update rest of MySql functions like create, they are referring to old table schema
     def createContractor(self,contractor):
         future = th.executor.submit(self.createContractorTask,contractor)
         return future.result()
 
     def updateContractorTask(self,contractor):
-        connection = mysql.connector.connect(host=self.hostURL,
-                                            database=self.dbName,
-                                            user=self.userName,
-                                            password=self.userPassword)
+        connection = my_sql.mysql_get_connection()
         try:
             if connection.is_connected():
                 db_Info = connection.get_server_info()
@@ -263,10 +258,7 @@ class PersonTransaction:
         return future.result()
 
     def getAllContractorTask(self):
-        connection = mysql.connector.connect(host=self.hostURL,
-                                             database=self.dbName,
-                                             user=self.userName,
-                                             password=self.userPassword)
+        connection = my_sql.mysql_get_connection()
         try:
             if connection.is_connected():
                 db_Info = connection.get_server_info()
@@ -293,20 +285,17 @@ class PersonTransaction:
         return future.result()
 
     def createUserTask(self,user):
-        connection = mysql.connector.connect(host=self.hostURL,
-                                    database=self.dbName,
-                                    user=self.userName,
-                                    password=self.userPassword)
+        connection = my_sql.mysql_get_connection()
         try:
             if connection.is_connected():
                 db_Info = connection.get_server_info()
                 print("Connected to MySQL Server version ", db_Info)
                 cursor = connection.cursor()
                 statement = "Insert into karamdb.user"
-                colNames = "(user_id,role_type,user_name,password_hash)"
-                colValues = "VALUES (%s,%s,%s,%s)"
+                colNames = "(user_id,role_type,password_hash)"
+                colValues = "VALUES (%s,%s,%s)"
                 sql = statement+colNames+colValues
-                val = (user.getUserId(),user.getRoleType(),user.getUserName(),user.getPasswordHash())
+                val = (user.getUserId(),user.getRoleType(),user.getPasswordHash())
                 cursor.execute(sql,val)
                 connection.commit()
                 print("Inserted successfully in user table")
@@ -326,10 +315,7 @@ class PersonTransaction:
         return future.result()
 
     def createJobTask(self,job):
-        connection = mysql.connector.connect(host=self.hostURL,
-                                    database=self.dbName,
-                                    user=self.userName,
-                                    password=self.userPassword)
+        connection = my_sql.mysql_get_connection()
         try:
             if connection.is_connected():
                 db_Info = connection.get_server_info()
@@ -364,10 +350,7 @@ class PersonTransaction:
 
     def deleteByIdTask(id):
         try:
-            connection = mysql.connector.connect(host=hostURL,
-                                                database=dbName,
-                                                user=userName,
-                                                password=userPassword)
+            connection = my_sql.mysql_get_connection()
             if connection.is_connected():
                 db_Info = connection.get_server_info()
                 print("Connected to MySQL Server version ", db_Info)
@@ -393,10 +376,7 @@ class PersonTransaction:
 
     def getPersonByIdTask(id):
         try:
-            connection = mysql.connector.connect(host=hostURL,
-                                                 database=dbName,
-                                                 user=userName,
-                                                 password=userPassword)
+            connection = my_sql.mysql_get_connection()
             if connection.is_connected():
                 db_Info = connection.get_server_info()
                 print("Connected to MySQL Server version ", db_Info)
@@ -412,7 +392,7 @@ class PersonTransaction:
         except Error as e:
             print("Error while connecting to MySQL", e)
         finally:
-            if (connection.is_connected()):
+            if connection.is_connected():
                 cursor.close()
                 connection.close()
                 print("MySQL connection is closed")

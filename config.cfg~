@@ -1,0 +1,6 @@
+[configuration]
+userName=admin
+password=abcd1234
+host=karam-db.c9i7n5grafxc.us-east-1.rds.amazonaws.com
+database=karam_db
+

@@ -18,6 +18,16 @@ public class UserData {
     private int CONTRACTOR = 1;
     private int LABORER = 2;
 
+    public int get_user_id() {
+        return user_id;
+    }
+
+    public void set_user_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    private int user_id = 0;
+
     public UserData(Context cntx) {
         // TODO Auto-generated contractor stub
         prefs = PreferenceManager.getDefaultSharedPreferences(cntx);

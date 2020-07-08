@@ -4,6 +4,7 @@ import com.karam.db.pojo.Contractor;
 import com.karam.db.pojo.Credentials;
 import com.karam.db.pojo.ErrorResponse;
 import com.karam.db.pojo.Laborer;
+import com.karam.db.pojo.LaborerRegistrationResponse;
 import com.karam.db.pojo.LoginResponse;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import retrofit2.http.Query;
 
 public interface RestService {
     @POST("/v1.0/person/laborer")
-    public Call<ErrorResponse> createLaborer(@Body Laborer laborer);
+    public Call<LaborerRegistrationResponse> createLaborer(@Body Laborer laborer);
 
     @POST("/v1.0/person/session")
     public Call<LoginResponse> createSession(@Body Credentials credentials);

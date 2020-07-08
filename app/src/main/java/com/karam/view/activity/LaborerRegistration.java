@@ -2,8 +2,6 @@ package com.karam.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,8 +11,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.karam.db.pojo.ErrorResponse;
 import com.karam.db.pojo.Laborer;
+import com.karam.db.pojo.LaborerRegistrationResponse;
 import com.karam.utils.BaseActivity;
 import com.karam.utils.UserData;
 import com.karam.view.restservice.RestService;
@@ -76,19 +74,19 @@ public class LaborerRegistration extends BaseActivity {
         Toast.makeText(getApplicationContext(), age.getText(),
                 Toast.LENGTH_SHORT).show();
 
-        Laborer laborer = new Laborer(name.getText().toString(), location.getSelectedItem().toString(), phone.getText().toString(), 23, "f", aadharStatus.getCheckedRadioButtonId());
-        Call<ErrorResponse> callSync = service.createLaborer(laborer);
-        callSync.enqueue(new Callback<ErrorResponse>() {
+        Laborer laborer = new Laborer(1, name.getText().toString(), name.getText().toString(), location.getSelectedItem().toString(), phone.getText().toString(), 23, "f", aadharStatus.getCheckedRadioButtonId() == R.id.yes? "Y":"N", "Carpentry");
+        Call<LaborerRegistrationResponse> callSync = service.createLaborer(laborer);
+        callSync.enqueue(new Callback<LaborerRegistrationResponse>() {
             @Override
-            public void onResponse(Call<ErrorResponse> call, Response<ErrorResponse> response) {
-                ErrorResponse apiResponse = response.body();
+            public void onResponse(Call<LaborerRegistrationResponse> call, Response<LaborerRegistrationResponse> response) {
+                LaborerRegistrationResponse apiResponse = response.body();
                 System.out.println(apiResponse);
                 Toast.makeText(getApplicationContext(), apiResponse.toString(),
                         Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<ErrorResponse> call, Throwable t) {
+            public void onFailure(Call<LaborerRegistrationResponse> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), t.toString(),
                         Toast.LENGTH_SHORT).show();
             }
@@ -140,7 +138,7 @@ public class LaborerRegistration extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case (R.id.about_us):
-                startActivity(new Intent(LaborerRegistration.this, AboutUs.class));
+                startActivity(new Intent(LaborerRegistrationResponseResponse.this, AboutUs.class));
                 return true;
             default:
                 Toast.makeText(getApplicationContext(), "Oops! Error. You shouldn't be seeing this message",
