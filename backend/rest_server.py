@@ -186,17 +186,22 @@ def create_friend_profile(pid):
 
     return jsonify(resp)
 
+# TODO PUT may not modify all the values. So, some data[''] may be null. For now lets just try to
+# modify active_ind
 '''
 Modify a profile of a laborer
 '''
 @app.route('/v1.0/person/laborer/<pid>', methods=['PUT'])
 def modify_laborer_profile(pid):
+    import pdb
+    pdb.set_trace()
     data = json.loads(request.get_data())
 
     laborer = LaborerPOJO.LaborerPOJO()
-    laborer = laborer.setLaborerId(pid).setFirstname(data['fname']).setLastname(data['lname']).setPhoneNumber(data['phno'])
-    laborer = laborer.setAddress(data['address']).setAadharStatus(data['aadharStatus']).setAadharNo("test")
-    laborer = laborer.setPanCard(data['panCard']).setSkill(data['skills']).setActiveInd(data['activeInd']).setPrefLoc(data['preferred_location'])
+    laborer = laborer.setActiveInd(data['activeInd'])
+    #laborer = laborer.setLaborerId(pid).setFirstname(data['fname']).setLastname(data['lname']).setPhoneNumber(data['phno'])
+    #laborer = laborer.setAddress(data['address']).setAadharStatus(data['aadharStatus']).setAadharNo("test")
+    #laborer = laborer.setPanCard(data['panCard']).setSkill(data['skills']).setActiveInd(data['activeInd']).setPrefLoc(data['preferred_location'])
 
     obj1 = PersonTransaction.PersonTransaction()
     status = obj1.updateLaborer(laborer)
@@ -297,7 +302,7 @@ def get_person_session():
     password = data['password']
     resp = {
         "session_id": "1234",
-        "role_type": "l",
+        "role_type": "laborer",
         "id": 0
     }
     return jsonify(resp)

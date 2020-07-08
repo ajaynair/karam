@@ -34,5 +34,5 @@ public interface RestService {
     public Call<ArrayList<Laborer>> getLaborerFriends(@Path("pid") int pid);
 
     @PUT("/v1.0/person/laborer/{pid}")
-    public Call<ErrorResponse> putLaborers(@Path("pid") int pid, @Query("status") int status);
+    public Call<ErrorResponse> putLaborers(@Path("pid") int pid, @Body Laborer laborer);
 }
