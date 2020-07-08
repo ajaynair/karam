@@ -36,5 +36,4 @@
         <activity android:name=".WorkRequestSelf" />
         <activity android:name=".WorkRequestFriend" />
     </application>
-
 </manifest>

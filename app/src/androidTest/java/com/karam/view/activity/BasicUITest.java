@@ -161,7 +161,7 @@ public class BasicUITest {
         appCompatEditText5.perform(closeSoftKeyboard());
 
         ViewInteraction appCompatRadioButton = onView(
-                allOf(withId(R.id.radio_pirates), withText("Yes"),
+                allOf(withId(R.id.yes), withText("Yes"),
                         childAtPosition(
                                 allOf(withId(R.id.radio_group),
                                         childAtPosition(

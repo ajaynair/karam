@@ -78,7 +78,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/switch1">
 
                 <RadioButton
-                    android:id="@+id/radio_pirates"
+                    android:id="@+id/yes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Yes"
@@ -86,12 +86,12 @@
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <RadioButton
-                    android:id="@+id/radio_ninjas"
+                    android:id="@+id/no"
                     android:layout_width="208dp"
                     android:layout_height="wrap_content"
                     android:text="No"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/radio_pirates" />
+                    app:layout_constraintStart_toEndOf="@id/yes" />
             </RadioGroup>
 
             <TextView

@@ -3,34 +3,16 @@ import os
 
 from flask import Flask, jsonify, request
 import json
-import PersonTransaction,LaborerPOJO,ContractorPOJO,UserPOJO,JobPOJO
+from transaction import PersonTransaction
+from POJO import LaborerPOJO,ContractorPOJO,UserPOJO,JobPOJO
 import datetime
-
+import time
 app = Flask(__name__)
 
-# TODO Validate JSON schema
-
-@app.route('/v1.0/test/withbody', methods=['POST'])
-def get_test2():
-    print (json.loads(request.get_data()))
-    resp = {"test":"pass"}
-    return jsonify(resp)
-
-@app.route('/v1.0/test', methods=['GET'])
-def get_test():
-    resp = {"test":"pass"}
-    return jsonify(resp)
-
-@app.route('/v1.0/test', methods=['POST'])
-def post_test():
-    resp = {"test":"pass"}
-    return jsonify(resp)
-
-@app.route('/v1.0/test/<id>/test/<pid>', methods=['POST'])
-def post_test_id(id, pid):
-    pid = str(pid)
-    resp = {"test":pid}
-    return jsonify(resp)
+from random import seed
+from random import randint
+seed(time.process_time())
+userId = randint(0, 100000)
 
 '''
 Get a list of people
@@ -61,10 +43,14 @@ Returns a list of job details
 '''
 @app.route('/v1.0/person/laborer', methods=['GET'])
 def get_laborer_list():
-    data = json.loads(request.get_data())
-    skills = data['filter']['skills']
-    locations = data['filter']['locations']
+    skills = None
+    locations = None
+    if request.get_data():
+        data = json.loads(request.get_data())
+        skills = data['filter']['skills']
+        locations = data['filter']['locations']
     obj1 = PersonTransaction.PersonTransaction()
+    print (obj1.getAllLaborer(skills, locations))
     return jsonify(obj1.getAllLaborer(skills, locations))
 
 '''
@@ -86,8 +72,8 @@ def create_job():
 
     #TODO We need to remove some colums from database maybe
     #TODO check how to do multiline code intendentation in python
-    job = job.setJobId(data['information']['jobId']).setLaborerId(data['information']['laborerId']).setContractorId(data['information']['contractorId'])
-    job = job.setActiveInd(data['information']['activeInd'])
+    job = job.setJobId(data['jobId']).setLaborerId(data['laborerId']).setContractorId(data['contractorId'])
+    job = job.setActiveInd(data['activeInd'])
 
     obj1 = PersonTransaction.PersonTransaction()
     status = obj1.createJob(job)
@@ -107,8 +93,8 @@ def create_user_profile():
 
     #TODO We need to remove some colums from database maybe
     #TODO check how to do multiline code intendentation in python
-    user = user.setUserId(data['information']['userId']).setRoleType(data['information']['roleType']).setUserName(data['information']['userName'])
-    user = user.setPasswordHash(data['information']['passwordHash'])
+    user = user.setUserId(data['userId']).setRoleType(data['roleType']).setUserName(data['userName'])
+    user = user.setPasswordHash(data['passwordHash'])
 
     obj1 = PersonTransaction.PersonTransaction()
     status = obj1.createUser(user)
@@ -128,10 +114,14 @@ def create_contractor_profile():
 
     #TODO We need to remove some colums from database maybe
     #TODO check how to do multiline code intendentation in python
-    contractor = contractor.setContractorId(data['information']['contractorId']).setParentId(data['information']['parentId']).setFirstname(data['information']['fname'])
-    contractor = contractor.setLastname(data['information']['lname']).setGender(data['information']['gender']).setPhoneNumber(data['information']['phno'])
-    contractor = contractor.setAddress(data['information']['address']).setAadharStatus(data['information']['aadharStatus']).setAadharNo(data['information']['aadharNumber'])
-    contractor = contractor.setPanCard(data['information']['panCard']).setSkill(data['information']['skill']).setActiveInd(data['information']['activeInd']).setPrefLoc(data['information']['preferred_location'])
+    # FIXME What is parentId of a contractor?
+    # FIXME contractor Id should be
+    global userId
+    userId = userId + 1
+    contractor = contractor.setContractorId(userId).setParentId(data['parentId']).setFirstname(data['fname'])
+    contractor = contractor.setLastname(data['lname']).setGender(data['gender']).setPhoneNumber(data['phno'])
+    contractor = contractor.setAddress(data['address']).setAadharStatus(data['aadharStatus']).setAadharNo("test")
+    contractor = contractor.setPanCard(data['panCard']).setSkill(data['skills']).setActiveInd(data['activeInd']).setPrefLoc(data['preferred_location'])
 
     obj1 = PersonTransaction.PersonTransaction()
     status = obj1.createContractor(contractor)
@@ -146,20 +136,32 @@ Creates a profile of a laborer
 '''
 @app.route('/v1.0/person/laborer', methods=['POST'])
 def create_laborer_profile():
+    user = UserPOJO.UserPOJO()
     data = json.loads(request.get_data())
     laborer = LaborerPOJO.LaborerPOJO()
 
     #TODO We need to remove some colums from database maybe
     #TODO check how to do multiline code intendentation in python
-    laborer = laborer.setLaborerId(data['information']['laborerId']).setParentId(data['information']['parentId']).setFirstname(data['information']['fname'])
-    laborer = laborer.setLastname(data['information']['lname']).setGender(data['information']['gender']).setPhoneNumber(data['information']['phno'])
-    laborer = laborer.setAddress(data['information']['address']).setAadharStatus(data['information']['aadharStatus']).setAadharNo(data['information']['aadharNumber'])
-    laborer = laborer.setPanCard(data['information']['panCard']).setSkill(data['information']['skill']).setActiveInd(data['information']['activeInd']).setPrefLoc(data['information']['preferred_location'])
+    global userId
+    userId = userId + 1
+    user = user.setUserId(userId).setRoleType("l")
+    import pdb
+    user = user.setPasswordHash(data['passwordHash'])
+
+
+    obj1 = PersonTransaction.PersonTransaction()
+    status = obj1.createUser(user)
+
+    laborer = laborer.setLaborerId(userId).setParentId(data['parentId']).setFirstname(data['fname'])
+    laborer = laborer.setLastname(data['lname']).setGender(data['gender']).setPhoneNumber(data['phno'])
+    laborer = laborer.setAddress(data['address']).setAadharStatus(data['aadharStatus']).setAadharNo("test")
+    laborer = laborer.setPanCard(data['panCard']).setSkill(data['skills']).setActiveInd(data['activeInd']).setPrefLoc(data['preferred_location'])
 
     obj1 = PersonTransaction.PersonTransaction()
     status = obj1.createLaborer(laborer)
     resp = {
-        "status" : status
+        "status" : status,
+        "userId" : userId
     }
 
     return jsonify(resp)
@@ -171,10 +173,10 @@ Create a laborer profile for a friend
 def create_friend_profile(pid):
     data = json.loads(request.get_data())
     laborer = LaborerPOJO.LaborerPOJO()
-    laborer = laborer.setLaborerId(data['information']['laborerId']).setParentId(pid).setFirstname(data['information']['fname'])
-    laborer = laborer.setLastname(data['information']['lname']).setGender(data['information']['gender']).setPhoneNumber(data['information']['phno'])
-    laborer = laborer.setAddress(data['information']['address']).setAadharStatus(data['information']['aadharStatus']).setAadharNo(data['information']['aadharNumber'])
-    laborer = laborer.setPanCard(data['information']['panCard']).setSkill(data['information']['skill']).setActiveInd(data['information']['activeInd']).setPrefLoc(data['information']['preferred_location'])
+    laborer = laborer.setLaborerId(data['laborerId']).setParentId(pid).setFirstname(data['fname'])
+    laborer = laborer.setLastname(data['lname']).setGender(data['gender']).setPhoneNumber(data['phno'])
+    laborer = laborer.setAddress(data['address']).setAadharStatus(data['aadharStatus']).setAadharNo("test")
+    laborer = laborer.setPanCard(data['panCard']).setSkill(data['skills']).setActiveInd(data['activeInd']).setPrefLoc(data['preferred_location'])
 
     obj1 = PersonTransaction.PersonTransaction()
     status = obj1.createLaborer(laborer)
@@ -192,9 +194,9 @@ def modify_laborer_profile(pid):
     data = json.loads(request.get_data())
 
     laborer = LaborerPOJO.LaborerPOJO()
-    laborer = laborer.setLaborerId(pid).setFirstname(data['information']['fname']).setLastname(data['information']['lname']).setPhoneNumber(data['information']['phno'])
-    laborer = laborer.setAddress(data['information']['address']).setAadharStatus(data['information']['aadharStatus']).setAadharNo(data['information']['aadharNumber'])
-    laborer = laborer.setPanCard(data['information']['panCard']).setSkill(data['information']['skill']).setActiveInd(data['information']['activeInd']).setPrefLoc(data['information']['preferred_location'])
+    laborer = laborer.setLaborerId(pid).setFirstname(data['fname']).setLastname(data['lname']).setPhoneNumber(data['phno'])
+    laborer = laborer.setAddress(data['address']).setAadharStatus(data['aadharStatus']).setAadharNo("test")
+    laborer = laborer.setPanCard(data['panCard']).setSkill(data['skills']).setActiveInd(data['activeInd']).setPrefLoc(data['preferred_location'])
 
     obj1 = PersonTransaction.PersonTransaction()
     status = obj1.updateLaborer(laborer)
@@ -213,12 +215,12 @@ sample request for modify
     "fname": "",
     "lname": "",
     "gender": "",
-    "phno": "",
+    "phoneNo": "293842398",
     "address": "",
     "aadharStatus": "",
     "aadharNumber" : "",
     "panCard" : "",
-    "skill" : "BUILDING",
+    "skills" : "BUILDING",
     "activeInd" : "",
     "preferred_location": "MAHARASTRA"
     }
@@ -232,9 +234,9 @@ def modify_contractor_profile(pid):
     data = json.loads(request.get_data())
 
     contractor = ContractorPOJO.ContractorPOJO()
-    contractor = contractor.setContractorId(pid).setFirstname(data['information']['fname']).setLastname(data['information']['lname']).setPhoneNumber(data['information']['phno'])
-    contractor = contractor.setAddress(data['information']['address']).setAadharStatus(data['information']['aadharStatus']).setAadharNo(data['information']['aadharNumber'])
-    contractor = contractor.setPanCard(data['information']['panCard']).setSkill(data['information']['skill']).setActiveInd(data['information']['activeInd']).setPrefLoc(data['information']['preferred_location'])
+    contractor = contractor.setContractorId(pid).setFirstname(data['fname']).setLastname(data['lname']).setPhoneNumber(data['phno'])
+    contractor = contractor.setAddress(data['address']).setAadharStatus(data['aadharStatus']).setAadharNo("test")
+    contractor = contractor.setPanCard(data['panCard']).setSkill(data['skills']).setActiveInd(data['activeInd']).setPrefLoc(data['preferred_location'])
 
     obj1 = PersonTransaction.PersonTransaction()
     status = obj1.updateContractor(contractor)
@@ -244,50 +246,59 @@ def modify_contractor_profile(pid):
 
     return jsonify(resp)
 
+# TODO
 @app.route('/v1.0/person/laborer/<pid>/laborer', methods=['GET'])
 def get_laborer_and_friends(pid):
-    resp = {
-        {
-            "id": 1,
-            "Name": "test_name",
-            "Age": 20,
-            "Gender": "M",
-            "Preferred Location": "Pune, Mumbai",
-            "Skill": "Carpenter",
-            "Contact No": 9923033442,
-            "type": "Self",
-            "Status": "Active",
-            "links": {
-                "self": os.path.dirname(request.path) + '/1',
-                "parent": None
-            }
-        },
-        {
-            "id": 2,
-            "Name": "test_name2",
-            "Age": 20,
-            "Gender": "M",
-            "Preferred Location": "Pune, Mumbai",
-            "Skill": "Carpenter",
-            "Contact No": 9923033442,
-            "type": "Friend",
-            "Status": "Inactive",
-            "links": {
-                "self": os.path.dirname(request.path) + '/1',
-                "parent": None
-            }
+    labour = {
+        "id": 1,
+        "fname": "test_name",
+        "Age": 20,
+        "phno": 3242324,
+        "Gender": "M",
+        "preferred_location": "Pune, Mumbai",
+        "skills": "Carpenter",
+        "Contact No": 9923033442,
+        "type": "Self",
+        "Status": "Active",
+        "links": {
+            "self": os.path.dirname(request.path) + '/1',
+            "parent": None
         }
     }
+    resp = []
+    resp.append(labour)
+    resp.append(labour)
+    resp.append(labour)
+    resp.append(labour)
+    resp.append(labour)
+    resp.append(labour)
+    resp.append(labour)
+    resp.append(labour)
+    resp.append(labour)
+    resp.append(labour)
+    resp.append(labour)
+    resp.append(labour)
+    resp.append(labour)
+    resp.append(labour)
+    resp.append(labour)
+    resp.append(labour)
+    resp.append(labour)
+    resp.append(labour)
+    resp.append(labour)
+
+    return jsonify(resp)
 
 
+# TODO
 @app.route('/v1.0/person/session', methods=['POST'])
 def get_person_session():
     data = json.loads(request.get_data())
     username = data['username']
     password = data['password']
     resp = {
-        "sessionid": "1234",
-        "id": 1
+        "session_id": "1234",
+        "role_type": "l",
+        "id": 0
     }
     return jsonify(resp)
 
