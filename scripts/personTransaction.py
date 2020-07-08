@@ -61,6 +61,30 @@ class PersonTransaction:
                     cursor.execute(sql,val)
                     connection.commit()
 
+                locations = laborer.getPrefLoc().split(",")
+                # Insert into skill table
+                for loc in locations:
+                    #TODO refactor this code to use select only once
+                    sql = "select count(*) from preferredJobLocation where STATE= %s and city = %s and district = %s"
+                    val = (loc, loc, loc)
+                    cursor.execute(sql,val)
+                    res = cursor.fetchone()
+                    if int(res[0]) == 0:
+                        sql = "Insert into karamdb.preferredJobLocation (STATE,CITY,district) VALUES (%s,%s,%s)"
+                        val = (loc,loc,loc)
+                        cursor.execute(sql,val)
+                        connection.commit()
+
+                    sql = "select id from preferredJobLocation where STATE= %s and city = %s and district = %s"
+                    val = (loc, loc, loc)
+                    cursor.execute(sql,val)
+                    res = cursor.fetchone()
+                    locId = int(res[0])
+                    sql = "Insert into karamdb.laborerPreferredLocationRelation (laborer_id, location_id) VALUES (%s,%s)"
+                    val = (laborer.getLaborerId(), locId)
+                    cursor.execute(sql,val)
+                    connection.commit()
+
                 print("Inserted successfully in laborer table")
                 return "SUCCESS"
 
