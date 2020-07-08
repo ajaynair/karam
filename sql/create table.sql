@@ -67,4 +67,19 @@ create table laborerSkillRelation (
          active_ind VARCHAR(2) DEFAULT "Y",
          PRIMARY KEY (`laborer_id`, `skill_name`)
 );
+
+create table preferredJobLocation (
+	id INT NOT NULL PRIMARY KEY auto_increment,
+    STATE VARCHAR(100),
+	CITY VARCHAR(100),
+    DISTRICT VARCHAR(100),
+    UNIQUE KEY (`STATE`, `CITY`, `DISTRICT`)
+);
+
+create table laborerPreferredLocationRelation (
+		 laborer_id INT NOT NULL , FOREIGN KEY (laborer_id) REFERENCES karamdb.laborer(laborer_id),
+         location_id INT NOT NULL, FOREIGN KEY (location_id) REFERENCES karamdb.preferredJobLocation(id),
+         active_ind VARCHAR(2) DEFAULT "Y",
+         PRIMARY KEY (`laborer_id`,`location_id`)
+);
 commit;
