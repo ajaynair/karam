@@ -43,28 +43,24 @@
                     android:id="@+id/laborer_listview_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ajay Nair"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/labprer_listview_phoneno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="90809944242"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/laborer_listview_location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="PreferredLocation: Delhi"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/laborer_listview_skills"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Skills: carpentry"
                     app:layout_constraintTop_toTopOf="parent" />
             </LinearLayout>
         </LinearLayout>
