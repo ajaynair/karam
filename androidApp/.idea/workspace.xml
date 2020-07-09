@@ -8,23 +8,11 @@
   <component name="ChangeListManager">
     <list default="true" id="5df5d22b-5372-4340-9f32-896ffddc24e3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/background_green.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/common/layout/laborer_listview.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/common/layout/laborer_listview.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/contractor_registration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/contractor_registration.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/laborer_status_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/laborer_status_page.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/login_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/login_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/edit_text_selector.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/underline.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/user_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/user_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/work_request_friend.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/work_request_friend.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/work_request_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/work_request_page.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/work_request_self.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/work_request_self.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/bottom_toolbar_menu_logged_in.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/bottom_toolbar_menu_logged_in.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/bottom_toolbar_menu_logged_out.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/bottom_toolbar_menu_logged_out.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_contractor.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_laborers.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_logged_out.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-hi/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-hi/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-mr/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-mr/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
