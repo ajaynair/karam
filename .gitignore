@@ -52,7 +52,6 @@ proguard/
 captures/
 
 # IntelliJ
-*.iml
 .idea/*
 !.idea/codeStyles/
 # Keystore files
@@ -61,7 +60,6 @@ captures/
 #*.keystore
 
 # External native build folder generated in Android Studio 2.2 and later
-.externalNativeBuild
 .cxx/
 
 # Google Services (e.g. APIs or Firebase)

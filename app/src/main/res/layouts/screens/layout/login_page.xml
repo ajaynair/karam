@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginPage">
+    tools:context=".activities.LoginPage">
 
     <include layout="@layout/toolbar" />
 
-    <include layout="@layout/bottom_navigation_laborer" />
+    <include layout="@layout/bottom_navigation_common" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -17,7 +17,7 @@
         android:background="@android:drawable/editbox_background"
         android:paddingBottom="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/my_toolbar">
+        app:layout_constraintTop_toBottomOf="@id/top_toolbar_common">
 
         <EditText
             android:id="@+id/loginUserNameText"
@@ -54,14 +54,14 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/imageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/wheel"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_view"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_common"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="TODO" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

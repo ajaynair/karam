@@ -1,6 +1,5 @@
-from config import config
 import mysql.connector
-from mysql.connector import Error
+from config import config
 
 config.conf_init()
 
@@ -8,6 +7,7 @@ userName = config.get_mysql_username()
 userPassword = config.get_mysql_pwd()
 hostURL = config.get_mysql_host()
 dbName = config.get_mysql_db()
+
 
 def mysql_get_connection():
     connection = mysql.connector.connect(host=hostURL,
