@@ -3,14 +3,4 @@
     <style name="KaramTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="android:fontFamily">@string/default_font</item>
     </style>
-
-    <!-- Style for all the buttons -->
-    <style name="BlueButton" parent="Widget.AppCompat.Button">
-        <item name="android:background">@drawable/button_selector</item>
-    </style>
-
-    <!-- Style for all the underscores -->
-    <style name="EditTextUnderscore" parent="Widget.AppCompat.EditText">
-        <item name="android:background">@drawable/edit_text_selector</item>
-    </style>
 </resources>
