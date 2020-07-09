@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LaborerRegistration">
+    tools:context=".activities.LaborerRegistration">
 
     <include layout="@layout/toolbar" />
 
-    <include layout="@layout/bottom_navigation_laborer" />
+    <include layout="@layout/bottom_navigation_common" />
 
     <ScrollView
         android:layout_width="404dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/top_toolbar_common">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout2"
@@ -95,7 +95,7 @@
             </RadioGroup>
 
             <TextView
-                android:id="@+id/location"
+                android:id="@+id/laborer_listview_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/location" />
+                app:layout_constraintTop_toBottomOf="@id/laborer_listview_location" />
 
             <EditText
                 android:id="@+id/phone"

@@ -1,0 +1,10 @@
+<com.google.android.material.bottomnavigation.BottomNavigationView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_navigation_common"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:background="@drawable/gradient_toolbar"
+    app:labelVisibilityMode="labeled"
+    app:layout_constraintBottom_toBottomOf="parent" />

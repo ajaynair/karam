@@ -4,28 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ContractorPostLogin">
+    tools:context=".activities.ContractorPostLogin">
 
     <include layout="@layout/toolbar" />
 
-    <include layout="@layout/bottom_navigation_laborer" />
+    <include layout="@layout/bottom_navigation_common" />
 
     <SearchView
-        android:id="@+id/search"
+        android:id="@+id/contractor_post_login_search"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:iconifiedByDefault="false"
         android:queryHint="Search for laborers"
         app:defaultQueryHint="Search for laborers"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/my_toolbar"
+        app:layout_constraintTop_toBottomOf="@id/top_toolbar_common"
         app:queryHint="Search for laborers" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/contractor_post_login_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search" />
+        app:layout_constraintTop_toBottomOf="@id/contractor_post_login_search" />
 </androidx.constraintlayout.widget.ConstraintLayout>

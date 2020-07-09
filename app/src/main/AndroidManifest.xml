@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.karam.controller.KaramApplication"
+        android:name="com.karam.application.KaramApplication"
         android:allowBackup="true"
         android:configChanges="locale|orientation"
         android:icon="@mipmap/ic_launcher"
@@ -15,11 +15,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/KaramTheme"
-        tools:ignore="LockedOrientationActivity">
-        <activity android:name=".UserSettings" />
-        <activity android:name=".AboutUs" />
+        tools:ignore="LockedOrientationActivity"
+        android:fullBackupContent="@xml/backup_descriptor">
+        <activity android:name=".activities.UserSettings" />
+        <activity android:name=".activities.AboutUs" />
         <activity
-            android:name=".LandingPage"
+            android:name=".activities.LandingPage"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,13 +28,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LaborerStatusPage" />
-        <activity android:name=".LoginPage" />
-        <activity android:name=".ContractorPostLogin" />
-        <activity android:name=".ContractorRegistration" />
-        <activity android:name=".LaborerRegistration" />
-        <activity android:name=".WorkRequestPage" />
-        <activity android:name=".WorkRequestSelf" />
-        <activity android:name=".WorkRequestFriend" />
+        <activity android:name=".activities.LaborerStatusPage" />
+        <activity android:name=".activities.LoginPage" />
+        <activity android:name=".activities.ContractorPostLogin" />
+        <activity android:name=".activities.ContractorRegistration" />
+        <activity android:name=".activities.LaborerRegistration" />
+        <activity android:name=".activities.WorkRequestPage" />
+        <activity android:name=".activities.WorkRequestSelf" />
+        <activity android:name=".activities.WorkRequestFriend" />
     </application>
 </manifest>

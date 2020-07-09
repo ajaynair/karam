@@ -11,6 +11,8 @@ import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
+import com.karam.view.activity.activities.LandingPage;
+
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
@@ -250,7 +252,7 @@ public class BasicUITest {
                 allOf(withContentDescription("More options"),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.my_toolbar),
+                                        withId(R.id.top_toolbar_common),
                                         1),
                                 0),
                         isDisplayed()));
@@ -330,7 +332,7 @@ public class BasicUITest {
                 allOf(withContentDescription("More options"),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.my_toolbar),
+                                        withId(R.id.top_toolbar_common),
                                         1),
                                 0),
                         isDisplayed()));
@@ -356,7 +358,7 @@ public class BasicUITest {
         appCompatTextView4.perform(click());
 
         ViewInteraction appCompatButton9 = onView(
-                allOf(withId(R.id.loginButton), withText("Login"),
+                allOf(withId(R.id.loginButton), withText("Session"),
                         childAtPosition(
                                 allOf(withId(R.id.constraintLayout),
                                         childAtPosition(

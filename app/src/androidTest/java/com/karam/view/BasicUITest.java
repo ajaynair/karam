@@ -356,7 +356,7 @@ public class BasicUITest {
         appCompatTextView4.perform(click());
 
         ViewInteraction appCompatButton9 = onView(
-                allOf(withId(R.id.loginButton), withText("Login"),
+                allOf(withId(R.id.loginButton), withText("Session"),
                         childAtPosition(
                                 allOf(withId(R.id.constraintLayout),
                                         childAtPosition(

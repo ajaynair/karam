@@ -4,34 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutUs">
+    tools:context=".activities.AboutUs">
 
-    <include layout="@layout/toolbar" />
+    <include layout="@layout/toolbar"/>
 
-    <include layout="@layout/bottom_navigation_laborer" />
-
-
-    <include
-        android:id="@+id/include"
-        layout="@layout/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <include layout="@layout/bottom_navigation_common" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/about_us_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/about_us_about_us"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/my_toolbar" />
+        app:layout_constraintTop_toBottomOf="@id/top_toolbar_common" />
 
     <TextView
-        android:id="@+id/textView2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -40,16 +28,5 @@
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/button_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_selector"
-        android:text="Home"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/about_us_heading" />
 </androidx.constraintlayout.widget.ConstraintLayout>
