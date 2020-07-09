@@ -4,21 +4,21 @@
     <item
         android:id="@+id/bottom_navigation_home"
         android:icon="@drawable/ic_home_24px"
-        android:title="Home"
+        android:title="@string/bottom_toolbar_menu_home"
         app:showAsAction="always|withText" />
     <item
         android:id="@+id/bottom_navigation_about_us"
         android:icon="@drawable/ic_about_24px"
-        android:title="About Us"
+        android:title="@string/bottom_toolbar_menu_about_us"
         app:showAsAction="always|withText" />
     <item
         android:id="@+id/bottom_navigation_back"
         android:icon="@drawable/ic_arrow_back_24px"
-        android:title="Back"
+        android:title="@string/bottom_toolbar_menu_back"
         app:showAsAction="always|withText" />
     <item
         android:id="@+id/bottom_navigation_exit"
 
-        android:title="Exit"
+        android:title="@string/bottom_toolbar_menu_exit"
         app:showAsAction="always|withText" />
 </menu>

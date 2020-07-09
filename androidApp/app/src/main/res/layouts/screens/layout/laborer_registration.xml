@@ -30,7 +30,7 @@
                 android:layout_marginStart="20dp"
                 android:backgroundTint="#FB785B"
                 android:ems="10"
-                android:hint="Name"
+                android:hint="@string/name"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -42,7 +42,7 @@
                 android:layout_marginStart="20dp"
                 android:backgroundTint="#FB785B"
                 android:ems="10"
-                android:hint="age"
+                android:hint="@string/age"
                 android:inputType="number"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/inputName" />
@@ -54,7 +54,7 @@
                 android:layout_marginStart="20dp"
                 android:backgroundTint="#FB785B"
                 android:ems="10"
-                android:hint="address"
+                android:hint="@string/address"
                 android:inputType="textMultiLine"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/inputAge" />
@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Do you have a aadhar card?"
+                android:text="@string/aadhar_status_question"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/inputAddress" />
 
@@ -81,7 +81,7 @@
                     android:id="@+id/yes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Yes"
+                    android:text="@string/yes"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
@@ -89,7 +89,7 @@
                     android:id="@+id/no"
                     android:layout_width="208dp"
                     android:layout_height="wrap_content"
-                    android:text="No"
+                    android:text="@string/no"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/yes" />
             </RadioGroup>
@@ -99,7 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Select your preferred location"
+                android:text="@string/work_request_preferred_location"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/radio_group" />
 
@@ -118,7 +118,7 @@
                 android:layout_marginStart="20dp"
                 android:backgroundTint="#FB785B"
                 android:ems="10"
-                android:hint="phone no"
+                android:hint="@string/phoneno"
                 android:inputType="number"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/spinner" />
@@ -130,7 +130,7 @@
                 android:layout_marginStart="20dp"
                 android:backgroundTint="#FB785B"
                 android:ems="10"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:inputType="textPassword"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/phone" />
@@ -142,7 +142,7 @@
                 android:layout_marginStart="20dp"
                 android:background="@drawable/button_selector"
                 android:ems="10"
-                android:text="Register for Work"
+                android:text="@string/work_request_register"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/password" />
 
@@ -153,7 +153,7 @@
                 android:layout_marginStart="20dp"
                 android:autoLink="none"
                 android:gravity="end"
-                android:text="Do not create work for now"
+                android:text="@string/laborer_registration_no_work_for_now"
                 app:layout_constraintEnd_toEndOf="@+id/register"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/register" />

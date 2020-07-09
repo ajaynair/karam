@@ -4,6 +4,6 @@
     tools:context=".activities.LandingPage">
     <item
         android:id="@+id/logout"
-        android:title="Logout" />
+        android:title="@string/logout" />
 
 </menu>
