@@ -7,11 +7,11 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.karam.sharedPreference.UserData;
+import com.karam.view.activity.R;
 import com.karam.view.activity.activities.AboutUs;
 import com.karam.view.activity.activities.ContractorPostLogin;
 import com.karam.view.activity.activities.LaborerStatusPage;
 import com.karam.view.activity.activities.LoginPage;
-import com.karam.view.activity.R;
 import com.karam.view.activity.activities.UserSettings;
 
 public class BottomNavigation {

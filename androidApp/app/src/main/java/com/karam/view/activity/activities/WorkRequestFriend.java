@@ -10,10 +10,10 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.karam.rest.RestService;
+import com.karam.rest.RestServiceInterface;
 import com.karam.rest.rest_messages.requests.Laborer;
 import com.karam.rest.rest_messages.responses.Registration;
-import com.karam.rest.RestServiceInterface;
-import com.karam.rest.RestService;
 import com.karam.view.activity.BaseActivity;
 import com.karam.view.activity.R;
 
