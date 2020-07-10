@@ -44,20 +44,5 @@ public class UserSettings extends BaseActivity {
                 ((LanguageArrayAdapter) ladapter).setLocale(getApplicationContext(), i, UserSettings.this);
             }
         });
-
-        assignListenerToViews();
-    }
-
-    /**
-     * Assign all listener to different views of the view.activity
-     */
-    private void assignListenerToViews() {
-        Button laborerReg = findViewById(R.id.button_home);
-        laborerReg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(UserSettings.this, LaborerStatusPage.class));
-            }
-        });
     }
 }

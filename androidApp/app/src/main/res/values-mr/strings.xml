@@ -2,21 +2,17 @@
     <string name="app_name">करम</string>
 
     <!-- Landing Page -->
-    <string name="landing_login">लोजीन</string>
     <string name="landing_register_contractor">कंत्राटदार म्हणून नोंदणी करा</string>
     <string name="landing_register_laborer">मजूर म्हणून नोंदणी करा</string>
     <string name="landing_if_acc_exist_text">
 आपल्याकडे आधीपासूनच खाते असल्यास लॉग इन करा</string>
 
-    <!-- Contractor Registration Page -->
-    <string name="contract_reg_name">नाव</string>
 
     <!-- Add work request notification -->
     <string name="notif_work_req_create_job_req">नोकरीची विनंती तयार करा</string>
-    <string name="notif_work_req_create_job_req_text">आपली स्थिती बंद वर सेट केली आहे! आपणास नोकरी मिळू शकणार नाही</string>
+    <string name="notif_work_req_create_job_req_text">"आपली स्थिती बंद वर सेट केली आहे! आपणास नोकरी मिळू शकणार नाही. "</string>
 
     <!-- About Us page -->
-    <string name="about_us_about_us"><b>आमच्याबद्दल</b></string>
     <string name="about_us_about_us_detail">
         आम्ही आमच्या सॉफ्टवेअरसाठी आमचे कार्य करण्यासाठी हे अॅप विकसित करणार्‍या 3 सॉफ्टवेअर अभियंत्यांचा एक छोटा गट आहोत.. N
         आम्हाला सामील होण्यासाठी आम्हाला अधिक लोक आवडतील!\n
@@ -31,31 +27,28 @@
         </ul>
         <b>थोडक्यात, आपण कशासाठी चांगले आहात याची पर्वा नाही, आम्हाला आपल्या मदतीची आवश्यकता आहे!</b>
     </string>
-    <string name="bottom_toolbar_menu_home" />
-    <string name="bottom_toolbar_menu_settings">Settings</string>
-    <string name="bottom_toolbar_menu_about_us">About Us</string>
-    <string name="bottom_toolbar_menu_back">Back</string>
-    <string name="bottom_toolbar_menu_exit">Exit</string>
-    <string name="contractor_registration_address">Address</string>
-    <string name="contractor_registration_phoneno">Phone No</string>
-    <string name="contractor_registration_register">Register</string>
-    <string name="location">Location</string>
-    <string name="work_request_register">Register</string>
-    <string name="work_request_register_friend">Register for Friend</string>
-    <string name="name">Name</string>
-    <string name="password">Password</string>
-    <string name="login">Login</string>
-    <string name="chakra">Chakra</string>
-    <string name="laborer_status_create_work_request">Create new work request</string>
-    <string name="age">Age</string>
-    <string name="address">Address</string>
-    <string name="aadhar_status_question_friend">Does your friend have an aadhar card?</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="work_request_friend_preferred_location">Select your friend\'s preferred location</string>
-    <string name="phoneno">Phone No</string>
-    <string name="logout">Logout</string>
-    <string name="laborer_registration_no_work_for_now">Do not create work for now</string>
-    <string name="work_request_preferred_location">Select your preferred location</string>
-    <string name="aadhar_status_question">Do you have an aadhar card?</string>
+    <string name="home" >मुख्यपृष्ठ</string>
+    <string name="settings">सेटिंग्ज</string>
+    <string name="about_us">आमच्याबद्दल</string>
+    <string name="back">मागे</string>
+    <string name="exit">"बाहेर पडा "</string>
+    <string name="register">"नोंदणी करा "</string>
+    <string name="location">स्थान</string>
+    <string name="work_request_register_friend">"मित्रासाठी नोंदणी करा "</string>
+    <string name="name">नाव</string>
+    <string name="password">संकेतशब्द</string>
+    <string name="login">लॉगिन</string>
+    <string name="chakra">चक्र</string>
+    <string name="laborer_status_create_work_request">"नवीन कामाची विनंती तयार करा "</string>
+    <string name="age">वय</string>
+    <string name="address">पत्ता</string>
+    <string name="aadhar_status_question_friend">"तुमच्या मित्राकडे आधार कार्ड आहे का? "</string>
+    <string name="yes">होय</string>
+    <string name="no">नाही</string>
+    <string name="work_request_friend_preferred_location">"आपल्या मित्राचे पसंतीचे स्थान निवडा "</string>
+    <string name="phone_no">"दूरध्वनी क्रमांक "</string>
+    <string name="logout">"बाहेर पडणे "</string>
+    <string name="laborer_registration_no_work_for_now">"आत्तासाठी कार्य तयार करू नका "</string>
+    <string name="work_request_preferred_location">"आपले पसंत केलेले स्थान निवडा "</string>
+    <string name="aadhar_status_question">"तुमच्याकडे आधार कार्ड आहे का? "</string>
 </resources>
