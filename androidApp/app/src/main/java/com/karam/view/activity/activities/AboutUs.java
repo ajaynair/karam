@@ -14,12 +14,7 @@ public class AboutUs extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        fillViews();
         assignListenerToViews();
-    }
-
-    private void fillViews() {
-        laborerReg = findViewById(R.id.button_home);
     }
 
     @Override

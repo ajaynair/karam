@@ -14,7 +14,7 @@
         android:id="@+id/about_us_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/about_us_about_us"
+        android:text="@string/about_us"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/top_toolbar_common" />

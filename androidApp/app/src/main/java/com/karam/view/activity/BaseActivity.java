@@ -73,12 +73,6 @@ public abstract class BaseActivity extends AppCompatActivity {
                 userData.setUserStateLoggedOut();
                 startActivity(new Intent(this, LoginPage.class));
                 return true;
-            case (R.id.about_us):
-                startActivity(new Intent(this, AboutUs.class));
-                return true;
-            case (R.id.user_settings):
-                startActivity(new Intent(this, UserSettings.class));
-                return true;
             default:
                 Toast.makeText(this, "Oops! Error. You shouldn't be seeing this message",
                         Toast.LENGTH_SHORT).show();
