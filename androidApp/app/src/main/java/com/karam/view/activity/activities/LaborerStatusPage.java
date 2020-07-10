@@ -9,10 +9,10 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.karam.rest.rest_messages.requests.Laborer;
 import com.karam.adapter.LaborerListAdapter;
-import com.karam.rest.RestServiceInterface;
 import com.karam.rest.RestService;
+import com.karam.rest.RestServiceInterface;
+import com.karam.rest.rest_messages.requests.Laborer;
 import com.karam.view.activity.BaseActivity;
 import com.karam.view.activity.R;
 

@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.karam.sharedPreference.UserData;
-import com.karam.view.activity.activities.LoginPage;
 import com.karam.view.activity.R;
+import com.karam.view.activity.activities.LoginPage;
 
 public class TopNavigation {
     private static String TAG = "TopNavigation";

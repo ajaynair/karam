@@ -9,12 +9,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.karam.sharedPreference.UserData;
+import com.karam.view.activity.activities.LoginPage;
 import com.karam.view.activity.common.BottomNavigation;
 import com.karam.view.activity.common.TopNavigation;
-import com.karam.sharedPreference.UserData;
-import com.karam.view.activity.activities.AboutUs;
-import com.karam.view.activity.activities.LoginPage;
-import com.karam.view.activity.activities.UserSettings;
 
 public abstract class BaseActivity extends AppCompatActivity {
     /**

@@ -2,8 +2,8 @@ package com.karam.rest;
 
 import com.karam.rest.rest_messages.requests.Contractor;
 import com.karam.rest.rest_messages.requests.Credentials;
-import com.karam.rest.rest_messages.responses.Error;
 import com.karam.rest.rest_messages.requests.Laborer;
+import com.karam.rest.rest_messages.responses.Error;
 import com.karam.rest.rest_messages.responses.Registration;
 import com.karam.rest.rest_messages.responses.Session;
 
