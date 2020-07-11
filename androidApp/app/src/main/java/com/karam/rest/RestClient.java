@@ -7,30 +7,31 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RestService {
-    private RestServiceInterface service;
+/**
+ * REST client to connect to the the REST server
+ */
+public class RestClient {
+    private RestClientInterface service;
 
-    public RestService(Context c) {
+    public RestClient(Context c) {
         try {
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
             // TODO NEW_COMER Get the IP from a config
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl("http://10.0.2.2:5000/")
-
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(httpClient.build())
                     .build();
 
-            this.service = retrofit.create(RestServiceInterface.class);
+            this.service = retrofit.create(RestClientInterface.class);
         } catch (Exception ex) {
-            Toast.makeText(c, ex.toString(),
+            Toast.makeText(c, "Unable to connect to the REST server",
                     Toast.LENGTH_LONG).show();
-            ex.printStackTrace();
         }
     }
 
-    public RestServiceInterface getService() {
+    public RestClientInterface getService() {
         return this.service;
     }
 }

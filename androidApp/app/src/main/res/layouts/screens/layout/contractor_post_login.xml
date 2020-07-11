@@ -15,11 +15,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:iconifiedByDefault="false"
-        android:queryHint="Search for laborers"
-        app:defaultQueryHint="Search for laborers"
+        android:queryHint="@string/contractor_post_login_search_laborers"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/top_toolbar_common"
-        app:queryHint="Search for laborers" />
+        app:layout_constraintTop_toBottomOf="@id/top_toolbar_common"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/contractor_post_login_recycler_view"

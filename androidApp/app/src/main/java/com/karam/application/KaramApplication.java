@@ -23,18 +23,22 @@ import java.util.concurrent.TimeUnit;
  */
 public class KaramApplication extends Application {
     /**
+     * FIXME: NEW_COMER: Implement notification
+     * This is just a test function
      * Enqueues a periodic notification request
      */
-    private void enablePeriodicNotify() {
+    private void testPeriodicNotify() {
         WorkManager workManager = WorkManager.getInstance(this);
         PeriodicWorkRequest w = new PeriodicWorkRequest.Builder(NotifyWorker.class, 15, TimeUnit.MINUTES).build();
         workManager.enqueueUniquePeriodicWork("s", ExistingPeriodicWorkPolicy.KEEP, w);
     }
 
     /**
+     * FIXME: NEW_COMER: Implement notification
+     * This is just a test function
      * Enqueues a one time notification request
      */
-    private void enableOneTimeNotify() {
+    private void testOneTimeNotify() {
         WorkManager workManager = WorkManager.getInstance(this);
         WorkRequest w = new OneTimeWorkRequest.Builder(NotifyWorker.class).build();
         workManager.enqueue(w);
@@ -46,14 +50,16 @@ public class KaramApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        // Required initialization logic here!
-        // Following 2 lines are just to test android notification
-        // enableOneTimeNotify();
-        // enablePeriodicNotify();
+
+        // TODO: Implement notification mechanism
+        // Following 2 lines are just to test basic android notification
+        // testOneTimeNotify();
+        // testPeriodicNotify();
     }
 
     /**
-     * This is called when the overall system is running low on memory,
+     * TODO NEW_COMER
+     * The function is called when the overall system is running low on memory,
      * and would like actively running processes to tighten their belts.
      * Overriding this method is totally optional!
      */

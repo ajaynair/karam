@@ -14,14 +14,18 @@ public class UserSettingsAdapter<T> extends ArrayAdapter<String> {
      * TODO: Find a better data structure for languages
      */
     private static String[] settings = {"Language"};
-    Context context;
 
+    // TODO Store context of the caller activity if required
     public UserSettingsAdapter(Context context, int simple_list_item_1) {
         super(context, simple_list_item_1, settings);
-        this.context = context;
     }
 
-
-    public void showSettings(Context c, int i, Activity a) {
-    }
+    /**
+     * Called when settings is clicked.
+     * TODO: Check all the other user settings and fill it up
+     * @param c: Context of the caller activity
+     * @param i: Index of the item clicked
+     * @param a: Caller activity
+     */
+    public void showSettings(Context c, int i, Activity a) {}
 }

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="4" />
+  </component>
   <component name="AndroidLayouts">
     <shared>
       <config />
@@ -7,7 +10,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df5d22b-5372-4340-9f32-896ffddc24e3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/adapter/LaborerListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/adapter/LaborerListAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/adapter/LanguageArrayAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/adapter/LanguageArrayAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/adapter/UserSettingsAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/adapter/UserSettingsAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/application/KaramApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/application/KaramApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/rest/RestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/rest/RestClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/rest/RestServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/rest/RestClientInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/service/NotifyWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/service/NotifyWorker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/AboutUs.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/AboutUs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/ContractorPostLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/ContractorPostLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/ContractorRegistration.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/ContractorRegistration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/LaborerRegistration.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/LaborerRegistration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/LaborerStatusPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/LaborerStatusPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/WorkRequestFriend.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/WorkRequestFriend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/WorkRequestSelf.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/WorkRequestSelf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/button_selector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/button_selector.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/gradient_toolbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/gradient_toolbar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/main_color.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/main_color.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/main_color_selected.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/main_color_selected.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/single_border.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/single_border.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/common/layout/laborer_listview.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/common/layout/laborer_listview.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/about_us.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/about_us.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/contractor_post_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/contractor_post_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/contractor_registration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/contractor_registration.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/laborer_registration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/laborer_registration.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/laborer_status_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/laborer_status_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/landing_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/landing_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/login_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/login_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/work_request_friend.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/work_request_friend.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/work_request_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/work_request_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/work_request_self.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/work_request_self.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-hi/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-hi/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-mr/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-mr/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,6 +56,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="emulator-5554" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -32,13 +74,22 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="resourceFile" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1eRC2kJIfFFY0QwPi7bNoLvElSe" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">

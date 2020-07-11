@@ -51,4 +51,5 @@
     <string name="laborer_registration_no_work_for_now">"आत्तासाठी कार्य तयार करू नका "</string>
     <string name="work_request_preferred_location">"आपले पसंत केलेले स्थान निवडा "</string>
     <string name="aadhar_status_question">"तुमच्याकडे आधार कार्ड आहे का? "</string>
+    <string name="contractor_post_login_search_laborers">मजुरांचा शोध</string>
 </resources>

@@ -17,7 +17,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-public interface RestServiceInterface {
+public interface RestClientInterface {
     @POST("/v1.0/person/laborer")
     Call<Registration> registerAsLaborer(@Body Laborer laborer);
 

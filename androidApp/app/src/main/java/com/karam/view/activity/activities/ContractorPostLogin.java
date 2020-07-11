@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.karam.adapter.LaborerListAdapter;
-import com.karam.rest.RestService;
-import com.karam.rest.RestServiceInterface;
+import com.karam.rest.RestClient;
+import com.karam.rest.RestClientInterface;
 import com.karam.rest.rest_messages.requests.Laborer;
 import com.karam.view.activity.BaseActivity;
 import com.karam.view.activity.R;
@@ -82,8 +82,8 @@ public class ContractorPostLogin extends BaseActivity {
 
     void send_rest_request(String query) {
         try {
-            RestService retro = new RestService(getApplicationContext());
-            RestServiceInterface service = retro.getService();
+            RestClient retro = new RestClient(getApplicationContext());
+            RestClientInterface service = retro.getService();
 
             String[] skills = new String[]{query};
             String[] locations = new String[]{query};

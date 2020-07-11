@@ -7,8 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.karam.rest.RestService;
-import com.karam.rest.RestServiceInterface;
+import com.karam.rest.RestClient;
+import com.karam.rest.RestClientInterface;
 import com.karam.rest.rest_messages.requests.Credentials;
 import com.karam.rest.rest_messages.responses.Session;
 import com.karam.view.activity.BaseActivity;
@@ -54,8 +54,8 @@ public class LoginPage extends BaseActivity {
     }
 
     private void send_rest_request(String username, String password) {
-        RestService retro = new RestService(getApplicationContext());
-        RestServiceInterface service = retro.getService();
+        RestClient retro = new RestClient(getApplicationContext());
+        RestClientInterface service = retro.getService();
 
         Credentials credentials = new Credentials(username, password);
         Call<Session> callSync = service.login(credentials);
