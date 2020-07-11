@@ -24,7 +24,8 @@ public class LanguageArrayAdapter<T> extends ArrayAdapter<String> {
     /**
      * TODO: Find a better data structure for languages
      */
-    private static String[] languages = {"English",
+    private static String[] languages = {
+            "English",
             "Hindi",
             "Marathi"};
     Context context;
@@ -35,10 +36,10 @@ public class LanguageArrayAdapter<T> extends ArrayAdapter<String> {
     }
 
     /**
-     * Get the language abbrevation as required by android based on the listview element selected by the user
+     * Get the language abbreviation as required by android based on the listview element selected by the user
      *
      * @param i: id of the element in the listview that is selected by the user click
-     * @return abbrevation of the language as required by android library to set the default language
+     * @return abbreviation of the language as required by android library to set the default language
      */
     public String getLanguageAbbr(int i) {
         switch (languages[i]) {

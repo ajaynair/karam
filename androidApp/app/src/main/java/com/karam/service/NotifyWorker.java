@@ -21,6 +21,10 @@ public class NotifyWorker extends Worker {
         notification = new AddWorkRequestNotification(context);
     }
 
+    /**
+     * Create a worker that runs in the background
+     * @return return success, failure or retry
+     */
     @Override
     public Result doWork() {
         try {
@@ -36,8 +40,8 @@ public class NotifyWorker extends Worker {
                 }
             }, 1000);
 
-            // (Returning RETRY tells WorkManager to try this task again
-            // later; FAILURE says not to try again.)
+            // return RETRY tells WorkManager to try again
+            // return FAILURE says not to try again
             return Result.failure();
         }
     }

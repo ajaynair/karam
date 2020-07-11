@@ -2,7 +2,7 @@
     <item>
         <shape android:shape="rectangle">
             <!-- Set the border color of your layout here -->
-            <solid android:color="#FB785B" />
+            <solid android:color="@color/secondaryColor" />
 
         </shape>
     </item>

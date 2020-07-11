@@ -75,4 +75,5 @@
     <string name="laborer_registration_no_work_for_now">Do not create work for now</string>
     <string name="work_request_preferred_location">Select your preferred location</string>
     <string name="aadhar_status_question">Do you have an aadhar card?</string>
+    <string name="contractor_post_login_search_laborers">Search for laborers</string>
 </resources>

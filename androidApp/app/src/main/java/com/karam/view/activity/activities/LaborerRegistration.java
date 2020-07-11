@@ -11,8 +11,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.karam.rest.RestService;
-import com.karam.rest.RestServiceInterface;
+import com.karam.rest.RestClient;
+import com.karam.rest.RestClientInterface;
 import com.karam.rest.rest_messages.requests.Laborer;
 import com.karam.rest.rest_messages.responses.Registration;
 import com.karam.sharedPreference.UserData;
@@ -70,8 +70,8 @@ public class LaborerRegistration extends BaseActivity {
     }
 
     private void send_rest_request() {
-        RestService retro = new RestService(getApplicationContext());
-        RestServiceInterface service = retro.getService();
+        RestClient retro = new RestClient(getApplicationContext());
+        RestClientInterface service = retro.getService();
         Toast.makeText(getApplicationContext(), age.getText(),
                 Toast.LENGTH_SHORT).show();
 

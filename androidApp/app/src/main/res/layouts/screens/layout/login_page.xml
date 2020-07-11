@@ -23,7 +23,7 @@
             android:id="@+id/loginUserNameText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FB785B"
+            android:theme="@style/editTextStyle"
             android:hint="@string/name"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
             android:id="@+id/loginPasswordText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FB785B"
+            android:theme="@style/editTextStyle"
             android:hint="@string/password"
 
             android:inputType="textPassword"
