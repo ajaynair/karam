@@ -70,8 +70,11 @@ public class WorkRequestFriend extends BaseActivity {
         Toast.makeText(getApplicationContext(), age.getText(),
                 Toast.LENGTH_SHORT).show();
 
-        //Laborer laborer = new Laborer(name.getText().toString(), laborer_listview_location.getSelectedItem().toString(), phone.getText().toString(), Integer.valueOf(age.getText().toString()), "f", aadharStatus.getCheckedRadioButtonId());
-        Laborer laborer = new Laborer(1, name.getText().toString(), name.getText().toString(), location.getSelectedItem().toString(), phone.getText().toString(), 23, "f", aadharStatus.getCheckedRadioButtonId() == R.id.yes ? "Y" : "N", "Carpentry");
+        Laborer laborer = new Laborer(userData.get_user_id(), name.getText().toString(),
+                name.getText().toString(), location.getSelectedItem().toString(),
+                // TODO NEW_COMER Get the other values from UI and fill it
+                phone.getText().toString(), Integer.valueOf(age.getText().toString()), "f",
+                aadharStatus.getCheckedRadioButtonId() == R.id.yes ? "Y" : "N", "Carpentry");
         Call<Registration> callSync = service.registerAsLaborer(laborer);
         callSync.enqueue(new Callback<Registration>() {
             @Override
@@ -99,7 +102,6 @@ public class WorkRequestFriend extends BaseActivity {
             @Override
             public void onClick(View v) {
                 send_rest_request();
-                Toast.makeText(WorkRequestFriend.this, "Mast", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(WorkRequestFriend.this, LaborerStatusPage.class));
             }
         });

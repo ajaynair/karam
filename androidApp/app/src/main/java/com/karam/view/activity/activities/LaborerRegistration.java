@@ -35,7 +35,6 @@ public class LaborerRegistration extends BaseActivity {
     EditText password;
     Spinner location;
     Button register;
-    UserData userData;
 
     @Override
     protected int getLayoutResource() {
@@ -62,7 +61,6 @@ public class LaborerRegistration extends BaseActivity {
         password = findViewById(R.id.password);
         register = findViewById(R.id.register);
         location = findViewById(R.id.spinner);
-        userData = new UserData(this);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         location.setAdapter(adapter);
@@ -75,13 +73,15 @@ public class LaborerRegistration extends BaseActivity {
         Toast.makeText(getApplicationContext(), age.getText(),
                 Toast.LENGTH_SHORT).show();
 
-        Laborer laborer = new Laborer(1, name.getText().toString(), name.getText().toString(), location.getSelectedItem().toString(), phone.getText().toString(), 23, "f", aadharStatus.getCheckedRadioButtonId() == R.id.yes ? "Y" : "N", "Carpentry");
+        // TODO NEW_COMER Get values that are hardcoded from the UI and fill it
+        Laborer laborer = new Laborer(0, name.getText().toString(), name.getText().toString(), location.getSelectedItem().toString(), phone.getText().toString(), 23, "f", aadharStatus.getCheckedRadioButtonId() == R.id.yes ? "Y" : "N", "Carpentry");
         Call<Registration> callSync = service.registerAsLaborer(laborer);
         callSync.enqueue(new Callback<Registration>() {
             @Override
             public void onResponse(Call<Registration> call, Response<Registration> response) {
                 Registration apiResponse = response.body();
                 System.out.println(apiResponse);
+                userData.set_user_id(apiResponse.getUserId());
                 Toast.makeText(getApplicationContext(), apiResponse.toString(),
                         Toast.LENGTH_SHORT).show();
             }
@@ -103,14 +103,7 @@ public class LaborerRegistration extends BaseActivity {
             @Override
             public void onClick(View v) {
                 send_rest_request();
-                userData.setUserStateContractor();
-                startActivity(new Intent(LaborerRegistration.this, LaborerStatusPage.class));
-            }
-        });
-        TextView nowork = findViewById(R.id.nowork);
-        nowork.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                userData.setUserStateLaborer();
                 startActivity(new Intent(LaborerRegistration.this, LaborerStatusPage.class));
             }
         });

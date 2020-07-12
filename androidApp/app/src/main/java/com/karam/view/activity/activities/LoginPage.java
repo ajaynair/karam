@@ -66,6 +66,7 @@ public class LoginPage extends BaseActivity {
                 System.out.println(apiResponse);
                 Toast.makeText(getApplicationContext(), apiResponse.toString(),
                         Toast.LENGTH_SHORT).show();
+                // TODO Use enum for laborer and contractor
                 if (apiResponse.getRole_type().equals("laborer")) {
                     userData.setUserStateLaborer();
                     startActivity(new Intent(LoginPage.this, LaborerStatusPage.class));

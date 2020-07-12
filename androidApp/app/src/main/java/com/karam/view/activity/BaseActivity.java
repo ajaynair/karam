@@ -17,8 +17,6 @@ import com.karam.view.activity.common.TopNavigation;
 public abstract class BaseActivity extends AppCompatActivity {
     /**
      * Handle what happens when any activity is created
-     *
-     * @param savedInstanceState: null for now
      */
     protected UserData userData = null;
 

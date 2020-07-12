@@ -21,25 +21,25 @@ public class UserSettings extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final ArrayAdapter<String> adapter = new UserSettingsAdapter<String>(this,
+        final ArrayAdapter<String> settings_adapter = new UserSettingsAdapter<String>(this,
                 android.R.layout.simple_list_item_1);
         ListView settingList = findViewById(R.id.settingsList);
-        settingList.setAdapter(adapter);
+        settingList.setAdapter(settings_adapter);
         settingList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                ((UserSettingsAdapter) adapter).showSettings(getApplicationContext(), i, UserSettings.this);
+                ((UserSettingsAdapter) settings_adapter).showSettings(getApplicationContext(), i, UserSettings.this);
             }
         });
 
-        final ArrayAdapter<String> ladapter = new LanguageArrayAdapter<String>(this,
+        final ArrayAdapter<String> language_adapter = new LanguageArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1);
         ListView languageList = findViewById(R.id.languageList);
-        languageList.setAdapter(ladapter);
+        languageList.setAdapter(language_adapter);
         languageList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                ((LanguageArrayAdapter) ladapter).setLocale(getApplicationContext(), i, UserSettings.this);
+                ((LanguageArrayAdapter) language_adapter).setLocale(getApplicationContext(), i, UserSettings.this);
             }
         });
     }
