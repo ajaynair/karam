@@ -34,7 +34,6 @@ public class LandingPage extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toast.makeText(this, "wtf", Toast.LENGTH_LONG);
         getAdapterWithLanguages();
 
         ListView languageList = findViewById(R.id.languageList);

@@ -146,19 +146,6 @@
                 android:text="@string/register"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/password" />
-
-            <TextView
-                android:id="@+id/nowork"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:autoLink="none"
-                android:gravity="end"
-                android:text="@string/laborer_registration_no_work_for_now"
-                app:layout_constraintEnd_toEndOf="@+id/register"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/register" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

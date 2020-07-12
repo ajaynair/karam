@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.karam.rest.RestClient;
 import com.karam.rest.RestClientInterface;
 import com.karam.rest.rest_messages.requests.Laborer;
+import com.karam.rest.rest_messages.requests.LaborerActiveStatus;
 import com.karam.rest.rest_messages.responses.Error;
 import com.karam.view.activity.BaseActivity;
 import com.karam.view.activity.R;
@@ -64,8 +65,8 @@ public class WorkRequestSelf extends BaseActivity {
         RestClient retro = new RestClient(getApplicationContext());
         RestClientInterface service = retro.getService();
 
-        Laborer laborer = new Laborer(2, "n", "n", "l", "123", 23, "m", "f", "skills");
-        Call<Error> callSync = service.modifyLaborerInfo(2, laborer);
+        LaborerActiveStatus status = new LaborerActiveStatus(true);
+        Call<Error> callSync = service.modifyLaborerInfo(userData.get_user_id(), status);
         callSync.enqueue(new Callback<Error>() {
             @Override
             public void onResponse(Call<Error> call, Response<Error> response) {

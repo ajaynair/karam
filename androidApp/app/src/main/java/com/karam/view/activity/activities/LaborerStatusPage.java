@@ -71,7 +71,7 @@ public class LaborerStatusPage extends BaseActivity {
             e.printStackTrace();
         }
         try {
-            send_rest_request(1);
+            send_rest_request(userData.get_user_id());
         } catch (IOException e) {
             e.printStackTrace();
         }

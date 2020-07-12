@@ -3,6 +3,7 @@ package com.karam.rest;
 import com.karam.rest.rest_messages.requests.Contractor;
 import com.karam.rest.rest_messages.requests.Credentials;
 import com.karam.rest.rest_messages.requests.Laborer;
+import com.karam.rest.rest_messages.requests.LaborerActiveStatus;
 import com.karam.rest.rest_messages.responses.Error;
 import com.karam.rest.rest_messages.responses.Registration;
 import com.karam.rest.rest_messages.responses.Session;
@@ -34,5 +35,5 @@ public interface RestClientInterface {
     Call<ArrayList<Laborer>> getLaborerAndFriendsProfile(@Path("pid") int pid);
 
     @PUT("/v1.0/person/laborer/{pid}")
-    Call<Error> modifyLaborerInfo(@Path("pid") int pid, @Body Laborer laborer);
+    Call<Error> modifyLaborerInfo(@Path("pid") int pid, @Body LaborerActiveStatus laborer);
 }

@@ -27,7 +27,6 @@ public class ContractorRegistration extends BaseActivity {
     EditText phone;
     EditText address;
     Button register;
-    UserData userData;
 
     /**
      * Handle what happens when the view.activity is created
@@ -42,7 +41,6 @@ public class ContractorRegistration extends BaseActivity {
         phone = findViewById(R.id.phone);
         address = findViewById(R.id.inputAddress);
         register = findViewById(R.id.register);
-        userData = new UserData(this);
 
         assignListenerToViews();
     }
