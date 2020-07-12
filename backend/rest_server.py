@@ -53,15 +53,13 @@ def get_laborer_list():
         skills = data['filter']['skills']
         locations = data['filter']['locations']
     obj1 = PersonTransaction.PersonTransaction()
-    print (obj1.getAllLaborer(skills, locations))
+
     return jsonify(obj1.getAllLaborer(skills, locations))
 
 
 '''
 Returns a list of contractors
 '''
-
-
 @app.route('/v1.0/person/contractor', methods=['GET'])
 def get_contractor_list():
     data = json.loads(request.get_data())
@@ -72,14 +70,12 @@ def get_contractor_list():
 '''
 Creates a job profile for laborer and contractor
 '''
-
-
 @app.route('/v1.0/job/create', methods=['POST'])
 def create_job():
     data = json.loads(request.get_data())
     job = JobPOJO.JobPOJO()
 
-    # TODO We need to remove some colums from database maybe
+    # TODO We need to remove some columns from database maybe
     # TODO check how to do multiline code intendentation in python
     job = job.setJobId(data['jobId']).setLaborerId(data['laborerId']).setContractorId(
         data['contractorId'])
@@ -97,8 +93,6 @@ def create_job():
 '''
 Creates a profile of a user while signup
 '''
-
-
 @app.route('/v1.0/person/signup', methods=['POST'])
 def create_user_profile():
     data = json.loads(request.get_data())
@@ -269,7 +263,6 @@ sample request for modify
 Modify a profile of a contractor
 '''
 
-
 @app.route('/v1.0/person/contractor/<pid>', methods=['PUT'])
 def modify_contractor_profile(pid):
     data = json.loads(request.get_data())
@@ -343,7 +336,7 @@ def get_person_session():
     resp = {
         "session_id": "1234",
         "role_type": "laborer",
-        "id": 0
+        "user_id": 0
     }
     return jsonify(resp)
 
