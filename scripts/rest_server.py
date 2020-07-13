@@ -9,53 +9,13 @@ import datetime
 app = Flask(__name__)
 
 # TODO Validate JSON schema
-
-@app.route('/v1.0/test/withbody', methods=['POST'])
-def get_test2():
-    print (json.loads(request.get_data()))
-    resp = {"test":"pass"}
-    return jsonify(resp)
-
-@app.route('/v1.0/test', methods=['GET'])
-def get_test():
-    resp = {"test":"pass"}
-    return jsonify(resp)
-
-@app.route('/v1.0/test', methods=['POST'])
-def post_test():
-    resp = {"test":"pass"}
-    return jsonify(resp)
-
-@app.route('/v1.0/test/<id>/test/<pid>', methods=['POST'])
-def post_test_id(id, pid):
-    pid = str(pid)
-    resp = {"test":pid}
-    return jsonify(resp)
-
 '''
-Get a list of people
-Request:
- {
+{
   "filter": {
-  "skills": [],
-  "locations": []
+  "skills": "ELEC",
+  "locations": "DELHI"
   }
- }
-Response:
- {
-         {
-            "id": 1,
-            "Name": "test_name",
-            "Age": 20,
-            "Gender": "M",
-            "Preferred Location": "Pune, Mumbai",
-            "Skill": "Carpenter",
-            "Contact No": 9923033442,
-            "links": {
-                "self": request.path + '/1',
-                "parent": request.path
-            }, {}, {}
- }
+}
  Takes filters as input and filters the response accordingly
 Returns a list of job details
 '''
@@ -68,6 +28,9 @@ def get_laborer_list():
     return jsonify(obj1.getAllLaborer(skills, locations))
 
 '''
+{
+
+}
 Returns a list of contractors
 '''
 @app.route('/v1.0/person/contractor', methods=['GET'])
@@ -77,6 +40,15 @@ def get_contractor_list():
     return jsonify(obj1.getAllContractor())
 
 '''
+{
+    "information" :
+    {
+    "jobId": "JOB123",
+    "laborerId": "LAB123",
+    "contractorId": "CON123",
+    "activeInd": "Y"
+    }
+}
 Creates a job profile for laborer and contractor
 '''
 @app.route('/v1.0/job/create', methods=['POST'])
@@ -98,6 +70,14 @@ def create_job():
     return jsonify(resp)
 
 '''
+{
+    "information" :
+    {
+    "roleType": "L",
+    "userName": "USER125",
+    "passwordHash": "PASS125"
+    }
+}
 Creates a profile of a user while signup
 '''
 @app.route('/v1.0/person/signup', methods=['POST'])
@@ -119,6 +99,24 @@ def create_user_profile():
     return jsonify(resp)
 
 '''
+{
+    "information" :
+    {
+    "contractorId": "2",
+    "parentId": 0,
+    "fname": "RIS",
+    "lname": "PAN",
+    "gender": "M",
+    "phno": "981111111",
+    "address": "DELHI",
+    "aadharStatus": "Y",
+    "aadharNumber" : "ADHAE123",
+    "panCard" : "PAN123",
+    "skill" : "SKILL123",
+    "activeInd" : "Y",
+    "preferred_location": "DELHI"
+    }
+}
 Creates a profile of a contractor
 '''
 @app.route('/v1.0/person/contractor', methods=['POST'])
@@ -142,6 +140,24 @@ def create_contractor_profile():
     return jsonify(resp)
 
 '''
+{
+    "information" :
+    {
+    "laborerId": "15",
+    "parentId": 0,
+    "fname": "RIS",
+    "lname": "PAN",
+    "gender": "M",
+    "phno": "981111111",
+    "address": "DELHI",
+    "aadharStatus": "Y",
+    "aadharNumber" : "ADHAE123",
+    "panCard" : "PAN123",
+    "skill" : "CARPENTER, PLUMBER, ELECTRICIAN",
+    "activeInd" : "Y",
+    "preferred_location": "DELHI,MUMBAI,PUNE,BANGLORE"
+    }
+}
 Creates a profile of a laborer
 '''
 @app.route('/v1.0/person/laborer', methods=['POST'])
@@ -165,6 +181,22 @@ def create_laborer_profile():
     return jsonify(resp)
 
 '''
+{
+    "information" :
+    {
+    "fname": "ADAM",
+    "lname": "EVE",
+    "gender": "M",
+    "phno": "981111111",
+    "address": "DELHI",
+    "aadharStatus": "Y",
+    "aadharNumber" : "ADHAE123",
+    "panCard" : "PAN123",
+    "skill" : "SKILL100",
+    "activeInd" : "Y",
+    "preferred_location": "PUNE"
+    }
+}
 Create a laborer profile for a friend
 '''
 @app.route('/v1.0/person/laborer/<pid>/laborer', methods=['POST'])
@@ -193,6 +225,22 @@ def create_friend_profile(pid):
     return jsonify(resp)
 
 '''
+{
+    "information" :
+    {
+    "fname": "",
+    "lname": "",
+    "gender": "",
+    "phno": "7777777777",
+    "address": "",
+    "aadharStatus": "",
+    "aadharNumber" : "",
+    "panCard" : "",
+    "skill" : "NOSKILL",
+    "activeInd" : "",
+    "preferred_location": "KERALA"
+    }
+}
 Modify profile of a laborer
 '''
 @app.route('/v1.0/person/laborer/<pid>', methods=['PUT'])
@@ -213,7 +261,6 @@ def modify_laborer_profile(pid):
     return jsonify(resp)
 
 '''
-sample request for modify
 {
     "information" :
     {
@@ -230,8 +277,6 @@ sample request for modify
     "preferred_location": "MAHARASTRA"
     }
 }
-'''
-'''
 Modify a profile of a contractor
 '''
 @app.route('/v1.0/person/contractor/<pid>', methods=['PUT'])
