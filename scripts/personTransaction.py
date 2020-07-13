@@ -180,9 +180,9 @@ class PersonTransaction:
                 sql = "select * from karamdb.laborer"
                 if skills and not locations:
                     #TODO this is not good for scalability we need to have SkillEq,SkillLike,SkillIn operation in JSON Request
+                    # that will map to differetn sql querries here. Even if we are using OOP sql builder
                     sql = "select * from karamdb.laborer where laborer_id in ("
                     sql = sql + "select laborer_id from laborerSkillRelation where"
-                    print(skills)
                     skillNames = skills.split(',')
                     values = []
                     for skillName in skillNames:
@@ -205,13 +205,25 @@ class PersonTransaction:
                     cursor.execute(sql, values)
                 elif locations and skills:
                     # TODO make above code modular so that it can be resused for this case
-                    sql = sql + " where preferred_job_location in ({list})".format(list=','.join(['%s']*len(locations)))
-                    sql = sql + " and skill in ({list})".format(list=','.join(['%s']*len(skills)))
+                    sql = "select * from karamdb.laborer where laborer_id in ("
+                    sql = sql + "select labSkill.laborer_id from laborerSkillRelation labSkill  INNER JOIN\
+                                (select laborer_id from laborerPreferredLocationRelation where location_id in\
+                                 (select id from preferredJobLocation where"
+                    locationNames = locations.split(',')
                     values = []
-                    for loc in locations:
-                        values.append(loc)
-                    for skill in skills:
-                        values.append(skill)
+                    for locationName in locationNames:
+                        sql = sql + " state like %s " + "OR"
+                        values.append("%"+locationName+"%")
+                    sql = sql[:-2]
+                    sql = sql + "))"
+
+                    sql = sql + " labLoc ON labSkill.laborer_id = labLoc.laborer_id where "
+                    skillNames = skills.split(',')
+                    for skillName in skillNames:
+                        sql = sql + " labSkill.skill_name like %s " + "OR"
+                        values.append("%"+skillName+"%")
+                    sql = sql[:-2]
+                    sql = sql + ")"
                     cursor.execute(sql, values)
                 else:
                     cursor.execute(sql)
