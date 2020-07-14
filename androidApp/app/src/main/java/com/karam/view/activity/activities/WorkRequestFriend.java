@@ -31,6 +31,7 @@ public class WorkRequestFriend extends BaseActivity {
     RadioGroup aadharStatus;
     EditText phone;
     EditText password;
+    EditText skills;
     Spinner location;
     Button register;
 
@@ -53,6 +54,7 @@ public class WorkRequestFriend extends BaseActivity {
         address = findViewById(R.id.inputAddress);
         aadharStatus = findViewById(R.id.radio_group);
         phone = findViewById(R.id.phone);
+        skills = findViewById(R.id.skills);
         password = findViewById(R.id.password);
         register = findViewById(R.id.register);
         location = findViewById(R.id.spinner);
@@ -70,11 +72,15 @@ public class WorkRequestFriend extends BaseActivity {
         Toast.makeText(getApplicationContext(), age.getText(),
                 Toast.LENGTH_SHORT).show();
 
+        int i_age = 0;
+        if (age.getText().toString().equals("") == false) {
+            i_age = Integer.valueOf(age.getText().toString());
+        }
         Laborer laborer = new Laborer(userData.get_user_id(), name.getText().toString(),
                 name.getText().toString(), location.getSelectedItem().toString(),
                 // TODO NEW_COMER Get the other values from UI and fill it
-                phone.getText().toString(), Integer.valueOf(age.getText().toString()), "f",
-                aadharStatus.getCheckedRadioButtonId() == R.id.yes ? "Y" : "N", "Carpentry");
+                phone.getText().toString(), i_age, "f",
+                aadharStatus.getCheckedRadioButtonId() == R.id.yes ? "Y" : "N", skills.getText().toString(), password.getText().toString());
         Call<Registration> callSync = service.registerAsLaborer(laborer);
         callSync.enqueue(new Callback<Registration>() {
             @Override

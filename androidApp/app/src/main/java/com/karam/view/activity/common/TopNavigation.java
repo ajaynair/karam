@@ -14,7 +14,7 @@ import com.karam.view.activity.activities.LoginPage;
 public class TopNavigation {
     private static String TAG = "TopNavigation";
     AppCompatActivity activity;
-    UserData userData = null;
+    //UserData userData = null;
 
     public TopNavigation(AppCompatActivity activity) {
         this.activity = activity;
@@ -40,8 +40,7 @@ public class TopNavigation {
         }
     }
 
-    public void inflateTopNavigation() {
-        userData = new UserData(this.activity);
+    public void inflateTopNavigation(UserData userData) {
         Toolbar myToolbar = this.activity.findViewById(R.id.top_toolbar_common);
         this.activity.setSupportActionBar(myToolbar);
     }

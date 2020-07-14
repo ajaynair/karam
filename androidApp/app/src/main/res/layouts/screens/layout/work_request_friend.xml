@@ -118,6 +118,16 @@
                 android:hint="@string/phone_no"
                 android:inputType="number"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/skills" />
+
+            <EditText
+                android:id="@+id/skills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:theme="@style/editTextStyle"
+                android:hint="@string/skills"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/spinner" />
 
             <EditText

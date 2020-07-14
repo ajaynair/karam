@@ -5,35 +5,37 @@ import androidx.annotation.NonNull;
 public class Laborer {
     private int id;
     private int parentId;
-    private String fname;
+    private String first_name;
     private String lname;
     private int age;
     private String gender;
     private String address;
     private String skills;
-    private String phno;
+    private String phone_number;
     private String aadharStatus;
     private String aadharNumber;
-    private String passwordHash;
+    private String password;
 
     private String panCard;
     private String activeInd;
-    private String preferred_location;
+    private String preferred_job_location;
 
-    public Laborer(int parentId, String fname, String lname, String location, String PhoneNo, int age, String gender, String aadharStatus, String skills) {
+    public Laborer(int parentId, String fname, String lname, String location, String PhoneNo, int age, String gender, String aadharStatus, String skills, String password) {
         this.id = 1;
-        this.fname = fname;
+        this.parentId = parentId;
+        this.first_name = fname;
         this.lname = lname;
         this.address = location;
-        this.phno = PhoneNo;
+        this.phone_number = PhoneNo;
         this.age = age;
         this.gender = gender;
         this.aadharStatus = aadharStatus;
         this.panCard = "TestPanCardNo";
         this.skills = skills;
         this.activeInd = "Y";
-        this.preferred_location = "Pune, Mumbai";
-        this.passwordHash = "test";
+        this.preferred_job_location = "Pune, Mumbai";
+        this.password = password;
+        this.aadharNumber = "testAadharNo";
     }
 
     public String getLname() {
@@ -45,11 +47,11 @@ public class Laborer {
     }
 
     public String getPassword() {
-        return passwordHash;
+        return password;
     }
 
     public void setPassword(String password) {
-        this.passwordHash = password;
+        this.password = password;
     }
 
     public int getId() {
@@ -60,12 +62,12 @@ public class Laborer {
         this.id = id;
     }
 
-    public String getFname() {
-        return fname;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
     public int getAge() {
@@ -100,12 +102,12 @@ public class Laborer {
         this.skills = skills;
     }
 
-    public String getPhno() {
-        return phno;
+    public String getPhone_number() {
+        return phone_number;
     }
 
-    public void setPhno(String phno) {
-        this.phno = phno;
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
     }
 
     public String getAadharStatus() {
@@ -148,17 +150,17 @@ public class Laborer {
         this.activeInd = activeInd;
     }
 
-    public String getPreferred_location() {
-        return preferred_location;
+    public String getPreferred_job_location() {
+        return preferred_job_location;
     }
 
-    public void setPreferred_location(String preferred_location) {
-        this.preferred_location = preferred_location;
+    public void setPreferred_job_location(String preferred_job_location) {
+        this.preferred_job_location = preferred_job_location;
     }
 
     @NonNull
     @Override
     public String toString() {
-        return id + this.fname;
+        return id + this.first_name;
     }
 }

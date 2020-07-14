@@ -10,22 +10,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df5d22b-5372-4340-9f32-896ffddc24e3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/rest/rest_messages/requests/LaborerActiveStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sql/create table.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/rest/RestClientInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/rest/RestClientInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/adapter/LaborerListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/adapter/LaborerListAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/rest/rest_messages/requests/Contractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/rest/rest_messages/requests/Contractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/rest/rest_messages/requests/Laborer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/rest/rest_messages/requests/Laborer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/rest/rest_messages/responses/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/rest/rest_messages/responses/Registration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/rest/rest_messages/responses/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/rest/rest_messages/responses/Session.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/sharedPreference/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/sharedPreference/UserData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/BaseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/BaseActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/ContractorRegistration.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/ContractorRegistration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/LaborerRegistration.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/LaborerRegistration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/LaborerStatusPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/LaborerStatusPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/LandingPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/LandingPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/UserSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/UserSettings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/WorkRequestFriend.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/WorkRequestFriend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/WorkRequestSelf.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/WorkRequestSelf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/common/BottomNavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/common/BottomNavigation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/common/TopNavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/common/TopNavigation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/contractor_registration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/contractor_registration.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/laborer_registration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/laborer_registration.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/login_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/login_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/work_request_friend.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/work_request_friend.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/work_request_self.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/screens/layout/work_request_self.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-hi/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-hi/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-mr/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-mr/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/MySql/create table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/MySql/create_table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/MySql/my_sql.py" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/MySql/my_sql.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/rest_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/rest_server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/transaction/PersonTransaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/transaction/PersonTransaction.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +50,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="emulator-5554" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />

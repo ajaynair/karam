@@ -17,14 +17,13 @@ import com.karam.view.activity.activities.UserSettings;
 public class BottomNavigation {
     private static String TAG = "BottomNavigation";
     Activity activity;
-    UserData userData = null;
 
     public BottomNavigation(Activity activity) {
         this.activity = activity;
     }
 
-    public void inflateBottomNavigation() {
-        userData = new UserData(this.activity);
+    public void inflateBottomNavigation(final UserData userData) {
+        // userData = new UserData(this.activity);
 
         BottomNavigationView bottomNavigation = this.activity.findViewById(R.id.bottom_navigation_common);
         if (bottomNavigation == null) {

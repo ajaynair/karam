@@ -42,9 +42,9 @@ public class LaborerListAdapter extends RecyclerView.Adapter<LaborerListAdapter.
         Laborer l = this.laborers.get(position);
 
         holder.skills.setText(l.getSkills());
-        holder.name.setText(l.getFname());
-        holder.phoneNo.setText(l.getPhno());
-        holder.preferred_location.setText(l.getPreferred_location());
+        holder.name.setText(l.getFirst_name());
+        holder.phoneNo.setText(l.getPhone_number());
+        holder.preferred_location.setText(l.getPreferred_job_location());
 
     }
 

@@ -37,12 +37,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        userData = new UserData(this);
+        userData = new UserData(getApplicationContext());
         BottomNavigation b = new BottomNavigation(this);
-        b.inflateBottomNavigation();
+        b.inflateBottomNavigation(userData);
 
         TopNavigation t = new TopNavigation(this);
-        t.inflateTopNavigation();
+        t.inflateTopNavigation(userData);
     }
 
     protected abstract int getLayoutResource();

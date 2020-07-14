@@ -8,9 +8,12 @@ userPassword = config.get_mysql_pwd()
 hostURL = config.get_mysql_host()
 dbName = config.get_mysql_db()
 
-
+connection = None
 def mysql_get_connection():
-    connection = mysql.connector.connect(host=hostURL,
+    global connection
+    if connection == None:
+        print ('New connection')
+        connection = mysql.connector.connect(host=hostURL,
                                          database=dbName,
                                          user=userName,
                                          password=userPassword,

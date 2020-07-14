@@ -1,6 +1,8 @@
 package com.karam.rest.rest_messages.responses;
 
 public class Registration {
+    private int userId;
+
     private String status;
 
     public String getStatus() {
@@ -18,8 +20,6 @@ public class Registration {
     public void setUserId(int userId) {
         this.userId = userId;
     }
-
-    private int userId;
 
     //Setters and getters
 

@@ -1,6 +1,7 @@
 CREATE TABLE user (
 		 user_id INT NOT NULL AUTO_INCREMENT,
          role_type varchar(2) NOT NULL,
+         user_name varchar(100) NOT NULL,
          password_hash varchar(100) NOT NULL,
          update_date_time DATETIME DEFAULT CURRENT_TIMESTAMP,
          PRIMARY KEY(user_id));

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.karam.rest.RestClient;
@@ -25,6 +26,7 @@ public class LoginPage extends BaseActivity {
     EditText name;
     EditText password;
     Button login;
+    TextView wrongUsrPwd;
     View.OnClickListener loginClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -49,6 +51,7 @@ public class LoginPage extends BaseActivity {
         name = findViewById(R.id.loginUserNameText);
         password = findViewById(R.id.loginPasswordText);
         login = findViewById(R.id.loginButton);
+        wrongUsrPwd = findViewById(R.id.wrongUsePwd);
 
         assignListenerToViews();
     }
@@ -63,16 +66,20 @@ public class LoginPage extends BaseActivity {
             @Override
             public void onResponse(Call<Session> call, Response<Session> response) {
                 Session apiResponse = response.body();
-                System.out.println(apiResponse);
-                Toast.makeText(getApplicationContext(), apiResponse.toString(),
+
+                Toast.makeText(getApplicationContext(), apiResponse.getRole_type(),
                         Toast.LENGTH_SHORT).show();
                 // TODO Use enum for laborer and contractor
-                if (apiResponse.getRole_type().equals("laborer")) {
+                if (apiResponse.getRole_type().equals("L")) {
                     userData.setUserStateLaborer();
+                    wrongUsrPwd.setVisibility(View.INVISIBLE);
                     startActivity(new Intent(LoginPage.this, LaborerStatusPage.class));
-                } else {
+                } else if (apiResponse.getRole_type().equals("C")) {
                     userData.setUserStateContractor();
+                    wrongUsrPwd.setVisibility(View.INVISIBLE);
                     startActivity(new Intent(LoginPage.this, ContractorPostLogin.class));
+                } else {
+                    wrongUsrPwd.setVisibility(View.VISIBLE);
                 }
             }
 
