@@ -52,4 +52,8 @@
     <string name="work_request_preferred_location">"आपले पसंत केलेले स्थान निवडा "</string>
     <string name="aadhar_status_question">"तुमच्याकडे आधार कार्ड आहे का? "</string>
     <string name="contractor_post_login_search_laborers">मजुरांचा शोध</string>
+    <string name="username">वापरकर्तानाव</string>
+    <string name="WrongUsrPwd">चुकीचे वापरकर्ता नाव किंवा संकेतशब्द</string>
+    <string name="skills">कौशल्ये</string>
+    <string name="markActive">Mark myself as active</string>
 </resources>

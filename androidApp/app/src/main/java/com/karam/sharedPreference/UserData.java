@@ -10,26 +10,30 @@ import android.preference.PreferenceManager;
 
 public class UserData {
     private SharedPreferences prefs;
+    private Context context;
     private String username = "usr";
     private String password = "pwd";
     private String user_state = "us";
+    private String user_id = "uid";
 
     private int NOT_LOGGED_IN = 0;
     private int CONTRACTOR = 1;
     private int LABORER = 2;
-    private int user_id = 0;
 
     public UserData(Context cntx) {
         // TODO Auto-generated contractor stub
-        prefs = PreferenceManager.getDefaultSharedPreferences(cntx);
+        this.context = cntx;
+        // prefs = PreferenceManager.getDefaultSharedPreferences(cntx);
     }
 
     public int get_user_id() {
-        return user_id;
+        prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getInt(this.user_id, 0);
     }
 
     public void set_user_id(int user_id) {
-        this.user_id = user_id;
+        prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        prefs.edit().putInt(this.user_id, user_id).commit();
     }
 
     public int getNotLoggedInValue() {
@@ -45,37 +49,44 @@ public class UserData {
     }
 
     public String getUsename() {
-        String usename = prefs.getString(username, null);
-        return usename;
+        prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getString(username, null);
+
     }
 
     public void setUsename(String usename) {
+        prefs = PreferenceManager.getDefaultSharedPreferences(context);
         prefs.edit().putString(username, usename).commit();
     }
 
     public String getPassword() {
+        prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String password = prefs.getString(this.password, null);
         return password;
     }
 
     public void setPassword(String password) {
+        prefs = PreferenceManager.getDefaultSharedPreferences(context);
         prefs.edit().putString(this.password, password).commit();
     }
 
     public void setUserStateLoggedOut() {
+        prefs = PreferenceManager.getDefaultSharedPreferences(context);
         prefs.edit().putInt(this.user_state, NOT_LOGGED_IN).commit();
     }
 
     public void setUserStateContractor() {
+        prefs = PreferenceManager.getDefaultSharedPreferences(context);
         prefs.edit().putInt(this.user_state, CONTRACTOR).commit();
     }
 
     public void setUserStateLaborer() {
+        prefs = PreferenceManager.getDefaultSharedPreferences(context);
         prefs.edit().putInt(this.user_state, LABORER).commit();
     }
 
     public int getUserState() {
-        int us = prefs.getInt(this.user_state, 0);
-        return us;
+        prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getInt(this.user_state, 0);
     }
 }

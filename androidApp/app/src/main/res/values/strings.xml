@@ -76,4 +76,8 @@
     <string name="work_request_preferred_location">Select your preferred location</string>
     <string name="aadhar_status_question">Do you have an aadhar card?</string>
     <string name="contractor_post_login_search_laborers">Search for laborers</string>
+    <string name="username">username</string>
+    <string name="WrongUsrPwd">Wrong username or password</string>
+    <string name="skills">skills</string>
+    <string name="markActive">Mark myself as active</string>
 </resources>

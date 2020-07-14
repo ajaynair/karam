@@ -2,7 +2,7 @@
     <!-- Main app theme -->
     <style name="KaramTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="android:fontFamily">@string/default_font</item>
-        <item name="android:background">@color/backgroundColor</item>
+        <!-- <item name="android:background">@color/backgroundColor</item> -->
         <item name="android:textColor">@color/primaryTextColor</item>
         <item name="android:textColorHint">@color/secondaryTextColor</item>
         <item name="android:editTextStyle">@style/editTextStyle</item>

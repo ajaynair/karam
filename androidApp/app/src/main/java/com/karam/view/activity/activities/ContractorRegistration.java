@@ -26,6 +26,8 @@ public class ContractorRegistration extends BaseActivity {
     EditText name;
     EditText phone;
     EditText address;
+    EditText username;
+    EditText password;
     Button register;
 
     /**
@@ -40,6 +42,8 @@ public class ContractorRegistration extends BaseActivity {
         name = findViewById(R.id.inputName);
         phone = findViewById(R.id.phone);
         address = findViewById(R.id.inputAddress);
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
         register = findViewById(R.id.register);
 
         assignListenerToViews();
@@ -54,7 +58,11 @@ public class ContractorRegistration extends BaseActivity {
         RestClient retro = new RestClient(getApplicationContext());
         RestClientInterface service = retro.getService();
 
-        Contractor contractor = new Contractor(name.getText().toString(), address.getText().toString(), phone.getText().toString());
+        Contractor contractor = new Contractor(name.getText().toString(),
+                address.getText().toString(),
+                phone.getText().toString(),
+                username.getText().toString(),
+                password.getText().toString());
         Call<Registration> callSync = service.registerAsContractor(contractor);
         callSync.enqueue(new Callback<Registration>() {
             @Override
@@ -86,33 +94,4 @@ public class ContractorRegistration extends BaseActivity {
             }
         });
     }
-
-    /**
-     * Set up menu options
-     *
-     * @param menu: Menu options (https://pasteboard.co/Jc4U58s.png) to be shown in the view.activity
-     * @return: true on no error
-     @Override public boolean onCreateOptionsMenu(Menu menu) {
-     // Inflate the menu; this adds items to the action bar if it is present.
-     getMenuInflater().inflate(R.menu.menu_logged_out, menu);
-     return true;
-     }
-
-      * Responds to menu option (https://pasteboard.co/Jc4U58s.png) of this view.activity
-      *
-      * @param item: The item in the menu that is selected
-     * @return: return false in case of error, true otherwise
-     @Override public boolean onOptionsItemSelected(MenuItem item) {
-     switch (item.getItemId()) {
-     case (R.id.about_us):
-     startActivity(new Intent(ContractorRegistration.this, AboutUs.class));
-     return true;
-     default:
-     Toast.makeText(getApplicationContext(), "Oops! Error. You shouldn't be seeing this message",
-     Toast.LENGTH_SHORT).show();
-     // Add code to report bug
-     return false;
-     }
-     }
-     */
 }

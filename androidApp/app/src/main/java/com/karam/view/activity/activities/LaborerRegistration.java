@@ -8,14 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.karam.rest.RestClient;
 import com.karam.rest.RestClientInterface;
 import com.karam.rest.rest_messages.requests.Laborer;
 import com.karam.rest.rest_messages.responses.Registration;
-import com.karam.sharedPreference.UserData;
 import com.karam.view.activity.BaseActivity;
 import com.karam.view.activity.R;
 
@@ -33,6 +31,7 @@ public class LaborerRegistration extends BaseActivity {
     RadioGroup aadharStatus;
     EditText phone;
     EditText password;
+    EditText skills;
     Spinner location;
     Button register;
 
@@ -58,6 +57,7 @@ public class LaborerRegistration extends BaseActivity {
         address = findViewById(R.id.inputAddress);
         aadharStatus = findViewById(R.id.radio_group);
         phone = findViewById(R.id.phone);
+        skills = findViewById(R.id.skills);
         password = findViewById(R.id.password);
         register = findViewById(R.id.register);
         location = findViewById(R.id.spinner);
@@ -73,17 +73,24 @@ public class LaborerRegistration extends BaseActivity {
         Toast.makeText(getApplicationContext(), age.getText(),
                 Toast.LENGTH_SHORT).show();
 
+        int i_age = 0;
+        if (age.getText().toString().equals("") == false) {
+            i_age = Integer.valueOf(age.getText().toString());
+        }
         // TODO NEW_COMER Get values that are hardcoded from the UI and fill it
-        Laborer laborer = new Laborer(0, name.getText().toString(), name.getText().toString(), location.getSelectedItem().toString(), phone.getText().toString(), 23, "f", aadharStatus.getCheckedRadioButtonId() == R.id.yes ? "Y" : "N", "Carpentry");
+        Laborer laborer = new Laborer(0, name.getText().toString(), name.getText().toString(), location.getSelectedItem().toString(), phone.getText().toString(), i_age, "f", aadharStatus.getCheckedRadioButtonId() == R.id.yes ? "Y" : "N", skills.getText().toString(), password.getText().toString());
         Call<Registration> callSync = service.registerAsLaborer(laborer);
         callSync.enqueue(new Callback<Registration>() {
             @Override
             public void onResponse(Call<Registration> call, Response<Registration> response) {
                 Registration apiResponse = response.body();
-                System.out.println(apiResponse);
+
                 userData.set_user_id(apiResponse.getUserId());
-                Toast.makeText(getApplicationContext(), apiResponse.toString(),
+                Toast.makeText(getApplicationContext(), "status act 1 =" + userData.get_user_id(),
                         Toast.LENGTH_SHORT).show();
+                userData.setUserStateLaborer();
+                startActivity(new Intent(LaborerRegistration.this, LaborerStatusPage.class));
+
             }
 
             @Override
@@ -103,8 +110,6 @@ public class LaborerRegistration extends BaseActivity {
             @Override
             public void onClick(View v) {
                 send_rest_request();
-                userData.setUserStateLaborer();
-                startActivity(new Intent(LaborerRegistration.this, LaborerStatusPage.class));
             }
         });
     }

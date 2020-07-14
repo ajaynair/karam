@@ -1,5 +1,8 @@
+import pdb
 from MySql import my_sql
 from mysql.connector import Error
+
+from MySql.my_sql import mysql_get_connection
 from utils.ThreadExecutor import ThreadExecutor
 
 # TODO Give example request body and response body
@@ -30,10 +33,11 @@ class PersonTransaction:
                 print("Connected to MySQL Server version ", db_Info)
                 cursor = connection.cursor()
                 statement = "Insert into karamdb.laborer"
+
                 colNames = "(laborer_id,parent_id, first_name, last_name, gender, phone_number, address,aadhar_card_number,aadhar_card_status,pan_card,skills,active_ind,preferred_job_location)"
-                colValues = "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+                colValues = "VALUES (LAST_INSERT_ID(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
                 sql = statement + colNames + colValues
-                val = (laborer.getLaborerId(), laborer.getParentId(), laborer.getFirstname(),
+                val = (laborer.getParentId(), laborer.getFirstname(),
                        laborer.getLastname(), laborer.getGender(), laborer.getPhoneNumber(),
                        laborer.getAddress(), laborer.getAadharNo(), laborer.getAadharStatus(),
                        laborer.getPanCard(), laborer.getSkill(), laborer.getActiveInd(),
@@ -41,19 +45,66 @@ class PersonTransaction:
                 print (val)
                 cursor.execute(sql, val)
                 connection.commit()
+
+                skills = laborer.getSkill().split(",")
+                # Insert into skill table
+                for skill in skills:
+                    #TODO refactor this code to use select only once
+                    sql = "select count(name) from skills where name=(%s)"
+                    val = (skill,)
+                    cursor.execute(sql,val)
+                    res = cursor.fetchone()
+                    if int(res[0]) == 0:
+                        sql = "Insert into karamdb.skills (name,description) VALUES (%s,%s)"
+                        val = (skill,"")
+                        cursor.execute(sql,val)
+                        connection.commit()
+
+                    sql = "select name from skills where name=(%s)"
+                    val = (skill,)
+                    cursor.execute(sql,val)
+                    res = cursor.fetchone()
+                    skillName = res[0]
+                    sql = "Insert into karamdb.laborerSkillRelation (laborer_id, skill_name) VALUES (%s,%s)"
+                    val = (laborer.getLaborerId(), skillName)
+                    cursor.execute(sql,val)
+                    connection.commit()
+
+                locations = laborer.getPrefLoc().split(",")
+                # Insert into skill table
+                for loc in locations:
+                    #TODO refactor this code to use select only once
+                    sql = "select count(*) from preferredJobLocation where STATE= %s and city = %s and district = %s"
+                    val = (loc, loc, loc)
+                    cursor.execute(sql,val)
+                    res = cursor.fetchone()
+                    if int(res[0]) == 0:
+                        sql = "Insert into karamdb.preferredJobLocation (STATE,CITY,district) VALUES (%s,%s,%s)"
+                        val = (loc,loc,loc)
+                        cursor.execute(sql,val)
+                        connection.commit()
+
+                    sql = "select id from preferredJobLocation where STATE= %s and city = %s and district = %s"
+                    val = (loc, loc, loc)
+                    cursor.execute(sql,val)
+                    res = cursor.fetchone()
+                    locId = int(res[0])
+                    sql = "Insert into karamdb.laborerPreferredLocationRelation (laborer_id, location_id) VALUES (%s,%s)"
+                    val = (laborer.getLaborerId(), locId)
+                    cursor.execute(sql,val)
+                    connection.commit()
+
                 print("Inserted successfully in laborer table")
                 return "SUCCESS"
 
         except Error as e:
-            print("Error while inserting into laborer table", e)
-            '''
-            FIXME Create a json message not a string
-            '''
+
+            print("Error while inserting into laborer, skill, laborerSkillRelation  table", e)
             return str(e)
         finally:
             if (connection.is_connected()):
                 cursor.close()
-                connection.close()
+                #connection.close()
                 print("MySQL connection is closed")
 
     def createLaborer(self, laborer):
@@ -105,7 +156,7 @@ class PersonTransaction:
                 print(values)
                 cursor.execute(sql, values)
                 connection.commit()
-                print("Updated successfully laborer table for " + laborer.getLaborerId())
+                #print("Updated successfully laborer table for " + laborer.getLaborerId())
                 return "SUCCESS"
 
         except Error as e:
@@ -114,8 +165,7 @@ class PersonTransaction:
         finally:
             if (connection.is_connected()):
                 cursor.close()
-                connection.close()
-                print("MySQL connection is closed")
+                #connection.close()
 
     def updateLaborer(self, laborer):
         future = th.executor.submit(self.updateLaborerTask, laborer)
@@ -129,24 +179,55 @@ class PersonTransaction:
                 print("Connected to MySQL Server version ", db_Info)
                 cursor = connection.cursor()
 
-                sql = "SELECT * FROM karamdb.laborer"
+                sql = "select * from karamdb.laborer"
                 if skills and not locations:
-                    sql = sql + " where skill in ({list})".format(
-                        list=','.join(['%s'] * len(skills)))
-                    cursor.execute(sql, skills)
-                elif locations and not skills:
-                    sql = sql + " where preferred_job_location in ({list})".format(
-                        list=','.join(['%s'] * len(locations)))
-                    cursor.execute(sql, locations)
-                elif locations and skills:
-                    sql = sql + " where preferred_job_location in ({list})".format(
-                        list=','.join(['%s'] * len(locations)))
-                    sql = sql + " and skill in ({list})".format(list=','.join(['%s'] * len(skills)))
+
+                    #TODO this is not good for scalability we need to have SkillEq,SkillLike,SkillIn operation in JSON Request
+                    # that will map to differetn sql querries here. Even if we are using OOP sql builder
+                    sql = "select * from karamdb.laborer where laborer_id in ("
+                    sql = sql + "select laborer_id from laborerSkillRelation where"
+                    skillNames = skills.split(',')
                     values = []
-                    for loc in locations:
-                        values.append(loc)
-                    for skill in skills:
-                        values.append(skill)
+                    for skillName in skillNames:
+                        sql = sql + " skill_name like %s " + "OR"
+                        values.append("%"+skillName+"%")
+                    sql = sql[:-2]
+                    sql = sql + ")"
+                    cursor.execute(sql, values)
+                elif locations and not skills:
+                    sql = "select * from karamdb.laborer where laborer_id in ("
+                    sql = sql + "select laborer_id from laborerPreferredLocationRelation where  location_id in ("
+                    sql = sql + "select id from preferredJobLocation where"
+                    locationNames = locations.split(',')
+                    values = []
+                    for locationName in locationNames:
+                        sql = sql + " state like %s " + "OR"
+                        values.append("%"+locationName+"%")
+                    sql = sql[:-2]
+                    sql = sql + "))"
+                    cursor.execute(sql, values)
+                elif locations and skills:
+                    # TODO make above code modular so that it can be resused for this case
+                    sql = "select * from karamdb.laborer where laborer_id in ("
+                    sql = sql + "select labSkill.laborer_id from laborerSkillRelation labSkill  INNER JOIN\
+                                (select laborer_id from laborerPreferredLocationRelation where location_id in\
+                                 (select id from preferredJobLocation where"
+                    locationNames = locations.split(',')
+
+                    values = []
+                    for locationName in locationNames:
+                        sql = sql + " state like %s " + "OR"
+                        values.append("%"+locationName+"%")
+                    sql = sql[:-2]
+                    sql = sql + "))"
+
+                    sql = sql + " labLoc ON labSkill.laborer_id = labLoc.laborer_id where "
+                    skillNames = skills.split(',')
+                    for skillName in skillNames:
+                        sql = sql + " labSkill.skill_name like %s " + "OR"
+                        values.append("%"+skillName+"%")
+                    sql = sql[:-2]
+                    sql = sql + ")"
                     cursor.execute(sql, values)
                 else:
                     cursor.execute(sql)
@@ -160,34 +241,60 @@ class PersonTransaction:
                 return json_data
         except Error as e:
             print("Error while connecting to MySQL", e)
+            return str(e)
         finally:
             if (connection.is_connected()):
                 cursor.close()
-                connection.close()
-                print("MySQL connection is closed")
+                #connection.close()
 
     def getAllLaborer(self, skills, locations):
         future = th.executor.submit(self.getAllLaborerTask, skills, locations)
         return future.result()
 
-    def createContractorTask(self, contractor):
-        connection = my_sql.mysql_get_connection()
+
+    def getFriendOfLaborerTask(self, parentId):
+        connection = mysql_get_connection()
+        try:
+            if connection.is_connected():
+                db_Info = connection.get_server_info()
+                print("Connected to MySQL Server version ", db_Info)
+                cursor = connection.cursor()
+                sql = "SELECT * FROM karamdb.laborer where laborer_id = " + parentId + " or parent_id = " + parentId
+                cursor.execute(sql)
+
+                row_headers=[x[0] for x in cursor.description]
+                rec = cursor.fetchall()
+                json_data=[]
+                for res in rec:
+                    json_data.append(dict(zip(row_headers,res)))
+                return json_data
+        except Error as e:
+            print("Error while connecting to MySQL", e)
+            return str(e)
+        finally:
+            if (connection.is_connected()):
+                cursor.close()
+                #connection.close()
+
+    def getFriendOfLaborer(self, parentId):
+        future = th.executor.submit(self.getFriendOfLaborerTask, parentId)
+        return future.result()
+
+    def createContractorTask(self,contractor):
+        connection = mysql_get_connection()
         try:
             if connection.is_connected():
                 db_Info = connection.get_server_info()
                 print("Connected to MySQL Server version ", db_Info)
                 cursor = connection.cursor()
                 statement = "Insert into karamdb.contractor"
-                colNames = "(contractor_id,parent_id, first_name, last_name, gender, phone_number, address,adhar_card_number,adhar_card_status,pan_card,skill,active_ind,preferred_job_location)"
-                colValues = "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+                colNames = "(contractor_id, first_name, phone_number, address)"
+                colValues = "VALUES (%s,%s,%s,%s)"
                 sql = statement + colNames + colValues
                 # TODO how to make it multiline
                 val = (
-                contractor.getContractorId(), contractor.getParentId(), contractor.getFirstname(),
-                contractor.getLastname(), contractor.getGender(), contractor.getPhoneNumber(),
-                contractor.getAddress(), contractor.getAadharNo(), contractor.getAadharStatus(),
-                contractor.getPanCard(), contractor.getSkill(), contractor.getActiveInd(),
-                contractor.getPrefLoc())
+                contractor.getContractorId(), contractor.getFirstname(),
+                contractor.getPhoneNumber(), contractor.getAddress())
                 cursor.execute(sql, val)
                 connection.commit()
                 print("Inserted successfully in contractor table")
@@ -199,8 +306,7 @@ class PersonTransaction:
         finally:
             if (connection.is_connected()):
                 cursor.close()
-                connection.close()
-                print("MySQL connection is closed")
+                #connection.close()
 
     # TODO Update rest of MySql functions like create, they are referring to old table schema
     def createContractor(self, contractor):
@@ -259,8 +365,7 @@ class PersonTransaction:
         finally:
             if (connection.is_connected()):
                 cursor.close()
-                connection.close()
-                print("MySQL connection is closed")
+                #connection.close()
 
     def updateContractor(self, contractor):
         future = th.executor.submit(self.updateContractorTask, contractor)
@@ -283,11 +388,11 @@ class PersonTransaction:
                 return json_data
         except Error as e:
             print("Error while connecting to MySQL", e)
+            return str(e)
         finally:
             if (connection.is_connected()):
                 cursor.close()
-                connection.close()
-                print("MySQL connection is closed")
+                #connection.close()
 
     def getAllContractor(self):
         future = th.executor.submit(self.getAllContractorTask)
@@ -301,11 +406,11 @@ class PersonTransaction:
                 print("Connected to MySQL Server version ", db_Info)
                 cursor = connection.cursor()
                 statement = "Insert into karamdb.user"
-                colNames = "(user_id,role_type,password_hash)"
+                colNames = "(role_type,user_name,password_hash)"
                 colValues = "VALUES (%s,%s,%s)"
-                sql = statement + colNames + colValues
-                val = (user.getUserId(), user.getRoleType(), user.getPasswordHash())
-                cursor.execute(sql, val)
+                sql = statement+colNames+colValues
+                val = (user.getRoleType(),user.getUserName(),user.getPasswordHash())
+                cursor.execute(sql,val)
                 connection.commit()
                 print("Inserted successfully in user table")
                 return "SUCCESS"
@@ -316,8 +421,7 @@ class PersonTransaction:
         finally:
             if (connection.is_connected()):
                 cursor.close()
-                connection.close()
-                print("MySQL connection is closed")
+                #connection.close()
 
     def createJob(self, job):
         future = th.executor.submit(self.createJobTask, job)
@@ -331,12 +435,11 @@ class PersonTransaction:
                 print("Connected to MySQL Server version ", db_Info)
                 cursor = connection.cursor()
                 statement = "Insert into karamdb.job"
-                colNames = "(job_id,labour_id,contractor_id,active_ind)"
-                colValues = "VALUES (%s,%s,%s,%s)"
-                sql = statement + colNames + colValues
-                val = (
-                job.getJobId(), job.getLaborerId(), job.getContractorId(), job.getActiveInd())
-                cursor.execute(sql, val)
+                colNames = "(labour_id,contractor_id,active_ind)"
+                colValues = "VALUES (%s,%s,%s)"
+                sql = statement+colNames+colValues
+                val = (job.getLaborerId(),job.getContractorId(),job.getActiveInd())
+                cursor.execute(sql,val)
                 connection.commit()
                 print("Inserted successfully in job table")
                 return "SUCCESS"
@@ -347,15 +450,33 @@ class PersonTransaction:
         finally:
             if (connection.is_connected()):
                 cursor.close()
-                connection.close()
-                print("MySQL connection is closed")
+                #connection.close()
 
     def createUser(self, user):
         future = th.executor.submit(self.createUserTask, user)
         return future.result()
 
-    def deleteById(id):
-        future = th.executor.submit(deleteByIdTask, id)
+    def getNewUserId(self):
+        connection = mysql_get_connection()
+        try:
+            if connection.is_connected():
+                db_Info = connection.get_server_info()
+                print("Connected to MySQL Server version ", db_Info)
+                cursor = connection.cursor()
+                sql = "SELECT max(user_id) FROM karamdb.user"
+                cursor.execute(sql)
+                result = cursor.fetchone()
+                return int(result[0])
+        except Error as e:
+            print("Error while connecting to MySQL", e)
+            return str(e)
+        finally:
+            if (connection.is_connected()):
+                cursor.close()
+                #connection.close()
+
+    def deleteById(self, id):
+        future = th.executor.submit(self.deleteByIdTask, id)
         return future.result()
 
     def deleteByIdTask(id):
@@ -377,14 +498,38 @@ class PersonTransaction:
         finally:
             if (connection.is_connected()):
                 cursor.close()
-                connection.close()
+                #connection.close()
                 print("MySQL connection is closed")
 
-    def getAllPersonById(id):
-        future = th.executor.submit(getPersonByIdTask, id)
+    def getUserByCredTask(self, username, password):
+        try:
+            connection = my_sql.mysql_get_connection()
+            if connection.is_connected():
+                db_Info = connection.get_server_info()
+                print("Connected to MySQL Server version ", db_Info)
+                cursor = connection.cursor()
+                sql = "select user_id, role_type from karamdb.user where user_name = %s and password_hash = %s"
+                val = (username, password)
+                cursor.execute(sql, val)
+                resp = cursor.fetchall()
+
+                if len(resp) != 0:
+                    return resp[0][0], resp[0][1]
+                return -1, -1
+
+        except Error as e:
+            print("Error while connecting to MySQL", e)
+        finally:
+            if connection.is_connected():
+                cursor.close()
+                #connection.close()
+                print("MySQL connection is closed")
+
+    def getUserByCred(self, username, password):
+        future = th.executor.submit(self.getUserByCredTask, username, password)
         return future.result()
 
-    def getPersonByIdTask(id):
+    def getPersonByIdTask(self, id):
         try:
             connection = my_sql.mysql_get_connection()
             if connection.is_connected():
@@ -404,7 +549,21 @@ class PersonTransaction:
         finally:
             if connection.is_connected():
                 cursor.close()
-                connection.close()
+                #connection.close()
                 print("MySQL connection is closed")
+
+    def getAllPersonById(self, id):
+        future = th.executor.submit(self.getPersonByIdTask, id)
+        return future.result()
+
+    def get_autoincrement_id(self):
+        connection = my_sql.mysql_get_connection()
+        if connection.is_connected():
+            db_Info = connection.get_server_info()
+            print("Connected to MySQL Server version ", db_Info)
+            cursor = connection.cursor()
+            sql = "select LAST_INSERT_ID()"
+            cursor.execute(sql)
+            return cursor.fetchall()[0][0]
 
 # print(createLaborer("DEF","","R","P","M","9819888888","address","adharNo123","Y","panCardNo123","skill123","Y","DELHI"))
