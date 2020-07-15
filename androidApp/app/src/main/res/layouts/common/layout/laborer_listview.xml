@@ -40,28 +40,39 @@
                 android:weightSum="2">
 
                 <TextView
-                    android:id="@+id/laborer_listview_name"
+                    android:id="@+id/laborer_listview_fname"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/laborer_listview_lname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
                 <TextView
                     android:id="@+id/laborer_listview_phoneno"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/laborer_listview_location"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_height="wrap_content"/>
 
                 <TextView
                     android:id="@+id/laborer_listview_skills"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/aadharStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/activityStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

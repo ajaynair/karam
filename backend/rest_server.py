@@ -60,7 +60,7 @@ def create_job():
     #TODO We need to remove some colums from database maybe
     #TODO check how to do multiline code intendentation in python
     job = job.setLaborerId(data['laborerId']).setContractorId(data['contractorId'])
-    job = job.setActiveInd(data['activeInd'])
+    job = job.setActiveInd(data['active_ind'])
 
     obj1 = PersonTransaction.PersonTransaction()
     status = obj1.createJob(job)
@@ -171,14 +171,14 @@ def create_laborer_profile():
     data = json.loads(request.get_data())
     laborer = LaborerPOJO.LaborerPOJO()
     user = UserPOJO.UserPOJO()
-    user = user.setRoleType("L").setUserName(data["first_name"]).setPasswordHash(data["password"])
+    user = user.setRoleType("L").setUserName(data["username"]).setPasswordHash(data["password"])
 
     #TODO We need to remove some columns from database maybe
     #TODO check how to do multiline code indentation in python
     laborer = laborer.setParentId(data['parentId']).setFirstname(data['first_name'])
-    laborer = laborer.setLastname(data['lname']).setGender(data['gender']).setPhoneNumber(data['phone_number'])
-    laborer = laborer.setAddress(data['address']).setAadharStatus(data['aadharStatus']).setAadharNo(data['aadharNumber'])
-    laborer = laborer.setPanCard(data['panCard']).setSkill(data['skills']).setActiveInd(data['activeInd']).setPrefLoc(data['preferred_job_location'])
+    laborer = laborer.setLastname(data['last_name']).setGender(data['gender']).setPhoneNumber(data['phone_number'])
+    laborer = laborer.setAddress(data['address']).setAadharStatus(data['aadhar_card_status']).setAadharNo(data['aadharNumber'])
+    laborer = laborer.setPanCard(data['panCard']).setSkill(data['skills']).setActiveInd(data['active_ind']).setPrefLoc(data['preferred_job_location'])
 
     obj1 = PersonTransaction.PersonTransaction()
     obj1.createUser(user)
@@ -225,8 +225,8 @@ def create_friend_profile(pid):
     laborer = LaborerPOJO.LaborerPOJO()
     laborer = laborer.setLaborerId(friendUserID).setParentId(pid).setFirstname(data['fname'])
     laborer = laborer.setLastname(data['lname']).setGender(data['gender']).setPhoneNumber(data['phno'])
-    laborer = laborer.setAddress(data['address']).setAadharStatus(data['aadharStatus']).setAadharNo(data['aadharNumber'])
-    laborer = laborer.setPanCard(data['panCard']).setSkill(data['skill']).setActiveInd(data['activeInd']).setPrefLoc(data['preferred_location'])
+    laborer = laborer.setAddress(data['address']).setAadharStatus(data['aadhar_card_status']).setAadharNo(data['aadharNumber'])
+    laborer = laborer.setPanCard(data['panCard']).setSkill(data['skill']).setActiveInd(data['active_ind']).setPrefLoc(data['preferred_location'])
 
     obj1 = PersonTransaction.PersonTransaction()
     status = obj1.createLaborer(laborer)
@@ -260,7 +260,7 @@ def modify_laborer_profile(pid):
     data = json.loads(request.get_data())
 
     laborer = LaborerPOJO.LaborerPOJO()
-    laborer = laborer.setActiveInd(data['activeInd'])
+    laborer = laborer.setActiveInd(data['active_ind'])
 
     obj1 = PersonTransaction.PersonTransaction()
     status = obj1.updateLaborer(laborer)

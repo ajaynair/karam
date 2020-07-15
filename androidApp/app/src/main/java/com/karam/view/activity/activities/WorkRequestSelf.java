@@ -65,13 +65,12 @@ public class WorkRequestSelf extends BaseActivity {
         RestClient retro = new RestClient(getApplicationContext());
         RestClientInterface service = retro.getService();
 
-        LaborerActiveStatus status = new LaborerActiveStatus(true);
+        LaborerActiveStatus status = new LaborerActiveStatus("Active");
         Call<Error> callSync = service.modifyLaborerInfo(userData.get_user_id(), status);
         callSync.enqueue(new Callback<Error>() {
             @Override
             public void onResponse(Call<Error> call, Response<Error> response) {
                 Error apiResponse = response.body();
-                System.out.println(apiResponse);
                 Toast.makeText(getApplicationContext(), apiResponse.toString(),
                         Toast.LENGTH_SHORT).show();
             }

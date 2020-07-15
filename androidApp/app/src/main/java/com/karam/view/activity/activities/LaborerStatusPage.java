@@ -45,10 +45,6 @@ public class LaborerStatusPage extends BaseActivity {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-
-                if (!recyclerView.canScrollVertically(1)) {
-                    Toast.makeText(getApplicationContext(), "last", Toast.LENGTH_LONG);
-                }
             }
         });
         laborers = new ArrayList<>();

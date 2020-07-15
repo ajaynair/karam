@@ -54,4 +54,7 @@
     <string name="WrongUsrPwd">उपयोगकर्ता का गलत नाम और पासवर्ड</string>
     <string name="skills">कौशल</string>
     <string name="markActive">Mark myself as active</string>
+    <string name="fname">First Name</string>
+    <string name="lname">Last Name</string>
+    <string name="gender">Gender</string>
 </resources>

@@ -65,6 +65,16 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="84dp"
+        android:layout_height="20dp"
+        android:background="@drawable/button_selector"
+        android:text="@string/register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"

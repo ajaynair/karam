@@ -2,6 +2,7 @@ package com.karam.view.activity.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -25,13 +26,16 @@ import retrofit2.Response;
  * Page for the laborer to register themselves to the app
  */
 public class LaborerRegistration extends BaseActivity {
-    EditText name;
+    EditText fname;
+    EditText lname;
     EditText age;
     EditText address;
     RadioGroup aadharStatus;
     EditText phone;
+    EditText username;
     EditText password;
     EditText skills;
+    EditText gender;
     Spinner location;
     Button register;
 
@@ -52,12 +56,15 @@ public class LaborerRegistration extends BaseActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.locations, android.R.layout.simple_spinner_item);
 
-        name = findViewById(R.id.inputName);
+        fname = findViewById(R.id.fName);
+        lname = findViewById(R.id.lName);
         age = findViewById(R.id.inputAge);
         address = findViewById(R.id.inputAddress);
         aadharStatus = findViewById(R.id.radio_group);
         phone = findViewById(R.id.phone);
+        gender = findViewById(R.id.gender);
         skills = findViewById(R.id.skills);
+        username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         register = findViewById(R.id.register);
         location = findViewById(R.id.spinner);
@@ -70,15 +77,13 @@ public class LaborerRegistration extends BaseActivity {
     private void send_rest_request() {
         RestClient retro = new RestClient(getApplicationContext());
         RestClientInterface service = retro.getService();
-        Toast.makeText(getApplicationContext(), age.getText(),
-                Toast.LENGTH_SHORT).show();
 
         int i_age = 0;
         if (age.getText().toString().equals("") == false) {
-            i_age = Integer.valueOf(age.getText().toString());
+            i_age = Integer.parseInt(age.getText().toString());
         }
         // TODO NEW_COMER Get values that are hardcoded from the UI and fill it
-        Laborer laborer = new Laborer(0, name.getText().toString(), name.getText().toString(), location.getSelectedItem().toString(), phone.getText().toString(), i_age, "f", aadharStatus.getCheckedRadioButtonId() == R.id.yes ? "Y" : "N", skills.getText().toString(), password.getText().toString());
+        Laborer laborer = new Laborer(0, fname.getText().toString(), lname.getText().toString(), location.getSelectedItem().toString(), phone.getText().toString(), i_age, gender.getText().toString(), aadharStatus.getCheckedRadioButtonId() == R.id.yes ? "Yes" : "No", skills.getText().toString(), username.getText().toString(), password.getText().toString());
         Call<Registration> callSync = service.registerAsLaborer(laborer);
         callSync.enqueue(new Callback<Registration>() {
             @Override
@@ -86,11 +91,8 @@ public class LaborerRegistration extends BaseActivity {
                 Registration apiResponse = response.body();
 
                 userData.set_user_id(apiResponse.getUserId());
-                Toast.makeText(getApplicationContext(), "status act 1 =" + userData.get_user_id(),
-                        Toast.LENGTH_SHORT).show();
                 userData.setUserStateLaborer();
                 startActivity(new Intent(LaborerRegistration.this, LaborerStatusPage.class));
-
             }
 
             @Override
@@ -109,7 +111,21 @@ public class LaborerRegistration extends BaseActivity {
         laborerReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                send_rest_request();
+                if(TextUtils.isEmpty(fname.getText()) ||
+                        TextUtils.isEmpty(lname.getText()) ||
+                        TextUtils.isEmpty(age.getText()) ||
+                        TextUtils.isEmpty(address.getText()) ||
+                        TextUtils.isEmpty(phone.getText()) ||
+                        TextUtils.isEmpty(skills.getText()) ||
+                        TextUtils.isEmpty(gender.getText()) ||
+                        TextUtils.isEmpty(username.getText()) ||
+                        TextUtils.isEmpty(password.getText()) ||
+                        aadharStatus.getCheckedRadioButtonId() == -1){
+                    Toast.makeText(getApplicationContext(), "Please fill all the fields",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    send_rest_request();
+                }
             }
         });
     }

@@ -17,7 +17,5 @@ public class AppLocale {
         Configuration conf = res.getConfiguration();
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
-        Toast.makeText(c, lang,
-                Toast.LENGTH_SHORT).show();
     }
 }
