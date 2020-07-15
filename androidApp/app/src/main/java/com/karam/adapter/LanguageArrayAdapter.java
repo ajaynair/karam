@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.karam.sharedPreference.UserData;
+import com.karam.utils.AppLocale;
 import com.karam.view.activity.R;
 
 import java.util.Locale;
@@ -61,19 +63,15 @@ public class LanguageArrayAdapter<T> extends ArrayAdapter<String> {
      * @param i: index of the listview element that is selected
      * @param a: activity to open after refresh
      */
-    public void setLocale(Context c, int i, Activity a) {
-        Locale myLocale;
+    public void setLocale(Context c, int i, Activity a, UserData u) {
+        String lang = getLanguageAbbr(i);
 
-        myLocale = new Locale(getLanguageAbbr(i));
-
-        Resources res = a.getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        conf.locale = myLocale;
-        res.updateConfiguration(conf, dm);
+        AppLocale.set_language(c, a, lang);
         Intent refresh = new Intent(a, a.getClass());
         a.finish();
         a.startActivity(refresh);
+
+        u.set_current_language(lang);
     }
 
     /**

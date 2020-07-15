@@ -41,7 +41,7 @@ public class LandingPage extends BaseActivity {
         languageList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                ((LanguageArrayAdapter) adapter).setLocale(getApplicationContext(), i, LandingPage.this);
+                ((LanguageArrayAdapter) adapter).setLocale(getApplicationContext(), i, LandingPage.this, userData);
             }
         });
 
