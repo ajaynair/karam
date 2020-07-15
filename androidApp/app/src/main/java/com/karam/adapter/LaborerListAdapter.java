@@ -41,11 +41,13 @@ public class LaborerListAdapter extends RecyclerView.Adapter<LaborerListAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Laborer l = this.laborers.get(position);
 
-        holder.skills.setText(l.getSkills());
-        holder.name.setText(l.getFirst_name());
-        holder.phoneNo.setText(l.getPhone_number());
-        holder.preferred_location.setText(l.getPreferred_job_location());
-
+        holder.skills.setText("Skills: " + l.getSkills());
+        holder.fname.setText("First Name: " + l.getFirst_name());
+        holder.lname.setText("Last Name: " + l.getLast_name());
+        holder.aadharStatus.setText("Aadhar card available: " + l.getAadhar_card_status());
+        holder.phoneNo.setText("Phone No: " + l.getPhone_number());
+        holder.activityStatus.setText("Active indicator: " + l.getActive_ind());
+        holder.preferred_location.setText("Preferred Location: " + l.getPreferred_job_location());
     }
 
     /**
@@ -62,19 +64,25 @@ public class LaborerListAdapter extends RecyclerView.Adapter<LaborerListAdapter.
      */
     public class ViewHolder extends RecyclerView.ViewHolder {
         RelativeLayout parentRelativeLayout;
-        TextView name;
+        TextView fname;
+        TextView lname;
         TextView phoneNo;
         TextView preferred_location;
         TextView skills;
+        TextView aadharStatus;
+        TextView activityStatus;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             parentRelativeLayout = itemView.findViewById(R.id.laborer_listview_relative_layout);
-            name = itemView.findViewById(R.id.laborer_listview_name);
+            fname = itemView.findViewById(R.id.laborer_listview_fname);
+            lname = itemView.findViewById(R.id.laborer_listview_lname);
             phoneNo = itemView.findViewById(R.id.laborer_listview_phoneno);
             preferred_location = itemView.findViewById(R.id.laborer_listview_location);
             skills = itemView.findViewById(R.id.laborer_listview_skills);
+            aadharStatus = itemView.findViewById(R.id.aadharStatus);
+            activityStatus = itemView.findViewById(R.id.activityStatus);
         }
     }
 }

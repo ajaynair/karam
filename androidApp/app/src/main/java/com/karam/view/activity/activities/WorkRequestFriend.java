@@ -25,7 +25,8 @@ import retrofit2.Response;
  * Page for a user to register their friend as a laborer for a job request
  */
 public class WorkRequestFriend extends BaseActivity {
-    EditText name;
+    EditText fname;
+    EditText lname;
     EditText age;
     EditText address;
     RadioGroup aadharStatus;
@@ -34,6 +35,11 @@ public class WorkRequestFriend extends BaseActivity {
     EditText skills;
     Spinner location;
     Button register;
+
+    EditText username;
+
+    EditText gender;
+
 
     @Override
     protected int getLayoutResource() {
@@ -49,12 +55,15 @@ public class WorkRequestFriend extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        name = findViewById(R.id.inputName);
+        fname = findViewById(R.id.fName);
+        lname = findViewById(R.id.lName);
+        gender = findViewById(R.id.gender);
         age = findViewById(R.id.inputAge);
         address = findViewById(R.id.inputAddress);
         aadharStatus = findViewById(R.id.radio_group);
         phone = findViewById(R.id.phone);
         skills = findViewById(R.id.skills);
+        username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         register = findViewById(R.id.register);
         location = findViewById(R.id.spinner);
@@ -69,26 +78,17 @@ public class WorkRequestFriend extends BaseActivity {
     private void send_rest_request() {
         RestClient retro = new RestClient(getApplicationContext());
         RestClientInterface service = retro.getService();
-        Toast.makeText(getApplicationContext(), age.getText(),
-                Toast.LENGTH_SHORT).show();
 
         int i_age = 0;
         if (age.getText().toString().equals("") == false) {
             i_age = Integer.valueOf(age.getText().toString());
         }
-        Laborer laborer = new Laborer(userData.get_user_id(), name.getText().toString(),
-                name.getText().toString(), location.getSelectedItem().toString(),
-                // TODO NEW_COMER Get the other values from UI and fill it
-                phone.getText().toString(), i_age, "f",
-                aadharStatus.getCheckedRadioButtonId() == R.id.yes ? "Y" : "N", skills.getText().toString(), password.getText().toString());
+        Laborer laborer = new Laborer(userData.get_user_id(), fname.getText().toString(), lname.getText().toString(), location.getSelectedItem().toString(), phone.getText().toString(), i_age, gender.getText().toString(), aadharStatus.getCheckedRadioButtonId() == R.id.yes ? "Yes" : "No", skills.getText().toString(), username.getText().toString(), password.getText().toString());
         Call<Registration> callSync = service.registerAsLaborer(laborer);
         callSync.enqueue(new Callback<Registration>() {
             @Override
             public void onResponse(Call<Registration> call, Response<Registration> response) {
                 Registration apiResponse = response.body();
-                System.out.println(apiResponse);
-                Toast.makeText(getApplicationContext(), apiResponse.toString(),
-                        Toast.LENGTH_SHORT).show();
             }
 
             @Override

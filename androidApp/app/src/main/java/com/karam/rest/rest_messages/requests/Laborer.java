@@ -6,44 +6,45 @@ public class Laborer {
     private int id;
     private int parentId;
     private String first_name;
-    private String lname;
+    private String last_name;
     private int age;
     private String gender;
     private String address;
     private String skills;
     private String phone_number;
-    private String aadharStatus;
+    private String aadhar_card_status;
     private String aadharNumber;
     private String password;
-
+    private String username;
     private String panCard;
-    private String activeInd;
+    private String active_ind;
     private String preferred_job_location;
 
-    public Laborer(int parentId, String fname, String lname, String location, String PhoneNo, int age, String gender, String aadharStatus, String skills, String password) {
+    public Laborer(int parentId, String fname, String lname, String location, String PhoneNo, int age, String gender, String aadharStatus, String skills, String username, String password) {
         this.id = 1;
         this.parentId = parentId;
         this.first_name = fname;
-        this.lname = lname;
+        this.last_name = lname;
         this.address = location;
         this.phone_number = PhoneNo;
         this.age = age;
         this.gender = gender;
-        this.aadharStatus = aadharStatus;
+        this.aadhar_card_status = aadharStatus;
         this.panCard = "TestPanCardNo";
         this.skills = skills;
-        this.activeInd = "Y";
-        this.preferred_job_location = "Pune, Mumbai";
+        this.active_ind = "Active";
+        this.preferred_job_location = location;
+        this.username = username;
         this.password = password;
         this.aadharNumber = "testAadharNo";
     }
 
-    public String getLname() {
-        return lname;
+    public String getLast_name() {
+        return last_name;
     }
 
-    public void setLname(String lname) {
-        this.lname = lname;
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
     public String getPassword() {
@@ -110,12 +111,12 @@ public class Laborer {
         this.phone_number = phone_number;
     }
 
-    public String getAadharStatus() {
-        return aadharStatus;
+    public String getAadhar_card_status() {
+        return aadhar_card_status;
     }
 
-    public void setAadharStatus(String aadharStatus) {
-        this.aadharStatus = aadharStatus;
+    public void setAadhar_card_status(String aadhar_card_status) {
+        this.aadhar_card_status = aadhar_card_status;
     }
 
     public int getParentId() {
@@ -142,12 +143,12 @@ public class Laborer {
         this.panCard = panCard;
     }
 
-    public String getActiveInd() {
-        return activeInd;
+    public String getActive_ind() {
+        return active_ind;
     }
 
-    public void setActiveInd(String activeInd) {
-        this.activeInd = activeInd;
+    public void setActive_ind(String active_ind) {
+        this.active_ind = active_ind;
     }
 
     public String getPreferred_job_location() {

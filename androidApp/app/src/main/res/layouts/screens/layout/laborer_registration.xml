@@ -25,16 +25,40 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/inputName"
+                android:id="@+id/fName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:theme="@style/editTextStyle"
                 android:ems="10"
-                android:hint="@string/name"
+                android:hint="@string/fname"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/lName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:theme="@style/editTextStyle"
+                android:ems="10"
+                android:hint="@string/lname"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fName" />
+
+            <EditText
+                android:id="@+id/gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:theme="@style/editTextStyle"
+                android:ems="10"
+                android:hint="@string/gender"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lName" />
 
             <EditText
                 android:id="@+id/inputAge"
@@ -46,7 +70,7 @@
                 android:hint="@string/age"
                 android:inputType="number"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/inputName" />
+                app:layout_constraintTop_toBottomOf="@id/gender" />
 
             <EditText
                 android:id="@+id/inputAddress"
@@ -120,7 +144,7 @@
                 android:theme="@style/editTextStyle"
                 android:ems="10"
                 android:hint="@string/phone_no"
-                android:inputType="number"
+                android:inputType="phone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/skills" />
 
@@ -136,6 +160,18 @@
                 app:layout_constraintTop_toBottomOf="@id/spinner" />
 
             <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:theme="@style/editTextStyle"
+                android:ems="10"
+                android:hint="@string/username"
+                android:inputType="text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/phone" />
+
+            <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -145,7 +181,7 @@
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/phone" />
+                app:layout_constraintTop_toBottomOf="@id/username" />
 
             <Button
                 android:id="@+id/register"

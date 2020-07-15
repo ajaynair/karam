@@ -2,6 +2,7 @@ package com.karam.view.activity.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -68,9 +69,9 @@ public class ContractorRegistration extends BaseActivity {
             @Override
             public void onResponse(Call<Registration> call, Response<Registration> response) {
                 Registration apiResponse = response.body();
-                System.out.println(apiResponse);
-                Toast.makeText(getApplicationContext(), apiResponse.toString(),
-                        Toast.LENGTH_SHORT).show();
+                userData.set_user_id(apiResponse.getUserId());
+                userData.setUserStateContractor();
+                startActivity(new Intent(ContractorRegistration.this, ContractorPostLogin.class));
             }
 
             @Override
@@ -88,9 +89,16 @@ public class ContractorRegistration extends BaseActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                send_rest_request();
-                userData.setUserStateContractor();
-                startActivity(new Intent(ContractorRegistration.this, ContractorPostLogin.class));
+                if(TextUtils.isEmpty(name.getText()) ||
+                        TextUtils.isEmpty(phone.getText()) ||
+                        TextUtils.isEmpty(address.getText()) ||
+                        TextUtils.isEmpty(username.getText()) ||
+                        TextUtils.isEmpty(password.getText())) {
+                    Toast.makeText(getApplicationContext(), "Please fill all the fields",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    send_rest_request();
+                }
             }
         });
     }

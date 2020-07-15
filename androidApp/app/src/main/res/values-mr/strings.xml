@@ -55,4 +55,7 @@
     <string name="WrongUsrPwd">चुकीचे वापरकर्ता नाव किंवा संकेतशब्द</string>
     <string name="skills">कौशल्ये</string>
     <string name="markActive">Mark myself as active</string>
+    <string name="fname">First Name</string>
+    <string name="lname">Last Name</string>
+    <string name="gender">Gender</string>
 </resources>

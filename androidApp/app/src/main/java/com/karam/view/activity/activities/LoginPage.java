@@ -26,11 +26,19 @@ public class LoginPage extends BaseActivity {
     EditText name;
     EditText password;
     Button login;
+    Button register;
     TextView wrongUsrPwd;
     View.OnClickListener loginClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             send_rest_request(name.getText().toString(), password.getText().toString());
+        }
+    };
+
+    View.OnClickListener registerClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            startActivity(new Intent(LoginPage.this, LandingPage.class));
         }
     };
 
@@ -51,6 +59,7 @@ public class LoginPage extends BaseActivity {
         name = findViewById(R.id.loginUserNameText);
         password = findViewById(R.id.loginPasswordText);
         login = findViewById(R.id.loginButton);
+        register = findViewById(R.id.registerButton);
         wrongUsrPwd = findViewById(R.id.wrongUsePwd);
 
         assignListenerToViews();
@@ -98,5 +107,6 @@ public class LoginPage extends BaseActivity {
      */
     private void assignListenerToViews() {
         login.setOnClickListener(loginClickListener);
+        register.setOnClickListener(registerClickListener);
     }
 }

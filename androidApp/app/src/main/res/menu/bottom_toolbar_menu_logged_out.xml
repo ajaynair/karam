@@ -16,9 +16,11 @@
         android:icon="@drawable/ic_arrow_back_24px"
         android:title="@string/back"
         app:showAsAction="always|withText" />
+    <!--
     <item
         android:id="@+id/bottom_navigation_exit"
 
         android:title="@string/exit"
         app:showAsAction="always|withText" />
+        -->
 </menu>
