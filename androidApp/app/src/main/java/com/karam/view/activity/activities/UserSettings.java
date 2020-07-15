@@ -39,7 +39,7 @@ public class UserSettings extends BaseActivity {
         languageList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                ((LanguageArrayAdapter) language_adapter).setLocale(getApplicationContext(), i, UserSettings.this);
+                ((LanguageArrayAdapter) language_adapter).setLocale(getApplicationContext(), i, UserSettings.this, userData);
             }
         });
     }

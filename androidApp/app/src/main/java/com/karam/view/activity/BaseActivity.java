@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.karam.sharedPreference.UserData;
+import com.karam.utils.AppLocale;
 import com.karam.view.activity.activities.LoginPage;
 import com.karam.view.activity.common.BottomNavigation;
 import com.karam.view.activity.common.TopNavigation;
@@ -23,7 +24,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutResource());
 
         // TODO NEW_COMER Remove these 2 lines and implement threadpool
         /**
@@ -38,6 +38,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
         userData = new UserData(getApplicationContext());
+
+        String lang = userData.get_current_language();
+        AppLocale.set_language(getApplicationContext(), this, lang);
+        setContentView(getLayoutResource());
         BottomNavigation b = new BottomNavigation(this);
         b.inflateBottomNavigation(userData);
 

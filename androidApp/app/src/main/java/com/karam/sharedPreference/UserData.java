@@ -15,6 +15,7 @@ public class UserData {
     private String password = "pwd";
     private String user_state = "us";
     private String user_id = "uid";
+    private String language = "lang";
 
     private int NOT_LOGGED_IN = 0;
     private int CONTRACTOR = 1;
@@ -34,6 +35,17 @@ public class UserData {
     public void set_user_id(int user_id) {
         prefs = PreferenceManager.getDefaultSharedPreferences(context);
         prefs.edit().putInt(this.user_id, user_id).commit();
+    }
+
+
+    public String get_current_language() {
+        prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getString(this.language, "en");
+    }
+
+    public void set_current_language(String l) {
+        prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        prefs.edit().putString(this.language, l).commit();
     }
 
     public int getNotLoggedInValue() {

@@ -1,15 +1,21 @@
 package com.karam.application;
 
 import android.app.Application;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 import androidx.work.WorkRequest;
+import com.karam.utils.AppLocale;
 
 import com.karam.service.NotifyWorker;
+import com.karam.sharedPreference.UserData;
 
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -51,6 +57,10 @@ public class KaramApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        // TODO Use appLocale to set language
+        // UserData userData = new UserData(getApplicationContext());
+        // String lang = userData.get_current_language();
+        // AppLocale.set_language(getApplicationContext(), lang);
         // TODO: Implement notification mechanism
         // Following 2 lines are just to test basic android notification
         // testOneTimeNotify();
