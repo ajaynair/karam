@@ -10,14 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df5d22b-5372-4340-9f32-896ffddc24e3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/utils/AppLocale.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/adapter/LanguageArrayAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/adapter/LanguageArrayAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/application/KaramApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/application/KaramApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/sharedPreference/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/sharedPreference/UserData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/BaseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/BaseActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/LandingPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/LandingPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/UserSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/karam/view/activity/activities/UserSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-hi/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-hi/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-mr/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-mr/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
