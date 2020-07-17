@@ -1,3 +1,11 @@
+/*
+Create script for the tables that need to be created.
+Table Name : user, laborer, contractor, job, user_activity, skills
+             laborerSkillRelation, laborerPreferredLocationRelation
+author : Rishabh Pandita
+*/
+
+-- Strores user infotmation used for login and signup
 CREATE TABLE user (
 		 user_id INT NOT NULL AUTO_INCREMENT,
          role_type varchar(2) NOT NULL,
@@ -5,7 +13,8 @@ CREATE TABLE user (
          password_hash varchar(100) NOT NULL,
          update_date_time DATETIME DEFAULT CURRENT_TIMESTAMP,
          PRIMARY KEY(user_id));
-         
+
+
 CREATE TABLE laborer (
          laborer_id INT NOT NULL,
          parent_id INT,

@@ -1,3 +1,5 @@
+# POJO class for job
+# author: Rishabh Pandita
 class JobPOJO:
 
     def setJobId(self, jobId):
