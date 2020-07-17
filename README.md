@@ -30,6 +30,10 @@ The project is in an early stage and so we require all kinds of contribution inc
 * Masters student at the Carnegie Mellon University
 * WhatsApp +14126268877
 
+* Rishabh Pandita rishabh.pandita@gmail.com
+* Masters student University of Florida 2018
+
+
 # **Slack workspace**
 https://join.slack.com/t/karam2/shared_invite/zt-ffltc2x1-_Yn1bEgEQ7wrfVOajxLFgw
 
