@@ -1,6 +1,8 @@
 import mysql.connector
 from config import config
-
+''
+Reads config files and manages a common connection object.
+''
 config.conf_init()
 
 userName = config.get_mysql_username()
