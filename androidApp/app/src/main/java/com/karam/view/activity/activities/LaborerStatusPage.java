@@ -61,16 +61,8 @@ public class LaborerStatusPage extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         assignListenerToViews();
-        try {
-            initLaborerStatus();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            send_rest_request(userData.get_user_id());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        initLaborerStatus();
+        send_rest_request(userData.get_user_id());
     }
 
     /**
