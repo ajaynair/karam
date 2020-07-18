@@ -1,0 +1,15 @@
+<resources>
+    <!-- Main app theme -->
+    <style name="KaramTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:fontFamily">@string/default_font</item>
+        <!-- <item name="android:background">@color/backgroundColor</item> -->
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textColorHint">@color/secondaryTextColor</item>
+        <item name="android:editTextStyle">@style/editTextStyle</item>
+    </style>
+
+    <style name="editTextStyle" parent="@style/Widget.AppCompat.EditText">
+        <item name="android:backgroundTint">@color/secondaryColor</item>
+        <item name="android:ems">300</item>
+    </style>
+</resources>

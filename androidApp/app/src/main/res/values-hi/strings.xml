@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">करम</string>
+
+    <!-- Landing Page -->
+    <string name="landing_register_contractor">ठेकेदार के रूप में रजिस्टर करें</string>
+    <string name="landing_register_laborer">मज़दूर के रूप में रजिस्टर करें</string>
+    <string name="landing_if_acc_exist_text">अगर आपका पहले से ही अकाउंट है तो लोजीन करे</string>
+
+
+    <!-- Add work request notification -->
+    <string name="notif_work_req_create_job_req">एक नौकरी अनुरोध बनाएँ</string>
+    <string name="notif_work_req_create_job_req_text">आपकी स्थिति बंद करने के लिए सेट है! आप नौकरी खोजने में सक्षम नहीं हो सकते हैं</string>
+
+    <!-- About Us page -->
+    <string name="about_us_about_us_detail">
+        हम 3 सॉफ्टवेयर इंजीनियरों का एक छोटा समूह हैं, जो हमारे समाज के लिए अपना काम करने के लिए इस ऐप को विकसित कर रहे हैं। \n
+        हम अधिक लोगों को हमारे साथ जुड़ना पसंद करेंगे!\n
+        ज़रुरत है:\n
+
+        <b>सॉफ्टवेयर इंजीनियर:</b> कोड विकसित करने के लिए \n \n
+        <b>डिज़ाइनर:</b> उपयोगकर्ता इंटरफ़ेस डिज़ाइन करने और उपयोगकर्ता अनुभव को परिभाषित करने के लिए \n \n
+        <b>गोपनीयता विशेषज्ञ:</b> उपयोगकर्ता के व्यवहार को बेहतर समझने के लिए हम किस प्रकार का डेटा एकत्र कर सकते हैं \n \n
+        <b>विपणक:</b> इस एप्लिकेशन को विपणन करने के लिए \n \n
+        <b>प्रबंधक:</b> टीम का प्रबंधन करने के लिए \n \n
+        <b>उपयोगकर्ता:</b> इस ऐप का उपयोग और परीक्षण करने के लिए \n \n
+        <b>संक्षेप में, कोई फर्क नहीं पड़ता कि आप किसमें अच्छे हैं, हमें आपकी मदद चाहिए!</b>
+    </string>
+    <string name="home">घर</string>
+    <string name="settings">समायोजन</string>
+    <string name="about_us">"हमारे बारे में "</string>
+    <string name="back">वापस</string>
+    <string name="exit">"बाहर जाएं "</string>
+    <string name="location">"स्थान "</string>
+    <string name="register">"रजिस्टर करें "</string>
+    <string name="work_request_register_friend">"मित्र के लिए पंजीकरण करें "</string>
+    <string name="name">नाम</string>
+    <string name="password">कुंजिका</string>
+    <string name="login">लोजीन</string>
+    <string name="chakra">चक्र</string>
+    <string name="laborer_status_create_work_request">"नया कार्य अनुरोध बनाएँ "</string>
+    <string name="age">आयु</string>
+    <string name="address">पता</string>
+    <string name="aadhar_status_question_friend">" क्या आपके दोस्त के पास आधार कार्ड है?"</string>
+    <string name="yes">हाँ</string>
+    <string name="no">नहीं</string>
+    <string name="work_request_friend_preferred_location">अपने मित्र के पसंदीदा स्थान का चयन करें</string>
+    <string name="phone_no">फोन नंबर</string>
+    <string name="logout">" लॉग आउट"</string>
+    <string name="laborer_registration_no_work_for_now">अभी काम मत बनाओ</string>
+    <string name="work_request_preferred_location">अपना पसंदीदा स्थान चुनें</string>
+    <string name="aadhar_status_question">" क्या आपके पास आधार कार्ड है?"</string>
+    <string name="contractor_post_login_search_laborers">कौशल/स्थान द्वारा खोजें</string>
+    <string name="username">उपयोगकर्ता नाम</string>
+    <string name="WrongUsrPwd">उपयोगकर्ता का गलत नाम और पासवर्ड</string>
+    <string name="skills">कौशल</string>
+    <string name="markActive">Mark myself as active</string>
+    <string name="fname">First Name</string>
+    <string name="lname">Last Name</string>
+    <string name="gender">Gender</string>
+</resources>

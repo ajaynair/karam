@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activities.LandingPage">
+    <item
+        android:id="@+id/logout"
+        android:title="@string/logout" />
+
+</menu>
