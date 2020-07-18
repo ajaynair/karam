@@ -8,7 +8,7 @@ from utils.ThreadExecutor import ThreadExecutor
 # TODO Give example request body and response body
 '''
 FIXME do not hardcode MySql queries. Database name and table names can be
-defined as global variables or class members. It will make it easier to change 
+defined as global variables or class members. It will make it easier to change
 table names and database names.
 '''
 '''
@@ -510,8 +510,13 @@ class PersonTransaction:
                 cursor = connection.cursor()
                 sql = "select user_id, role_type from karamdb.user where user_name = %s and password_hash = %s"
                 val = (username, password)
+                print("********userName")
+                print(username, password)
                 cursor.execute(sql, val)
                 resp = cursor.fetchall()
+                print("********resp")
+                print(resp)
+
 
                 if len(resp) != 0:
                     return resp[0][0], resp[0][1]

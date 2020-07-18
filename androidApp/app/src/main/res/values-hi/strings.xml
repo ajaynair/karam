@@ -49,7 +49,7 @@
     <string name="laborer_registration_no_work_for_now">अभी काम मत बनाओ</string>
     <string name="work_request_preferred_location">अपना पसंदीदा स्थान चुनें</string>
     <string name="aadhar_status_question">" क्या आपके पास आधार कार्ड है?"</string>
-    <string name="contractor_post_login_search_laborers">मजदूरों की तलाश करो</string>
+    <string name="contractor_post_login_search_laborers">कौशल/स्थान द्वारा खोजें</string>
     <string name="username">उपयोगकर्ता नाम</string>
     <string name="WrongUsrPwd">उपयोगकर्ता का गलत नाम और पासवर्ड</string>
     <string name="skills">कौशल</string>
