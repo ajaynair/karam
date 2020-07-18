@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Extends the whole application class
  */
-class KaramApplication extends Application {
+public class KaramApplication extends Application {
     /**
      * FIXME: NEW_COMER: Implement notification
      * This is just a test function
