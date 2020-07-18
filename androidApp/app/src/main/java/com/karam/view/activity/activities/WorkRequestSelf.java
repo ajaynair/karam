@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import com.karam.rest.RestClient;
 import com.karam.rest.RestClientInterface;
-import com.karam.rest.rest_messages.requests.Laborer;
 import com.karam.rest.rest_messages.requests.LaborerActiveStatus;
 import com.karam.rest.rest_messages.responses.Error;
 import com.karam.view.activity.BaseActivity;

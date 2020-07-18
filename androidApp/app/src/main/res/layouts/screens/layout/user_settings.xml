@@ -26,10 +26,10 @@
             android:layout_height="match_parent"
             android:choiceMode="singleChoice"
             android:clickable="true"
+            android:focusable="true"
             android:listSelector="@drawable/list_selector"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:focusable="true" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ListView
             android:id="@+id/languageList"
@@ -38,10 +38,10 @@
             android:layout_marginEnd="20dp"
             android:choiceMode="singleChoice"
             android:clickable="true"
+            android:focusable="true"
             android:listSelector="@drawable/list_selector"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/settingsList"
-            app:layout_constraintTop_toTopOf="parent"
-            android:focusable="true" />
+            app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

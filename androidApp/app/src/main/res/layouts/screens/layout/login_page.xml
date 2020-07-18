@@ -23,21 +23,22 @@
             android:id="@+id/loginUserNameText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/editTextStyle"
             android:hint="@string/name"
             android:textSize="15sp"
+            android:theme="@style/editTextStyle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/loginPasswordText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/editTextStyle"
             android:hint="@string/password"
-
             android:inputType="textPassword"
+
             android:textSize="15sp"
+            android:theme="@style/editTextStyle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loginUserNameText" />
 
@@ -57,9 +58,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:gravity="center"
-            android:visibility="invisible"
             android:text="@string/WrongUsrPwd"
             android:textColor="@color/secondaryColor"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
@@ -80,9 +81,9 @@
         android:layout_height="200dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/wheel"
+        android:contentDescription="@string/chakra"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_common"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="@string/chakra" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

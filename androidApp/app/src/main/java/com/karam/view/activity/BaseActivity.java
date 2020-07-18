@@ -26,13 +26,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // TODO NEW_COMER Remove these 2 lines and implement threadpool
-        /**
-         * By default android does not allow running network operations (For e.g. REST calls to the server)
-         * in the main thread. I think this is to make sure that the UI remains interactive.
-         * The following 2 lines are *temporarily* added to disable this check. To solve the issue there are 2
-         * ways I can think of:
-         * 1. Create a new threadpool, use threads from the threadpool for all the network related operations
-         * 2. Use android service for all network related operations
+        /*
+          By default android does not allow running network operations (For e.g. REST calls to the server)
+          in the main thread. I think this is to make sure that the UI remains interactive.
+          The following 2 lines are *temporarily* added to disable this check. To solve the issue there are 2
+          ways I can think of:
+          1. Create a new threadpool, use threads from the threadpool for all the network related operations
+          2. Use android service for all network related operations
          */
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -68,15 +68,13 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case (R.id.logout):
-                userData.setUserStateLoggedOut();
-                startActivity(new Intent(this, LoginPage.class));
-                return true;
-            default:
-                Toast.makeText(this, "Oops! Error. You shouldn't be seeing this message",
-                        Toast.LENGTH_SHORT).show();
-                return false;
+        if (item.getItemId() == R.id.logout) {
+            userData.setUserStateLoggedOut();
+            startActivity(new Intent(this, LoginPage.class));
+            return true;
         }
+        Toast.makeText(this, "Oops! Error. You shouldn't be seeing this message",
+                Toast.LENGTH_SHORT).show();
+        return false;
     }
 }

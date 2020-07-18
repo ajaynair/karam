@@ -26,18 +26,18 @@ import retrofit2.Response;
  * Page for the laborer to register themselves to the app
  */
 public class LaborerRegistration extends BaseActivity {
-    EditText fname;
-    EditText lname;
-    EditText age;
-    EditText address;
-    RadioGroup aadharStatus;
-    EditText phone;
-    EditText username;
-    EditText password;
-    EditText skills;
-    EditText gender;
-    Spinner location;
-    Button register;
+    private EditText fname;
+    private EditText lname;
+    private EditText age;
+    private EditText address;
+    private RadioGroup aadharStatus;
+    private EditText phone;
+    private EditText username;
+    private EditText password;
+    private EditText skills;
+    private EditText gender;
+    private Spinner location;
+    private Button register;
 
     @Override
     protected int getLayoutResource() {
@@ -79,7 +79,7 @@ public class LaborerRegistration extends BaseActivity {
         RestClientInterface service = retro.getService();
 
         int i_age = 0;
-        if (age.getText().toString().equals("") == false) {
+        if (!age.getText().toString().equals("")) {
             i_age = Integer.parseInt(age.getText().toString());
         }
         // TODO NEW_COMER Get values that are hardcoded from the UI and fill it
@@ -111,7 +111,7 @@ public class LaborerRegistration extends BaseActivity {
         laborerReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(TextUtils.isEmpty(fname.getText()) ||
+                if (TextUtils.isEmpty(fname.getText()) ||
                         TextUtils.isEmpty(lname.getText()) ||
                         TextUtils.isEmpty(age.getText()) ||
                         TextUtils.isEmpty(address.getText()) ||
@@ -120,7 +120,7 @@ public class LaborerRegistration extends BaseActivity {
                         TextUtils.isEmpty(gender.getText()) ||
                         TextUtils.isEmpty(username.getText()) ||
                         TextUtils.isEmpty(password.getText()) ||
-                        aadharStatus.getCheckedRadioButtonId() == -1){
+                        aadharStatus.getCheckedRadioButtonId() == -1) {
                     Toast.makeText(getApplicationContext(), "Please fill all the fields",
                             Toast.LENGTH_SHORT).show();
                 } else {

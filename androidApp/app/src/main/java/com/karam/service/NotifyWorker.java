@@ -14,7 +14,7 @@ import com.karam.view.notification.AddWorkRequestNotification;
  * Uses notification view class to send notifications
  */
 public class NotifyWorker extends Worker {
-    AddWorkRequestNotification notification;
+    private final AddWorkRequestNotification notification;
 
     public NotifyWorker(Context context, WorkerParameters params) {
         super(context, params);
@@ -23,6 +23,7 @@ public class NotifyWorker extends Worker {
 
     /**
      * Create a worker that runs in the background
+     *
      * @return return success, failure or retry
      */
     @Override

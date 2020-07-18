@@ -15,7 +15,7 @@ public class Laborer {
     private String aadhar_card_status;
     private String aadharNumber;
     private String password;
-    private String username;
+    private final String username;
     private String panCard;
     private String active_ind;
     private String preferred_job_location;

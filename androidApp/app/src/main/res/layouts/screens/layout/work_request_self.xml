@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".activities.WorkRequestSelf">
 
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar" />
 
-    <include layout="@layout/bottom_navigation_common"/>
+    <include layout="@layout/bottom_navigation_common" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -39,18 +39,18 @@
                 android:id="@+id/loginPasswordText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="invisible"
                 android:text="@string/location"
                 android:textSize="15sp"
+                android:visibility="invisible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/loginUserNameText" />
 
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="wrap_content"
-                android:visibility="invisible"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:visibility="invisible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/loginPasswordText" />
         </LinearLayout>

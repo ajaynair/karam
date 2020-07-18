@@ -7,7 +7,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.karam.adapter.LanguageArrayAdapter;
 import com.karam.view.activity.BaseActivity;
@@ -19,7 +18,7 @@ import com.karam.view.activity.R;
  */
 public class LandingPage extends BaseActivity {
 
-    ArrayAdapter<String> adapter;
+    private ArrayAdapter<String> adapter;
 
     @Override
     protected int getLayoutResource() {
@@ -82,7 +81,7 @@ public class LandingPage extends BaseActivity {
      *
      * @return: adapter that contains all the languages
      */
-    void getAdapterWithLanguages() {
+    private void getAdapterWithLanguages() {
         adapter = new LanguageArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1);
     }

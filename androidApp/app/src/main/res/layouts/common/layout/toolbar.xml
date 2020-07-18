@@ -8,4 +8,4 @@
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     app:layout_constraintTop_toTopOf="parent"
     app:navigationIcon="@mipmap/ic_launcher_round"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />

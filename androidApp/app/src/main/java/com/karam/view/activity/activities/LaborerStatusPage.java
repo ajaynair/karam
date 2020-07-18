@@ -13,7 +13,6 @@ import com.karam.adapter.LaborerListAdapter;
 import com.karam.rest.RestClient;
 import com.karam.rest.RestClientInterface;
 import com.karam.rest.rest_messages.requests.Laborer;
-import com.karam.sharedPreference.UserData;
 import com.karam.view.activity.BaseActivity;
 import com.karam.view.activity.R;
 
@@ -27,10 +26,10 @@ import retrofit2.Response;
  * Page for the laborer to check their and their friend's job request status
  */
 public class LaborerStatusPage extends BaseActivity {
-    LaborerListAdapter adapter;
-    ArrayList<Laborer> laborers;
+    private LaborerListAdapter adapter;
+    private ArrayList<Laborer> laborers;
 
-    private void initLaborerStatus() throws IOException {
+    private void initLaborerStatus() {
         initRecyclerView();
     }
 
@@ -87,7 +86,7 @@ public class LaborerStatusPage extends BaseActivity {
         });
     }
 
-    void send_rest_request(int pid) throws IOException {
+    private void send_rest_request(int pid) {
         try {
             RestClient retro = new RestClient(getApplicationContext());
             RestClientInterface service = retro.getService();
