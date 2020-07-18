@@ -14,7 +14,7 @@ An android platform for contractors/individual employers and workers.
 <a href="url"><img src="UI/app_landing.jpeg" align="left" height="355" width="200"></a> <a href="url"><img src="UI/contractor_registration.jpeg" align="left" height="355" width="200" ></a> <a href="url"><img src="UI/contractor_search.jpeg" align="left" height="355" width="200" ></a> <a href="url"><img src="UI/laborer_registration.jpeg" align="left" height="355" width="200" ></a> <br/> 
 <a href="url"><img src="UI/laborer_landing.jpeg" align="left" height="355" width="200" ></a> <a href="url"><img src="UI/login.jpeg" align="left" height="355" width="200" ></a> </a><a href="url"><img src="UI/hindi.jpeg" align="left" height="355" width="200" ></a>
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 # **Contribution tips**
 The project is in an early stage and so we require all kinds of contribution including but not limited to:
 - Designing the logo
