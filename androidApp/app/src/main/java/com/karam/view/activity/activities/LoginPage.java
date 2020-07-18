@@ -76,8 +76,6 @@ public class LoginPage extends BaseActivity {
             public void onResponse(Call<Session> call, Response<Session> response) {
                 Session apiResponse = response.body();
 
-                Toast.makeText(getApplicationContext(), apiResponse.getRole_type(),
-                        Toast.LENGTH_SHORT).show();
                 // TODO Use enum for laborer and contractor
                 if (apiResponse.getRole_type().equals("L")) {
                     userData.setUserStateLaborer();
