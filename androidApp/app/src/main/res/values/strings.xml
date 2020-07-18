@@ -1,0 +1,86 @@
+<resources>
+    <string name="app_name">Karam</string>
+
+    <string name="default_font" translatable="false">sans-serif-condensed-light</string>
+
+    <!-- Common -->
+    <string name="common_english" translatable="false">English</string>
+    <string name="common_hindi" translatable="false">हिन्दी</string>
+    <string name="common_marathi" translatable="false">मराठी</string>
+    <string name="about_us"><b>About Us</b></string>
+
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="register">Register</string>
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="chakra">Chakra</string>
+
+    <string name="age">Age</string>
+    <string name="address">Address</string>
+    <string name="phone_no">Phone No</string>
+
+    <string name="home">Home</string>
+    <string name="settings">Settings</string>
+    <string name="back">Back</string>
+    <string name="exit">Exit</string>
+
+    <string name="location">Location</string>
+
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+
+    <!-- Landing Page -->
+    <string name="landing_register_contractor">Register as a contractor</string>
+    <string name="landing_register_laborer">Register as a laborer</string>
+    <string name="landing_if_acc_exist_text">Login if you already have an account</string>
+
+    <!-- About us page -->
+    <string name="about_us_about_us_detail">
+        We are a small group of 3 software engineers developing this app to do our part for our society.\n
+        We would love more people to join us!\n
+        We need:\n
+        <ul>
+        <li><b>Software Engineers:</b> To develop the code\n</li>
+        <li><b>Designers:</b> To design the user interface and define the user experience\n</li>
+        <li><b>Privacy experts:</b> To know what kind of data can we collect to better understand user behavour\n</li>
+        <li><b>Marketers:</b> To market this app\n</li>
+        <li><b>Managers:</b> To manage the team\n</li>
+        <li><b>Users:</b> To use and test this app\n</li>
+        </ul>
+        <b>In short, no matter what you are good at, we need your help!</b>\n
+    </string>
+
+    <!-- Add work request notification -->
+    <string name="notif_work_req_create_job_req">Create a job request</string>
+    <string name="notif_work_req_create_job_req_text">"Your status is set to closed! YOU may not be able to find a job."</string>
+
+    <string-array name="locations">
+        <item>Pune</item>
+        <item>Mumbai</item>
+        <item>Chennai</item>
+        <item>Delhi</item>
+        <item>Gudgaon</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+
+    <string name="work_request_register_friend">Register for Friend</string>
+    <string name="laborer_status_create_work_request">Create new work request</string>
+    <string name="aadhar_status_question_friend">Does your friend have an aadhar card?</string>
+    <string name="work_request_friend_preferred_location">Select your friend\'s preferred location</string>
+    <string name="laborer_registration_no_work_for_now">Do not create work for now</string>
+    <string name="work_request_preferred_location">Select your preferred location</string>
+    <string name="aadhar_status_question">Do you have an aadhar card?</string>
+    <string name="contractor_post_login_search_laborers">Search by Skill/Location</string>
+    <string name="username">username</string>
+    <string name="WrongUsrPwd">Wrong username or password</string>
+    <string name="skills">skills</string>
+    <string name="markActive">Mark myself as active</string>
+    <string name="fname">First Name</string>
+    <string name="lname">Last Name</string>
+    <string name="gender">Gender</string>
+</resources>
