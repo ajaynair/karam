@@ -10,7 +10,12 @@ Currently, the laborers get contracts in the following ways:
 # **Idea**
 An android platform for contractors/individual employers and workers. 
 
-**Contribution tips**
+# **Current User Interface**
+<a href="url"><img src="UI/app_landing.jpeg" align="left" height="355" width="200"></a> <a href="url"><img src="UI/contractor_registration.jpeg" align="left" height="355" width="200" ></a> <a href="url"><img src="UI/contractor_search.jpeg" align="left" height="355" width="200" ></a> <a href="url"><img src="UI/laborer_registration.jpeg" align="left" height="355" width="200" ></a> <br/> 
+<a href="url"><img src="UI/laborer_landing.jpeg" align="left" height="355" width="200" ></a> <a href="url"><img src="UI/login.jpeg" align="left" height="355" width="200" ></a> </a><a href="url"><img src="UI/hindi.jpeg" align="left" height="355" width="200" ></a>
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+# **Contribution tips**
 The project is in an early stage and so we require all kinds of contribution including but not limited to:
 - Designing the logo
 - Designing the UX of the app
@@ -26,12 +31,12 @@ The project is in an early stage and so we require all kinds of contribution inc
 - Most importantly help cheer ourselves up!
 
 # **Contact**
-* Ajay Nair ajaynair59@gmail.com
-* Masters student at the Carnegie Mellon University
-* WhatsApp +14126268877
+|<a href="url"><img src="Team/AjayNair.jpg" align="left" height="200" width="200" ></a> | <a href="url"><img src="Team/RishabhPandita.jpg" align="left" height="200" width="200" ></a> |
+|----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| * Ajay Nair ajaynair59@gmail.com | * Rishabh Pandita rishabh.pandita@gmail.com |
+| * Masters student at the Carnegie Mellon University | * Masters student University of Florida 2018 |
+| * WhatsApp +14126268877          |    |
 
-* Rishabh Pandita rishabh.pandita@gmail.com
-* Masters student University of Florida 2018
 
 # **Slack workspace**
 https://join.slack.com/t/karam2/shared_invite/zt-ffltc2x1-_Yn1bEgEQ7wrfVOajxLFgw
