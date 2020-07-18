@@ -17,11 +17,11 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/button_selector"
         android:clickable="true"
+        android:focusable="true"
         android:text="@string/register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/top_toolbar_common"
-        android:focusable="true" />
+        app:layout_constraintTop_toBottomOf="@id/top_toolbar_common" />
 
     <Button
         android:id="@+id/RegisterForFriend"
@@ -33,7 +33,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RegisterForSelf" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

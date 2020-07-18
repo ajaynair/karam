@@ -1,11 +1,11 @@
 package com.karam.rest.rest_messages.requests;
 
 public class Contractor {
-    private String fname;
-    private String location;
-    private String phone_no;
-    private String username;
-    private String password;
+    private final String fname;
+    private final String location;
+    private final String phone_no;
+    private final String username;
+    private final String password;
 
     public Contractor(String name, String location, String PhoneNo, String username, String password) {
         this.fname = name;

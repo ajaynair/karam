@@ -3,7 +3,7 @@ package com.karam.rest.rest_messages.requests;
 import androidx.annotation.NonNull;
 
 public class LaborerActiveStatus {
-    private String active_ind;
+    private final String active_ind;
 
     public LaborerActiveStatus(String activeInd) {
         this.active_ind = activeInd;

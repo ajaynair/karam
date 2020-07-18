@@ -3,9 +3,6 @@ package com.karam.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -14,8 +11,6 @@ import android.widget.TextView;
 import com.karam.sharedPreference.UserData;
 import com.karam.utils.AppLocale;
 import com.karam.view.activity.R;
-
-import java.util.Locale;
 
 /**
  * Adapter for languages that users can select for the app
@@ -26,11 +21,11 @@ public class LanguageArrayAdapter<T> extends ArrayAdapter<String> {
     /**
      * TODO: Find a better data structure for languages
      */
-    private static String[] languages = {
+    private static final String[] languages = {
             "English",
             "Hindi",
             "Marathi"};
-    Context context;
+    private final Context context;
 
     public LanguageArrayAdapter(Context context, int simple_list_item_1) {
         super(context, simple_list_item_1, languages);
@@ -43,7 +38,7 @@ public class LanguageArrayAdapter<T> extends ArrayAdapter<String> {
      * @param i: id of the element in the listview that is selected by the user click
      * @return abbreviation of the language as required by android library to set the default language
      */
-    public String getLanguageAbbr(int i) {
+    private String getLanguageAbbr(int i) {
         switch (languages[i]) {
             case "English":
                 return "en";

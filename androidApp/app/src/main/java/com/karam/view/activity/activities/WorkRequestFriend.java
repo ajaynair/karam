@@ -25,20 +25,20 @@ import retrofit2.Response;
  * Page for a user to register their friend as a laborer for a job request
  */
 public class WorkRequestFriend extends BaseActivity {
-    EditText fname;
-    EditText lname;
-    EditText age;
-    EditText address;
-    RadioGroup aadharStatus;
-    EditText phone;
-    EditText password;
-    EditText skills;
-    Spinner location;
-    Button register;
+    private EditText fname;
+    private EditText lname;
+    private EditText age;
+    private EditText address;
+    private RadioGroup aadharStatus;
+    private EditText phone;
+    private EditText password;
+    private EditText skills;
+    private Spinner location;
+    private Button register;
 
-    EditText username;
+    private EditText username;
 
-    EditText gender;
+    private EditText gender;
 
 
     @Override
@@ -80,8 +80,8 @@ public class WorkRequestFriend extends BaseActivity {
         RestClientInterface service = retro.getService();
 
         int i_age = 0;
-        if (age.getText().toString().equals("") == false) {
-            i_age = Integer.valueOf(age.getText().toString());
+        if (!age.getText().toString().equals("")) {
+            i_age = Integer.parseInt(age.getText().toString());
         }
         Laborer laborer = new Laborer(userData.get_user_id(), fname.getText().toString(), lname.getText().toString(), location.getSelectedItem().toString(), phone.getText().toString(), i_age, gender.getText().toString(), aadharStatus.getCheckedRadioButtonId() == R.id.yes ? "Yes" : "No", skills.getText().toString(), username.getText().toString(), password.getText().toString());
         Call<Registration> callSync = service.registerAsLaborer(laborer);

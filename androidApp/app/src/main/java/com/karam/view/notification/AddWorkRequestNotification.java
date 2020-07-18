@@ -8,11 +8,11 @@ import androidx.core.app.NotificationManagerCompat;
 import com.karam.view.activity.R;
 
 public class AddWorkRequestNotification {
-    private Context context;
+    private final Context context;
     // TODO for future release: Support different channel for different notification
-    private String channelID = "0";
-    // TODO: Make sure the id is changed everytime
-    private int notificationID = 1;
+    private final String channelID = "0";
+    // TODO: Make sure the id is changed every time
+    private final int notificationID = 1;
 
     public AddWorkRequestNotification(Context context) {
         this.context = context;

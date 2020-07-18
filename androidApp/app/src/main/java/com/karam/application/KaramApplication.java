@@ -1,21 +1,15 @@
 package com.karam.application;
 
 import android.app.Application;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
 
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 import androidx.work.WorkRequest;
-import com.karam.utils.AppLocale;
 
 import com.karam.service.NotifyWorker;
-import com.karam.sharedPreference.UserData;
 
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -27,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Extends the whole application class
  */
-public class KaramApplication extends Application {
+class KaramApplication extends Application {
     /**
      * FIXME: NEW_COMER: Implement notification
      * This is just a test function

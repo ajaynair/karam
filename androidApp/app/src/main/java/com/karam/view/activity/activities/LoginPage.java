@@ -23,19 +23,19 @@ import retrofit2.Response;
  * Page for a registered user to login
  */
 public class LoginPage extends BaseActivity {
-    EditText name;
-    EditText password;
-    Button login;
-    Button register;
-    TextView wrongUsrPwd;
-    View.OnClickListener loginClickListener = new View.OnClickListener() {
+    private EditText name;
+    private EditText password;
+    private Button login;
+    private Button register;
+    private TextView wrongUsrPwd;
+    private final View.OnClickListener loginClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             send_rest_request(name.getText().toString(), password.getText().toString());
         }
     };
 
-    View.OnClickListener registerClickListener = new View.OnClickListener() {
+    private final View.OnClickListener registerClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             startActivity(new Intent(LoginPage.this, LandingPage.class));
@@ -94,7 +94,6 @@ public class LoginPage extends BaseActivity {
             public void onFailure(Call<Session> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), t.toString(),
                         Toast.LENGTH_SHORT).show();
-                return;
             }
         });
 

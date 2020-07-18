@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".activities.AboutUs">
 
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar" />
 
-    <include layout="@layout/bottom_navigation_common"/>
+    <include layout="@layout/bottom_navigation_common" />
 
     <TextView
         android:id="@+id/about_us_heading"

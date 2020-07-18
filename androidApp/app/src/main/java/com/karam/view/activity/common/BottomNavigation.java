@@ -15,8 +15,8 @@ import com.karam.view.activity.activities.LoginPage;
 import com.karam.view.activity.activities.UserSettings;
 
 public class BottomNavigation {
-    private static String TAG = "BottomNavigation";
-    Activity activity;
+    private static final String TAG = "BottomNavigation";
+    private final Activity activity;
 
     public BottomNavigation(Activity activity) {
         this.activity = activity;

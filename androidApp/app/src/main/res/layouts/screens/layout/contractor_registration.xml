@@ -22,7 +22,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/inputName"
@@ -30,9 +30,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="50dp"
-                android:theme="@style/editTextStyle"
                 android:hint="@string/name"
                 android:inputType="textPersonName"
+                android:theme="@style/editTextStyle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -43,10 +43,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="50dp"
-                android:theme="@style/editTextStyle"
                 android:ems="10"
                 android:hint="@string/address"
                 android:inputType="textMultiLine"
+                android:theme="@style/editTextStyle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/inputName" />
@@ -57,10 +57,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="50dp"
-                android:theme="@style/editTextStyle"
                 android:ems="10"
                 android:hint="@string/phone_no"
-                android:inputType="number"
+                android:inputType="phone"
+                android:theme="@style/editTextStyle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/inputAddress" />
@@ -71,12 +71,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="50dp"
-                android:theme="@style/editTextStyle"
                 android:ems="10"
                 android:hint="@string/username"
+                android:theme="@style/editTextStyle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/phone" />
+                app:layout_constraintTop_toBottomOf="@id/phone"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/password"
@@ -84,10 +85,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="50dp"
-                android:theme="@style/editTextStyle"
                 android:ems="10"
                 android:hint="@string/password"
                 android:inputType="textPassword"
+                android:theme="@style/editTextStyle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/username" />

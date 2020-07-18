@@ -6,19 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".activities.LaborerRegistration">
 
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar" />
 
-    <include layout="@layout/bottom_navigation_common"/>
+    <include layout="@layout/bottom_navigation_common" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_common"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_toolbar_common"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_common">
+        app:layout_constraintTop_toBottomOf="@+id/top_toolbar_common">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout2"
@@ -30,10 +30,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:theme="@style/editTextStyle"
                 android:ems="10"
                 android:hint="@string/fname"
                 android:inputType="textPersonName"
+                android:theme="@style/editTextStyle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,10 +42,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:theme="@style/editTextStyle"
                 android:ems="10"
                 android:hint="@string/lname"
                 android:inputType="textPersonName"
+                android:theme="@style/editTextStyle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/fName" />
 
@@ -54,10 +54,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:theme="@style/editTextStyle"
                 android:ems="10"
                 android:hint="@string/gender"
                 android:inputType="textPersonName"
+                android:theme="@style/editTextStyle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/lName" />
 
@@ -66,10 +66,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:theme="@style/editTextStyle"
                 android:ems="10"
                 android:hint="@string/age"
                 android:inputType="number"
+                android:theme="@style/editTextStyle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/gender" />
 
@@ -78,10 +78,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:theme="@style/editTextStyle"
                 android:ems="10"
                 android:hint="@string/address"
                 android:inputType="textMultiLine"
+                android:theme="@style/editTextStyle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/inputAge" />
 
@@ -142,10 +142,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:theme="@style/editTextStyle"
                 android:ems="10"
                 android:hint="@string/phone_no"
                 android:inputType="phone"
+                android:theme="@style/editTextStyle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/skills" />
 
@@ -154,21 +154,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:theme="@style/editTextStyle"
                 android:ems="10"
                 android:hint="@string/skills"
+                android:theme="@style/editTextStyle"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/spinner" />
+                app:layout_constraintTop_toBottomOf="@id/spinner"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:theme="@style/editTextStyle"
                 android:ems="10"
                 android:hint="@string/username"
                 android:inputType="text"
+                android:theme="@style/editTextStyle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/phone" />
 
@@ -177,10 +178,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:theme="@style/editTextStyle"
                 android:ems="10"
                 android:hint="@string/password"
                 android:inputType="textPassword"
+                android:theme="@style/editTextStyle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/username" />
 

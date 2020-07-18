@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * Adapter to get a list of laborers and their information
  */
 public class LaborerListAdapter extends RecyclerView.Adapter<LaborerListAdapter.ViewHolder> {
-    private ArrayList<Laborer> laborers;
+    private final ArrayList<Laborer> laborers;
 
     public LaborerListAdapter(ArrayList<Laborer> l, Context c) {
         this.laborers = l;
@@ -34,7 +34,8 @@ public class LaborerListAdapter extends RecyclerView.Adapter<LaborerListAdapter.
 
     /**
      * Fill laborer info to view holder based on the position to be filled
-     * @param holder: View holder to be filled
+     *
+     * @param holder:   View holder to be filled
      * @param position: Position of the view holder to be filled
      */
     @Override
@@ -52,6 +53,7 @@ public class LaborerListAdapter extends RecyclerView.Adapter<LaborerListAdapter.
 
     /**
      * Get the number of laborers in the current list
+     *
      * @return Number of laborers in the current list
      */
     @Override
@@ -63,16 +65,16 @@ public class LaborerListAdapter extends RecyclerView.Adapter<LaborerListAdapter.
      * Class that holds the view of a laborer
      */
     public class ViewHolder extends RecyclerView.ViewHolder {
-        RelativeLayout parentRelativeLayout;
-        TextView fname;
-        TextView lname;
-        TextView phoneNo;
-        TextView preferred_location;
-        TextView skills;
-        TextView aadharStatus;
-        TextView activityStatus;
+        final RelativeLayout parentRelativeLayout;
+        final TextView fname;
+        final TextView lname;
+        final TextView phoneNo;
+        final TextView preferred_location;
+        final TextView skills;
+        final TextView aadharStatus;
+        final TextView activityStatus;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
 
             parentRelativeLayout = itemView.findViewById(R.id.laborer_listview_relative_layout);

@@ -25,10 +25,10 @@ import retrofit2.Response;
  */
 public class ContractorPostLogin extends BaseActivity {
 
-    LaborerListAdapter adapter;
-    ArrayList<Laborer> laborers;
-    RecyclerView view;
-    SearchView laborerSearch;
+    private LaborerListAdapter adapter;
+    private ArrayList<Laborer> laborers;
+    private RecyclerView view;
+    private SearchView laborerSearch;
 
     private void initLaborerStatus() {
         initRecyclerView();
@@ -76,7 +76,7 @@ public class ContractorPostLogin extends BaseActivity {
         return R.layout.contractor_post_login;
     }
 
-    void send_rest_request(String query) {
+    private void send_rest_request(String query) {
         try {
             RestClient retro = new RestClient(getApplicationContext());
             RestClientInterface service = retro.getService();

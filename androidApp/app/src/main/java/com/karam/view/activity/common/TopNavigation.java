@@ -13,7 +13,7 @@ import com.karam.view.activity.activities.LoginPage;
 
 public class TopNavigation {
     private static String TAG = "TopNavigation";
-    AppCompatActivity activity;
+    private final AppCompatActivity activity;
     //UserData userData = null;
 
     public TopNavigation(AppCompatActivity activity) {
@@ -21,10 +21,9 @@ public class TopNavigation {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case (R.id.logout):
-                this.activity.startActivity(new Intent(this.activity, LoginPage.class));
-                return true;
+        if (item.getItemId() == R.id.logout) {
+            this.activity.startActivity(new Intent(this.activity, LoginPage.class));
+            return true;
 /*
             case (R.id.about_us):
                 this.activity.startActivity(new Intent(this.activity, AboutUs.class));
@@ -33,11 +32,10 @@ public class TopNavigation {
                 this.activity.startActivity(new Intent(this.activity, UserSettings.class));
                 return true;
 */
-            default:
-                Toast.makeText(this.activity, "Oops! Error. You shouldn't be seeing this message",
-                        Toast.LENGTH_SHORT).show();
-                return false;
         }
+        Toast.makeText(this.activity, "Oops! Error. You shouldn't be seeing this message",
+                Toast.LENGTH_SHORT).show();
+        return false;
     }
 
     public void inflateTopNavigation(UserData userData) {

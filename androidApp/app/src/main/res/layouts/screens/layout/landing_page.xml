@@ -18,11 +18,11 @@
         android:layout_marginEnd="20dp"
         android:choiceMode="singleChoice"
         android:clickable="true"
+        android:focusable="true"
         android:listSelector="@drawable/list_selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/top_toolbar_common"
-        android:focusable="true" />
+        app:layout_constraintTop_toBottomOf="@id/top_toolbar_common" />
 
     <Button
         android:id="@+id/RegisterForFriend"
@@ -46,12 +46,12 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/button_selector"
         android:clickable="true"
+        android:focusable="true"
         android:text="@string/landing_register_laborer"
         app:layout_constraintBottom_toTopOf="@+id/RegisterForFriend"
         app:layout_constraintEnd_toStartOf="@+id/languageList"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_toolbar_common"
-        android:focusable="true" />
+        app:layout_constraintTop_toBottomOf="@+id/top_toolbar_common" />
 
     <TextView
         android:id="@+id/alreadyHaveAccountText"
@@ -75,12 +75,12 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/button_selector"
         android:clickable="true"
+        android:focusable="true"
         android:text="@string/login"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toStartOf="@+id/languageList"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/alreadyHaveAccountText"
-        android:focusable="true" />
+        app:layout_constraintTop_toBottomOf="@+id/alreadyHaveAccountText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
