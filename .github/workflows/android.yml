@@ -19,4 +19,4 @@ jobs:
         cd androidApp
         ls
         ./gradlew build
-    - run: echo "Last message"
+
