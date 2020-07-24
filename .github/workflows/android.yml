@@ -16,4 +16,4 @@ jobs:
     - name: Build with Gradle
       run: |
         cd ./androidApp
-        ./androidApp/gradlew build
+        gradlew build
