@@ -1,4 +1,4 @@
-name: Android CI
+name: Android Build CI
 
 on: [push]
 
@@ -14,6 +14,9 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Gradle
-      uses: eskatos/gradle-command-action@v1
-      with:
-        build-root-directory: ./androi2dApp
+      run: |
+        ls
+        cd androidApp
+        ls
+        ./gradlew build
+    - run: echo "Last message"
