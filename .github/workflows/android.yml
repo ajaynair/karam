@@ -44,7 +44,7 @@ jobs:
       run: |
         cd androidApp
         ./gradlew lint
-      - name: Generate lint results
+    - name: Generate lint results
         uses: yutailang0119/action-android-lint@v1.0.1
         with:
           xml_path: Project/app/build/reports/lint-results.xml
