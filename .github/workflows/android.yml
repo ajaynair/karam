@@ -15,9 +15,9 @@ jobs:
         java-version: 1.8
     - name: Build with Gradle
       run: |
-        ls
         cd androidApp
-        ls
         ./gradlew build
         ./gradlew lint
+        echo "Copy the following to a local HTML file and open in a browser"
+        cat app/build/reports/lint-results.html
 
