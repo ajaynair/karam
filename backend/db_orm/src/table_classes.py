@@ -1,10 +1,12 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, DateTime, PrimaryKeyConstraint
-from sqlalchemy.ext.declarative import declarative_base
+from typing import Any, Union
+
+from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, DateTime, PrimaryKeyConstraint # type: ignore
+from sqlalchemy.ext.declarative import declarative_base  # type: ignore
 
 SHORT_STRING_LEN = 200
 LONG_STRING_LEN = 2000
 
-Base = declarative_base()
+Base: Any = declarative_base()
 
 
 class User(Base):
@@ -60,7 +62,7 @@ class LaborerPreferredLocation(Base):
 
     username: Column = Column(String(SHORT_STRING_LEN), ForeignKey(User.username))
     skill_id: Column = Column(Integer, ForeignKey(Skill.id))
-    __table_args__ = (
+    __table_args__: tuple = (
         PrimaryKeyConstraint('username', 'skill_id'),
         {},
     )
@@ -72,7 +74,7 @@ class LaborerSkill(Base):
     username: Column = Column(String(SHORT_STRING_LEN), ForeignKey(User.username))
     location_id: Column = Column(Integer, ForeignKey(Location.id))
 
-    __table_args__ = (
+    __table_args__: tuple = (
         PrimaryKeyConstraint('username', 'location_id'),
         {},
     )
