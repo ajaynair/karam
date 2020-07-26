@@ -1,16 +1,39 @@
-name: Android CI
+name: Android Build CI
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - name: Build with Gradle
+      run: |
+        cd androidApp
+        ./gradlew build --stacktrace
+        #./gradlew lint
+        #echo "Copy the following to a local HTML file and open in a browser"
+        #cat app/build/reports/lint-results.html
 
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - name: Build with Gradle
+      run: |
+        cd androidApp
+        ./gradlew test --stacktrace
+
+  lint:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: set up JDK 1.8
@@ -20,4 +43,10 @@ jobs:
     - name: Make gradlew executable
       run: chmod +x ./androidApp/gradlew
     - name: Build with Gradle
-      run: ./androidApp/gradlew build
+      run: |
+        cd androidApp
+        ./gradlew lint
+    - name: Generate lint results
+      uses: yutailang0119/action-android-lint@v1.0.1
+      with:
+        xml_path: androidApp/app/build/reports/lint-results.xml
