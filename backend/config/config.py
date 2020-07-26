@@ -1,38 +1,32 @@
-import configparser
+from configparser import ConfigParser
 import os
 
-config = configparser.ConfigParser()
-config_path = None
+from config.error import ConfigError
+
+conf_parser: ConfigParser = ConfigParser()
+conf_path: str
 
 
-def conf_init(path='config/config.cfg'):
-    global config_path, config
+def conf_init(path: str = 'config_files/config.cfg') -> None:
+    global conf_path, conf_parser
 
-    config_path = path
-    assert os.path.exists(config_path)
-    config.read(config_path)
-
-
-def get_mysql_username():
-    return config.get('mysql_config', 'userName')
+    conf_path = path
+    if not os.path.exists(conf_path):
+        raise ConfigError(path + ' not found.')
+    conf_parser.read(conf_path)
 
 
-def get_mysql_pwd():
-    return config.get('mysql_config', 'password')
+def get_mysql_username() -> str:
+    return conf_parser.get('mysql_config', 'userName')
 
 
-def get_mysql_host():
-    return config.get('mysql_config', 'host')
+def get_mysql_pwd() -> str:
+    return conf_parser.get('mysql_config', 'password')
 
 
-def get_mysql_db():
-    return config.get('mysql_config', 'database')
+def get_mysql_host() -> str:
+    return conf_parser.get('mysql_config', 'host')
 
 
-if __name__ == "__main__":
-    # Test
-    conf_init()
-    print("DB Username " + get_mysql_username())
-    print("DB password " + get_mysql_pwd())
-    print("DB host " + get_mysql_host())
-    print("DB name " + get_mysql_db())
+def get_mysql_db() -> str:
+    return conf_parser.get('mysql_config', 'database')
