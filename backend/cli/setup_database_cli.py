@@ -8,12 +8,12 @@ import logging
 from sqlalchemy.engine import Engine
 from sqlalchemy.exc import SQLAlchemyError
 
-from db_orm.src.error import DbError
+from db_orm.error import DbError
 
 log: logging.Logger = logging.getLogger(__file__)
 engine: Engine
 
-from db_orm.src.table_classes import User, \
+from db_orm.table_classes import User, \
     Contractor, \
     Laborer, \
     Skill, \
@@ -29,7 +29,7 @@ def delete_database(dbname: str) -> None:
         sql_query: str = "drop database " + dbname
         engine.execute(sql_query)
     except SQLAlchemyError as e:
-        reason = 'Failed to delete database: ' + dbname,  e.__str__()
+        reason = 'Failed to delete database: ' + dbname, e.__str__()
         log.info(reason)
         raise DbError(reason)
 
@@ -124,7 +124,9 @@ def connect_to_db_mgmt(username: str, password: str, host: str) -> None:
 
 def main(user_args) -> None:
     # Get database information from config
+
     config.conf_init()
+
     username: str = config.get_mysql_username()
     password: str = config.get_mysql_pwd()
     host: str = config.get_mysql_host()
@@ -142,3 +144,4 @@ if __name__ == "__main__":
         main(argv[1:])
     except Exception as e:
         reason = 'Some error occurred: ' + e.__str__()
+        print(reason)

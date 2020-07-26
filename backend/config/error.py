@@ -1,4 +1,4 @@
-class DbError(BaseException):
+class ConfigError(BaseException):
     def __init__(self, *args):
         if args:
             self.message = args[0]
@@ -7,6 +7,6 @@ class DbError(BaseException):
 
     def __str__(self):
         if self.message:
-            return 'MyCustomError, {0} '.format(self.message)
+            return 'ConfigError, {0} '.format(self.message)
         else:
-            return 'MyCustomError has been raised'
+            return 'ConfigError has been raised'

@@ -1,4 +1,3 @@
 setuptools
-wheel
-mysql-connector-python-rf
-a
+sqlalchemy
+flask
