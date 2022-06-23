@@ -24,4 +24,4 @@ class ThreadExecutor:
     executor = ThreadPoolExecutor(10000)
 
     def __init__(self):
-        print ('ThreadExecutor created')
+        print('ThreadExecutor created')

@@ -1,6 +1,7 @@
 *.iml
 *.cfg
 .gradle
+venv/
 /local.properties
 /.idea/*
 .DS_Store
@@ -82,5 +83,5 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
-
+*/config.cfg
 __pycache__/

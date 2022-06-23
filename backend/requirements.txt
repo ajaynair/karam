@@ -1,4 +1,6 @@
 setuptools
-wheel
-mysql-connector-python-rf
-a
+sqlalchemy~=1.4.37
+flask~=2.1.2
+mysqlclient # Requires mysql server installed separately
+configparser~=4.0.2
+marshmallow~=3.16.0
