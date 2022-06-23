@@ -7,20 +7,17 @@ import logging
 
 from sqlalchemy.engine import Engine
 from sqlalchemy.exc import SQLAlchemyError
-
-from db_orm.error import DbError
-
 log: logging.Logger = logging.getLogger(__file__)
 engine: Engine
 
-from db_orm.table_classes import User, \
-    Contractor, \
-    Laborer, \
-    Skill, \
-    Location, \
-    LaborerPreferredLocation, \
-    LaborerSkill
-from config import config
+from orm_classes import UserOrmClass, \
+    ContractorOrmClass, \
+    LaborerOrmClass, \
+    SkillOrmClass, \
+    LocationOrmClass, \
+    LaborerSkillOrmClass, \
+    JobOrmClass
+import config
 
 
 def delete_database(dbname: str) -> None:
@@ -31,7 +28,7 @@ def delete_database(dbname: str) -> None:
     except SQLAlchemyError as e:
         reason = 'Failed to delete database: ' + dbname, e.__str__()
         log.info(reason)
-        raise DbError(reason)
+        raise Exception(reason)
 
 
 def create_database(dbname: str) -> None:
@@ -42,7 +39,7 @@ def create_database(dbname: str) -> None:
     except SQLAlchemyError as e:
         reason = 'Failed to create database: ' + dbname, e.__str__()
         log.info(reason)
-        raise DbError(reason)
+        raise Exception(reason)
 
 
 def select_database(dbname: str):
@@ -53,30 +50,30 @@ def select_database(dbname: str):
     except SQLAlchemyError as e:
         reason = 'Failed to select database: ' + dbname, e.__str__()
         log.info(reason)
-        raise DbError(reason)
+        raise Exception(reason)
 
 
 def create_tables():
     log.debug('Creating tables')
     try:
-        User.__table__.create(engine)
-        Contractor.__table__.create(engine)
-        Laborer.__table__.create(engine)
-        Skill.__table__.create(engine)
-        Location.__table__.create(engine)
-        LaborerPreferredLocation.__table__.create(engine)
-        LaborerSkill.__table__.create(engine)
+        UserOrmClass.__table__.create(engine)
+        ContractorOrmClass.__table__.create(engine)
+        LaborerOrmClass.__table__.create(engine)
+        SkillOrmClass.__table__.create(engine)
+        LocationOrmClass.__table__.create(engine)
+        LaborerSkillOrmClass.__table__.create(engine)
+        JobOrmClass.__table__.create(engine)
     except SQLAlchemyError as e:
         reason = 'Failed to create tables', e.__str__()
         log.info(reason)
-        raise DbError(reason)
+        raise Exception(reason)
 
 
 def setup_database(dbname: str) -> None:
     log.debug('Setting up database: ' + dbname)
     try:
         delete_database(dbname)
-    except DbError as e:
+    except Exception as e:
         log.debug('Silently continuing as database is not required to exist')
 
     create_database(dbname)
@@ -125,7 +122,7 @@ def connect_to_db_mgmt(username: str, password: str, host: str) -> None:
 def main(user_args) -> None:
     # Get database information from config
 
-    config.conf_init()
+    config.conf_init(path='config_files/config_local.cfg')
 
     username: str = config.get_mysql_username()
     password: str = config.get_mysql_pwd()
@@ -140,8 +137,5 @@ def main(user_args) -> None:
 
 
 if __name__ == "__main__":
-    try:
-        main(argv[1:])
-    except Exception as e:
-        reason = 'Some error occurred: ' + e.__str__()
-        print(reason)
+    main(argv[1:])
+

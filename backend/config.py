@@ -1,8 +1,6 @@
 from configparser import ConfigParser
 import os
 
-from config.error import ConfigError
-
 conf_parser: ConfigParser = ConfigParser()
 conf_path: str
 
@@ -12,7 +10,7 @@ def conf_init(path: str = 'config_files/config.cfg') -> None:
 
     conf_path = path
     if not os.path.exists(conf_path):
-        raise ConfigError(path + ' not found.')
+        raise ValueError(path + ' not found.')
     conf_parser.read(conf_path)
 
 
